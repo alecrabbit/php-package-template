@@ -1,4 +1,8 @@
 /.idea/*
 /vendor/*
-/tmp/*
+/docker/*
 /.eval/*
+/data/*
+/tmp/*
+/tests/coverage/*
+/.dockerignore
