@@ -1,7 +1,5 @@
 /.idea/
 /vendor/
-/docker/
 /.eval/
-/data/
 /tests/tmp/
 /.dockerignore
