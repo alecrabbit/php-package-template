@@ -1,8 +1,7 @@
-/.idea/*
-/vendor/*
-/docker/*
-/.eval/*
-/data/*
-/tmp/*
-/tests/coverage/*
+/.idea/
+/vendor/
+/docker/
+/.eval/
+/data/
+/tests/tmp/
 /.dockerignore
