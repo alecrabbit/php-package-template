@@ -1,9 +1,4 @@
-dc-e app <?php
-/**
- * User: alec
- * Date: 31.10.18
- * Time: 16:34
- */
+<?php
 
 use PHPUnit\Framework\TestCase;
 
