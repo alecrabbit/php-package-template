@@ -3,7 +3,7 @@ COVERAGE=0
 PROPAGATE=0
 ANALYZE=0
 BEAUTY=0
-PHPUNIT=1
+PHPUNIT=0
 EXEC=1
 HELP=0
 RESTART_CONTAINER=1
@@ -34,8 +34,8 @@ do
         --no-restart)
             RESTART_CONTAINER=0
             ;;
-        --no-unit)
-            PHPUNIT=0
+        --unit)
+            PHPUNIT=1
             ;;
         --analyze)
             ANALYZE=1
@@ -55,6 +55,7 @@ do
         --all)
             ANALYZE=1
             COVERAGE=1
+            PHPUNIT=1
             BEAUTY=1
             ;;
         *)
