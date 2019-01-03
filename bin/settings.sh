@@ -3,6 +3,7 @@ COVERAGE=0
 PROPAGATE=0
 ANALYZE=0
 BEAUTY=0
+PHPUNIT=1
 EXEC=1
 HELP=0
 RESTART_CONTAINER=1
@@ -14,7 +15,7 @@ do
         --propagate)
             PROPAGATE=1
             ;;
-     esac
+    esac
 done
 
 for arg
@@ -32,6 +33,9 @@ do
             ;;
         --no-restart)
             RESTART_CONTAINER=0
+            ;;
+        --no-unit)
+            PHPUNIT=0
             ;;
         --analyze)
             ANALYZE=1
