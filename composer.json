@@ -1,16 +1,24 @@
 {
   "name": "alecrabbit/php-package-template",
-  "description": "PHP package template",
   "type": "library",
+  "description": "PHP package template",
+  "keywords": [
+    "php",
+    "package",
+    "template",
+    "scripts",
+    "test",
+    "automation"
+  ],
+  "license": "MIT",
   "require": {
     "php": ">=7.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.5",
     "nunomaduro/collision": "^2.1",
+    "phpunit/phpunit": "^7.5",
     "symfony/var-dumper": "^4.2"
   },
-  "license": "MIT",
   "autoload": {
     "psr-4": {
       "AlecRabbit\\": "src"
