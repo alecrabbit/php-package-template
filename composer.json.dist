@@ -2,6 +2,12 @@
   "name": "alecrabbit/php-package-template",
   "description": "PHP package template",
   "type": "library",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "/var/packages/helpers"
+    }
+  ],
   "require": {
     "php": ">=7.2"
   },
