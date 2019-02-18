@@ -8,8 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.0.37] - 2019-02-18
+### Added
+- CHANGELOG.md file.
+
+### Fixed
+- typo in bin/phpunit script.
+
 ## [0.0.36] - 2019-02-17
 
 
-[Unreleased]: https://github.com/alecrabbit/php-traits/compare/0.0.36...HEAD
+[Unreleased]: https://github.com/alecrabbit/php-traits/compare/0.0.37...HEAD
+[Unreleased]: https://github.com/alecrabbit/php-traits/compare/0.0.36...0.0.37
 [0.0.36]: https://github.com/alecrabbit/php-traits/compare/0.0.35...0.0.36
