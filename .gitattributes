@@ -17,3 +17,5 @@ phpunit.xml        export-ignore
 CHANGELOG.md       export-ignore
 TODO.md            export-ignore
 CONTRIBUTING.md    export-ignore
+README.md          export-ignore
+composer.lock      export-ignore
