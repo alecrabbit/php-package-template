@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "AlecRabbit\\": "src"
+      "AlecRabbit\\Package\\": "src"
     }
   },
   "autoload-dev": {
