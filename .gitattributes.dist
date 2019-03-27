@@ -2,6 +2,7 @@
 /examples          export-ignore
 /docs              export-ignore
 /tests             export-ignore
+/.github           export-ignore
 .editorconfig      export-ignore
 .gitattributes     export-ignore
 .dockerignore      export-ignore
