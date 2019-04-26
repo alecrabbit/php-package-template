@@ -26,7 +26,7 @@ help_message
 
 header "Tests and coverage script"
 dark "Setting terminal title..."
-setTitle "${dir}"
+set_title "${dir}"
 
 if [[ ${EXEC} == 0 ]]
 then
