@@ -6,9 +6,6 @@ cd ${script_dir}
 
 . imports.sh "$@"
 
-comment "Setting terminal title..."
-setTitle "${dir}"
-
 if [[ ${PROPAGATE} == 1 ]]
 then
     error "Using --propagate option on this script may lead to unexpected results. "
@@ -28,6 +25,9 @@ OPTION_NO_RESTART=1
 help_message
 
 header "Tests and coverage script"
+dark "Setting terminal title..."
+setTitle "${dir}"
+
 if [[ ${EXEC} == 0 ]]
 then
     echo "No-Exec selected."

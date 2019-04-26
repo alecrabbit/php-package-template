@@ -5,7 +5,11 @@ setTitle () {
 }
 
 header () {
-    printf "${LIGHT_GRAY}${1}${NC}\n"
+    printf "${CYAN}${1}${NC}\n"
+}
+
+dark () {
+    printf "${DARK}${1}${NC}\n"
 }
 
 info () {
