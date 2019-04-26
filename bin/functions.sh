@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-setTitle () {
+set_title () {
     echo -e "\033]0;${1}\007"
 }
 
@@ -16,6 +16,14 @@ info () {
     printf "\n${GREEN}${1}${NC}\n\n"
 }
 
+green () {
+    printf "${GREEN}${1}${NC}\n"
+}
+
+light_green () {
+    printf "${LIGHT_GREEN}${1}${NC}\n"
+}
+
 error () {
     printf "\n${RED}${1}${NC}\n\n"
 }
@@ -29,10 +37,10 @@ no-exec () {
 }
 
 enabled () {
-    echo " enabled."
+    light_green " enabled."
 }
 disabled () {
-    echo " disabled."
+    dark " disabled."
 }
 
 help_message () {
