@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+setTitle () {
+    echo -e "\033]0;${1}\007"
+}
+
 header () {
     printf "${LIGHT_GRAY}${1}${NC}\n"
 }
