@@ -66,6 +66,14 @@ fi
 }
 
 options_enabled () {
+    printf "Container restart"
+    if [[ ${RESTART_CONTAINER} == 1 ]]
+    then
+        enabled
+    else
+        disabled
+    fi
+
     printf "Analysis"
     if [[ ${ANALYZE} == 1 ]]
     then
@@ -103,13 +111,6 @@ options_enabled () {
     fi
     printf "Beautifier"
     if [[ ${BEAUTY} == 1 ]]
-    then
-        enabled
-    else
-        disabled
-    fi
-    printf "Container restart"
-    if [[ ${RESTART_CONTAINER} == 1 ]]
     then
         enabled
     else

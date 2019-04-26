@@ -24,8 +24,8 @@ OPTION_NO_RESTART=1
 
 help_message
 
-header "Tests and coverage script"
-dark "Setting terminal title..."
+header "Tests, coverage, analysis and metrics script"
+dark "Setting terminal title... \n'${dir}'"
 set_title "${dir}"
 
 if [[ ${EXEC} == 0 ]]
