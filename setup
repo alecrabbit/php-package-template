@@ -32,21 +32,21 @@ else
     package_description="PHP Library"
 
     # Ask owner
-    read -e -p "Enter package owner [${package_owner}]: " -t 10 input
+    read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
     # Ask name
-    read -e -p "Enter package name [${package_name}]: " -t 10 input
+    read -e -p "Enter package name [${package_name}]: " input
     package_name="${input:-$package_name}"
     # Ask description
-    read -e -p "Enter package description [${package_description}]: " -t 10 input
+    read -e -p "Enter package description [${package_description}]: " input
     package_description="${input:-$package_description}"
     # Ask namespace
     package_namespace="${package_name^}"
-    read -e -p "Enter package namespace [${package_namespace}]: " -t 10 input
+    read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
     # Ask dir
     package_dir="${package_name}"
-    read -e -p "Enter package dir [${package_dir}]: " -t 10 input
+    read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
 
     echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
