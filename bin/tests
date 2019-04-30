@@ -52,8 +52,8 @@ then
         env_file="$(get_realpath ${ENV_FILE})"
         dark "Secondary .env file found"
     else
-        comment ".env file not found"
-        info "Creating symlink"
+        comment "Secondary .env file not found"
+        info "Creating symlink to main .env file"
         ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
     fi
 else

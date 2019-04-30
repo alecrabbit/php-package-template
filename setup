@@ -18,10 +18,10 @@ else
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
     # Ask name
-    read -e -p "Enter package name  [${package_name}]: " input
+    read -e -p "Enter package name [${package_name}]: " input
     package_name="${input:-$package_name}"
     # Ask description
-    read -e -p "Enter package description  [${package_description}]: " input
+    read -e -p "Enter package description [${package_description}]: " input
     package_description="${input:-$package_description}"
     # Ask namespace
     package_namespace="${package_name^}"
