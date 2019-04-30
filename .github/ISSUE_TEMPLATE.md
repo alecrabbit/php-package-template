@@ -6,7 +6,7 @@ I encountered an issue with the following code:
 ```
 Library version: **PUT HERE YOUR COMPOSER LIBRARY VERSION**
 <!--
-Run the command `composer show alecrrabbit/<lib>`
+Run the command `composer show alecrabbit/<lib>`
 to get "versions".
 -->
 
