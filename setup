@@ -140,13 +140,6 @@ then
     yellow "Deleting tmp setup dir PKG"
     rm -r PKG
 
-#    green "Initializing new repository"
-#    docker-compose exec app git init
-#    green "Adding files"
-#    docker-compose exec app git add *
-##    green "Committing files"
-##    docker-compose exec app git commit -m 'init'
-
     green "Run tests script"
     ./bin/tests --all
 
@@ -156,10 +149,14 @@ then
         git init
         green "Adding files"
         git add *
-        green "Committing files"
-        git commit -m 'init'
-        green "Git log:"
-        git log --graph --oneline
+        ./git_user.sh
+        if [[ $?==0 ]]
+        then
+            green "Committing files"
+            git commit -m 'init'
+            green "Git log:"
+            git log --graph --oneline
+        fi
     fi
     info "Stopping container"
     docker-compose down
