@@ -59,7 +59,7 @@ then
             echo ".gitattributes file not found"
         fi
     fi
-
+    mkdir -p "$package_namespace"
     dark "Deleting setup script"
 #    mv setup setup.done
     info "Stopping container if started"
