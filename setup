@@ -106,12 +106,22 @@ then
 
     yellow "Deleting old repository"
     rm -rf .git/
-    green "Initializing new repository"
-    docker-compose exec app git init
-    green "Adding files"
-    docker-compose exec app git add *
-#    green "Committing files"
-#    docker-compose exec app git commit -m 'init'
+    if [[ -x "$(command -v git)" ]]
+    then
+        green "Initializing new repository"
+        git init
+        green "Adding files"
+        git add *
+        green "Committing files"
+        git commit -m 'init'
+    fi
+
+#    green "Initializing new repository"
+#    docker-compose exec app git init
+#    green "Adding files"
+#    docker-compose exec app git add *
+##    green "Committing files"
+##    docker-compose exec app git commit -m 'init'
 
     yellow "Deleting setup script"
     rm setup
