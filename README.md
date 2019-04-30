@@ -50,7 +50,7 @@ Package: mike/lyann
 Description: New awesome package
 Namespace: Lyann
 
-Continue? 
+Continue? y
 ...
 ```
 
