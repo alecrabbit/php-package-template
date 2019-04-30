@@ -3,6 +3,8 @@ cd bin
 . imports.sh "$@"
 cd ..
 
+set_title "🧰 Setup script..."
+
 green "This script will make setup"
 composer_json_file="composer.json.result";
 if [[ -e "${composer_json_file}" ]]
@@ -46,6 +48,7 @@ read -p "Continue? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    set_title "🔧 Running setup script..."
 
     user=$(whoami)
     u_id="$(id -u ${user})"
