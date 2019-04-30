@@ -8,6 +8,7 @@ echo "${user}"
 if [[ ${user} = "root" ]]
 then
     error "DO NOT run this script under root!"
+    exit 1
 fi
 set_title "🧰 Setup script..."
 
