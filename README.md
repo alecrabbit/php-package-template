@@ -11,8 +11,8 @@ $ cd php-package-template
 ```
 Make preparations
 ```
-$ cp .gitattributes.dist .gitattributes
-$ cp .env.dist .env
+$ mv .gitattributes.dist .gitattributes
+$ mv .env.dist .env
 ```
 Edit `.env` file if neccessary
 ```
