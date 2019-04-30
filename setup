@@ -39,7 +39,7 @@ else
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
 fi
 
-read -i "y" -p "Continue? " -n 1 -r
+read -p "Continue? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
