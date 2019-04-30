@@ -97,6 +97,11 @@ then
     rm .env.dist
     rm *.template
 
+    info "Renaming package dir"
+    cd ..
+    mv php-package-template "${package_name}"
+    cd "${package_name}"
+
     info "Stopping container if started"
     docker-compose down
     info "Starting container"
@@ -127,10 +132,6 @@ then
     rm setup
     green "Run tests script"
     ./bin/tests --all
-
-    cd ..
-    mv php-package-template "${package_name}"
-    cd "${package_name}"
 else
     echo "Skip setup"
     echo
