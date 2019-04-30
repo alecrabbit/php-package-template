@@ -37,7 +37,9 @@ else
     echo "Description: ${package_description}"
     echo "Namespace: ${package_namespace}"
     yellow "Creating ${composer_json_file}"
+    printf "${DARK}"
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
+    printf "${NC}"
 fi
 
 read -p "Continue? " -n 1 -r
@@ -75,10 +77,11 @@ then
     mkdir -p "tests/Feature"
     mkdir -p "tests/Unit"
     yellow "Creating BasicClass.php"
+    printf "${DARK}"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicClass.php.template | tee "src/$package_namespace/BasicClass.php"
+    printf "${NC}"
     rm  "tests/BasicTest.php"
     yellow "Creating BasicTest.php"
-#    echo "${DARK}${1}${NC}\n"
     printf "${DARK}"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicTest.php.template | tee "tests/Unit/BasicTest.php"
     printf "${NC}"
@@ -87,11 +90,6 @@ then
     rm .env.dist
     rm *.template
 
-    dark "Deleting old repository"
-    rm -rf .git/
-    dark "Deleting setup script"
-    rm setup
-
     info "Stopping container if started"
     docker-compose down
     info "Starting container"
@@ -99,13 +97,18 @@ then
     info "Installing dependencies"
     docker-compose exec app composer install
 
-    green "Initializing repository"
+    yellow "Deleting old repository"
+    rm -rf .git/
+    green "Initializing new repository"
     docker-compose exec app git init
     green "Adding files"
     docker-compose exec app git add *
     green "Committing files"
     docker-compose exec app git commit -m 'init'
 
+    yellow "Deleting setup script"
+    rm setup
+    green "Run tests script"
     ./bin/tests --all
 else
     echo "Skip setup"
