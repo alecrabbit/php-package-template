@@ -152,7 +152,7 @@ then
         ./git_user.sh
         if [[ $? -ne 0 ]]
         then
-            yellow "git user credentials not configured"
+            yellow "Can't commit: git user credentials not configured"
         else
             green "Committing files"
             git commit -m 'init'
