@@ -12,6 +12,9 @@ $ docker-compose up -d
 ...
 $ docker-compose exec app composer install
 ...
+```
+Running tests script
+```
 $ ./bin/tests --all
 Tests and coverage script
 Analysis enabled.
