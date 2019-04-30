@@ -116,12 +116,12 @@ then
     rm *.template
 
     info "Renaming package dir"
+    info "Stopping container if started"
+    docker-compose down
     cd ..
     mv php-package-template "${package_name}"
     cd "${package_name}"
 
-    info "Stopping container if started"
-    docker-compose down
     info "Starting container"
     docker-compose up -d
     info "Installing dependencies"
