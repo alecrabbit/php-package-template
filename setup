@@ -60,6 +60,7 @@ then
         fi
     fi
     mv "${composer_json_file}" composer.json
+    rm composer.lock
     rm -rf "src"
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
