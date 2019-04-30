@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "AlecRabbit\\Package\\": "src"
+      "AlecRabbit\\Package\\": "src\\Package\\"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AlecRabbit\\Tests\\Package\\": "tests/"
+      "AlecRabbit\\Tests\\Package\\": "tests"
     }
   },
   "minimum-stability": "beta",
