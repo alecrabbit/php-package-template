@@ -4,10 +4,39 @@ cd bin
 cd ..
 
 echo "This script will make setup"
+if [[ -e "PACKAGE" ]]
+then
+    full_package_name="$(<PACKAGE)"
+else
+    package_owner="dralec"
+    package_name="new-package"
+    package_description="PHP Library"
+    package_namespace="DefaultNamespace"
+
+    read -e -p "Enter package owner [${package_owner}]: " input
+    package_owner="${input:-$package_owner}"
+    read -e -i "$package_name" -p "Enter package name: " input
+    package_name="${input:-$package_owner}"
+    read -e -i "$package_description" -p "Enter package description: " input
+    package_description="${input:-$package_description}"
+    read -e -p "Enter package namespace [${package_namespace}]: " input
+    package_namespace="${input:-$package_namespace}"
+fi
+echo "Creating php package: ${package_owner}/${package_name}"
+echo "Description: ${package_description}"
+echo "Namespace: ${package_namespace}"
+
+
 read -p "Continue? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee composer.json.result
+#    sed "s/PACKAGE_OWNER/${package_owner}/g" composer.json.template | tee composer.json.result
+#    sed "s/PACKAGE_NAME/${package_name}/g" composer.json.result | tee composer.json.result
+#    sed "s/PACKAGE_DESCRIPTION/${package_description}/g" composer.json.result | tee composer.json.result
+#    sed "s/PACKAGE_NAMESPACE/${package_namespace}/g" composer.json.result | tee composer.json.result
+    cat composer.json.result
     user=$(whoami)
     u_id="$(id -u ${user})"
     g_id="$(id -g ${user})"
