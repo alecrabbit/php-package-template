@@ -146,7 +146,7 @@ then
         green "Initializing new repository"
         git init
         green "Adding files"
-        git add *
+        git add --all
         ./git_user.sh
         if [[ $? -ne 0 ]]
         then
