@@ -13,12 +13,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "AlecRabbit\\PACKAGE_NSPACE": "src"
+      "PACKAGE_NSPACE\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AlecRabbit\\Tests\\PACKAGE_NSPACE\\": "tests/"
+      "PACKAGE_NSPACE\\Tests\\": "tests"
     }
   },
   "minimum-stability": "beta",
