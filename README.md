@@ -54,67 +54,111 @@ Continue? y
 ...
 ```
 
-
-After setup you can edit `.env` file if necessary
-```
-USER_ID=1000
-GROUP_ID=1000
-```
-> Note: to get your `USER_ID` and `GROUP_ID`
-> ```
-> $ id username
-> ```
-Running tests script
-> Note: output from older version of container
+### Running tests script
 ```
 $ ./bin/tests --all
-Tests and coverage script
-Analysis enabled.
-PHPMetrics disabled.
-PHPUnit enabled.
-Coverage enabled.
-Beautifier enabled.
-Container restart enabled.
+Tests, coverage, analysis and metrics script
+Version: 0.1.14
+Main .env file found
+Secondary .env file not found
+
+Creating symlink to main .env file
+Setting terminal title... 
+'📦 alecrabbit/moomba'
+
+[ ON ]  Container restart
+[ ON ]  Analysis
+[ -- ]  PHPMetrics
+[ -- ]  Multi-tester
+[ ON ]  PHPUnit
+[ ON ]  Coverage
+[ ON ]  Beautifier
+
+Restarting container...
+Stopping moomba_app_1 ... done
+Removing moomba_app_1 ... done
+Removing network moomba_default
+Creating network "moomba_default" with the default driver
+Creating moomba_app_1 ... done
 
 Processing...
 
+PHP version:
+PHP 7.2.17 (cli) (built: Apr  6 2019 04:06:56) ( ZTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Xdebug v2.7.0, Copyright (c) 2002-2019, by Derick Rethans
+
 PhpUnit...
 
-Found XDEBUG Filter file...
+Generating XDEBUG Filter...
+PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
+
+Wrote Xdebug filter script to tests/tmp/xdebug-filter.php 
 
 Running tests with coverage...
+PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
 
-PHPUnit 7.5.5 by Sebastian Bergmann and contributors.
+.                                                                   1 / 1 (100%)
 
-...
+Time: 72 ms, Memory: 6.00 MB
+
+OK (1 test, 1 assertion)
+
+Generating code coverage report in Clover XML format ... done
+
+Generating code coverage report in HTML format ... done
+
+
+Code Coverage Report:   
+  2019-04-30 20:55:33   
+                        
+ Summary:               
+  Classes: 100.00% (1/1)
+  Methods: 100.00% (1/1)
+  Lines:   100.00% (1/1)
+
+\Moomba::Moomba\BasicClass
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 
 PHPStan...
+PHPStan - PHP Static Analysis Tool 0.11.5
+ 1/1 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
 
-PHPStan - PHP Static Analysis Tool 0.11.2
+                                                                                                                        
+ [OK] No errors                                                                                                         
+                                                                                                                        
 
-...
 
 Psalm config found...
 
 Psalm...
+Psalm 3.2.9@473c8cb83209de1b66a1487400c0ea47a2ee65cc
+Scanning files...
+Analyzing files...
 
-Psalm 3.0.15@c310a2dd86660944b3f15fb8486ab73d45066618
+------------------------------
+No errors found!
+------------------------------
 
-...
+Checks took 0.21 seconds and used 26.973MB of memory
+Psalm was able to infer types for 100% of the codebase
+
+Generating report file: ./../tests/report.html
 
 PHP Code Sniffer...
-
-PHP_CodeSniffer version 3.4.0 (stable) by Squiz (http://www.squiz.net)
-
-...
+PHP_CodeSniffer version 3.4.2 (stable) by Squiz (http://www.squiz.net)
 
 PHP Code Sniffer Beautifier...
+PHP_CodeSniffer version 3.4.2 (stable) by Squiz (http://www.squiz.net)
 
-PHP_CodeSniffer version 3.4.0 (stable) by Squiz (http://www.squiz.net)
+No fixable errors were found
 
-...
+Time: 204ms; Memory: 6MB
 
-Executed in 10s
+
+Executed in 11s
 Bye!
+
 
 ```
