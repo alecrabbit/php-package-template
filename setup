@@ -3,6 +3,8 @@ cd bin
 . imports.sh "$@"
 cd ..
 
+user=$(whoami)
+
 set_title "🧰 Setup script..."
 
 green "This script will make setup"
@@ -67,7 +69,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     set_title "🔧 Running setup script..."
 
-    user=$(whoami)
     u_id="$(id -u ${user})"
     g_id="$(id -g ${user})"
     if [[ -e "${ENV_FILE}" ]]
