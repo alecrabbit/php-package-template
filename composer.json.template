@@ -13,7 +13,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "PACKAGE_NSPACE\\": "src"
+      "PACKAGE_NSPACE\\": "src\\PACKAGE_NSPACE"
     }
   },
   "autoload-dev": {
