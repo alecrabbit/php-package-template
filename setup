@@ -126,6 +126,9 @@ then
     yellow "Deleting setup script"
     rm setup
 
+    yellow "Deleting tmp setup dir PKG"
+    rm -r PKG
+
 #    green "Initializing new repository"
 #    docker-compose exec app git init
 #    green "Adding files"
@@ -144,7 +147,10 @@ then
         git add *
         green "Committing files"
         git commit -m 'init'
+        git log --graph --oneline
     fi
+    cd ..
+
 else
     echo "Skip setup"
     echo
