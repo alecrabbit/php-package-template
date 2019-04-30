@@ -92,6 +92,8 @@ then
     docker-compose up -d
     info "Installing dependencies"
     docker-compose exec app composer install
+
+    ./bin/tests --all
 else
     echo "Skip setup"
     echo
