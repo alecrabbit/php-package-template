@@ -11,6 +11,11 @@ if [[ -e "${composer_json_file}" ]]
 then
     yellow "Found '${composer_json_file}' file:"
     cat "${composer_json_file}"
+    package_owner="$(<PKG/OWNER)"
+    package_name="$(<PKG/NAME)"
+    package_description="$(<PKG/DESCR)"
+    package_namespace="$(<PKG/NMSPC)"
+    package_dir="$(<PKG/PKGDIR)"
 else
     package_owner="alecrabbit"
     package_name="moomba"
@@ -42,6 +47,13 @@ else
     printf "${DARK}"
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
     printf "${NC}"
+
+    mkdir PKG
+    echo "${package_owner}" > PKG/OWNER
+    echo "${package_name}" > PKG/NAME
+    echo "${package_description}" > PKG/DESCR
+    echo "${package_namespace}" > PKG/NMSPC
+    echo "${package_dir}" > PKG/PKGDIR
 fi
 
 read -p "Continue? " -n 1 -r
@@ -111,6 +123,9 @@ then
 
     yellow "Deleting old repository"
     rm -rf .git/
+    yellow "Deleting setup script"
+    rm setup
+
     if [[ -x "$(command -v git)" ]]
     then
         green "Initializing new repository"
@@ -128,8 +143,6 @@ then
 ##    green "Committing files"
 ##    docker-compose exec app git commit -m 'init'
 
-    yellow "Deleting setup script"
-    rm setup
     green "Run tests script"
     ./bin/tests --all
 else
