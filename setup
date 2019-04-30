@@ -134,8 +134,6 @@ then
 
     yellow "Deleting old repository"
     rm -rf .git/
-    yellow "Deleting setup script"
-    rm setup
 
     yellow "Deleting tmp setup dir PKG"
     rm -r PKG
@@ -160,6 +158,8 @@ then
             git log --graph --oneline
         fi
     fi
+    yellow "Deleting setup script"
+    rm setup
     rm git_user.sh
     info "Stopping container"
     docker-compose down
