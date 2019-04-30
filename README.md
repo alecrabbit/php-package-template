@@ -8,13 +8,15 @@ Includes bash scripts to automate testing
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
+$ ./setup
 ```
-Make preparations
+Then follow the instructions
 ```
-$ mv .gitattributes.dist .gitattributes
-$ mv .env.dist .env
+
 ```
-Edit `.env` file if neccessary
+
+
+After setup you can edit `.env` file if necessary
 ```
 USER_ID=1000
 GROUP_ID=1000
@@ -23,14 +25,8 @@ GROUP_ID=1000
 > ```
 > $ id username
 > ```
-Start container and launch `composer install`
-```
-$ docker-compose up -d
-...
-$ docker-compose exec app composer install
-...
-```
 Running tests script
+> Note: output from older version of container
 ```
 $ ./bin/tests --all
 Tests and coverage script
