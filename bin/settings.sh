@@ -82,6 +82,7 @@ set -- "${params[@]}"  # overwrites the original positional params
 #echo "$@" # for debug
 
 SOURCE_DIR="src"
+
 PHPSTAN_LEVEL=7
 PSALM_CONFIG="./../psalm.xml"
 PHPSTAN_CONFIG="./../phpstan.neon"
@@ -97,6 +98,8 @@ PHPUNIT_COVERAGE_CLOVER_REPORT="${TMP_DIR}/${COVERAGE_DIR}/clover.xml"
 XDEBUG_FILTER_FILE="${TMP_DIR}/xdebug-filter.php"
 TEST_REPORT_INDEX="./../${TESTS_DIR}/report.html"
 TITLE_FILE="./../TERMINAL_TITLE"
+ENV_FILE=".env"
+MAIN_ENV_FILE="../${ENV_FILE}"
 HEADER="$(basename $(dirname "$(pwd)"))"
 
 if [[ ${COVERAGE} == 1 ]]

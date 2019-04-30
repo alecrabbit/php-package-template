@@ -33,6 +33,24 @@ fi
 
 header "Tests, coverage, analysis and metrics script"
 dark "${ver}"
+
+if [[ -e "${MAIN_ENV_FILE}" ]]
+then
+    env_file="$(realpath ${MAIN_ENV_FILE})"
+    dark ".env file found ${env_file}"
+    if [[ -e "${ENV_FILE}" ]]
+    then
+        env_file="$(realpath ${ENV_FILE})"
+        dark ".env file found ${env_file}"
+    else
+        comment ".env file not found"
+        ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
+    fi
+    # source "${ENV_FILE}"
+else
+    comment ".env file not found"
+fi
+
 if [[ -e "${TITLE_FILE}" ]]
 then
     title=$(<${TITLE_FILE})
