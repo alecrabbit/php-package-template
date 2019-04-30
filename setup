@@ -161,8 +161,8 @@ then
         green "Git log:"
         git log --graph --oneline
     fi
-    cd ..
-
+    info "Stopping container"
+    docker-compose down
 else
     echo "Skip setup"
     echo
