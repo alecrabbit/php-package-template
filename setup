@@ -60,8 +60,6 @@ then
         fi
     fi
     mv "${composer_json_file}" composer.json
-    rm composer.lock
-    rm *.template
     rm -rf "src"
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
@@ -69,6 +67,8 @@ then
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicClass.php.template | tee "src/$package_namespace/BasicClass.php"
     rm  "tests/BasicTest.php"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicTest.php.template | tee "tests/BasicTest.php"
+    rm composer.lock
+    rm *.template
 
     dark "Deleting setup script"
     rm setup
