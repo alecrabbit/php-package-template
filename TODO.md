@@ -1,1 +1,4 @@
+- [ ] create `realpath` function
+- [ ] make auto setup
+---
 - [x] add TODO.md file
