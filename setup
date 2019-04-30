@@ -68,7 +68,7 @@ echo -e "Package: ${CYAN}${package_owner}/${package_name}${NC}"
 echo -e "Description: ${CYAN}${package_description}${NC}"
 echo -e "Namespace: ${CYAN}${package_namespace}${NC}"
 echo
-read -p "Continue? " -n 1 -r
+read -p "Continue? " -n 1 -r -t 10
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -158,12 +158,12 @@ then
             git log --graph --oneline
         fi
     fi
-    yellow "Deleting setup script"
+    comment "Deleting setup script"
     rm setup
     rm git_user.sh
     info "Stopping container"
     docker-compose down
 else
-    echo "Skip setup"
+    echo "Setup skipped..."
     echo
 fi
