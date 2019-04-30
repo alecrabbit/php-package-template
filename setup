@@ -149,7 +149,7 @@ then
         git init
         green "Adding files"
         git add *
-        git_user.sh
+        ./git_user.sh
         if [[ $? -ne 0 ]]
         then
             yellow "git user credentials not configured"
