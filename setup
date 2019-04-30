@@ -59,13 +59,17 @@ then
             echo ".gitattributes file not found"
         fi
     fi
+    mv "${composer_json_file}" composer.json
+    rm -rf "src"
     mkdir -p "src/$package_namespace"
+    mkdir -p "tests/Feature"
+    mkdir -p "tests/Unit"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicClass.php.template | tee "src/$package_namespace/BasicClass.php"
     rm  "tests/BasicTest.php"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicTest.php.template | tee "tests/BasicTest.php"
 
     dark "Deleting setup script"
-#    mv setup setup.done
+    rm setup
     info "Stopping container if started"
     docker-compose down
     info "Starting container"
