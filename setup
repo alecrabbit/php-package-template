@@ -12,7 +12,7 @@ then
 fi
 set_title "🧰 Setup script..."
 
-green "This script will make setup"
+green "Package template setup..."
 composer_json_file="composer.json.result";
 if [[ -e "${composer_json_file}" ]]
 then
