@@ -60,8 +60,14 @@ then
         fi
     fi
 
-    echo "Deleting setup script"
+    dark "Deleting setup script"
 #    mv setup setup.done
+    info "Stopping container if started"
+    docker-compose down
+    info "Starting container"
+    docker-compose up -d
+    info "Installing dependencies"
+    docker-compose exec app composer install
 else
     echo "Skip setup"
     echo
