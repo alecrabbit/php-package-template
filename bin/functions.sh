@@ -8,12 +8,23 @@ header () {
     printf "${CYAN}${1}${NC}\n"
 }
 
+get_realpath () {
+    if [[ -x "$(command -v realpath)" ]]
+    then
+      path="$(realpath ${1})"
+    else
+      path=${1}
+    fi
+
+    echo "${path}"
+}
+
 dark () {
     printf "${DARK}${1}${NC}\n"
 }
 
 info () {
-    printf "\n${GREEN}${1}${NC}\n\n"
+    printf "\n${GREEN}${1}${NC}\n"
 }
 
 green () {
@@ -29,7 +40,7 @@ error () {
 }
 
 comment () {
-    printf "\n${YELLOW}${1}${NC}\n\n"
+    printf "\n${YELLOW}${1}${NC}\n"
 }
 
 no-exec () {

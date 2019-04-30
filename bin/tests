@@ -34,37 +34,34 @@ fi
 header "Tests, coverage, analysis and metrics script"
 dark "${ver}"
 
-if [[ -e "${MAIN_ENV_FILE}" ]]
-then
-    env_file="$(realpath ${MAIN_ENV_FILE})"
-    dark ".env file found ${env_file}"
-    if [[ -e "${ENV_FILE}" ]]
-    then
-        env_file="$(realpath ${ENV_FILE})"
-        dark ".env file found ${env_file}"
-    else
-        comment ".env file not found"
-        ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
-    fi
-    # source "${ENV_FILE}"
-else
-    comment ".env file not found"
-fi
-
 if [[ -e "${TITLE_FILE}" ]]
 then
     title=$(<${TITLE_FILE})
 else
     title="${dir}"
-    if [[ -x "$(command -v realpath)" ]]
-    then
-      title_file="$(realpath ${TITLE_FILE})"
-    else
-      title_file=${TITLE_FILE}
-    fi
+    title_file="$(get_realpath ${TITLE_FILE})"
     error "No title file found."
     dark "Searched for: ${title_file}"
 fi
+
+if [[ -e "${MAIN_ENV_FILE}" ]]
+then
+    dark "Main .env file found"
+    if [[ -e "${ENV_FILE}" ]]
+    then
+        env_file="$(get_realpath ${ENV_FILE})"
+        dark "Secondary .env file found"
+    else
+        comment ".env file not found"
+        info "Creating symlink"
+        ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
+    fi
+else
+    main_env_file="$(get_realpath ${MAIN_ENV_FILE})"
+    comment "Main .env file not found, using defaults"
+    dark "Searched for: ${main_env_file}"
+fi
+
 dark "Setting terminal title... \n'${title}'"
 set_title "${title}"
 

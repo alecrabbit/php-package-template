@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+cd bin
+. imports.sh "$@"
+cd ..
+
+echo "This script will make setup"
+read -p "Continue? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    user=$(whoami)
+    u_id="$(id -u ${user})"
+    g_id="$(id -g ${user})"
+    if [[ -e "${ENV_FILE}" ]]
+    then
+        echo "Removing .env file"
+        rm .env
+    fi
+    echo "Creating .env file"
+    touch .env
+    echo "USER_ID=${u_id}" >> .env
+    echo "GROUP_ID=${u_id}" >> .env
+    if [[ -e ".gitattributes.dist" ]]
+    then
+        echo "Creating .gitattributes file"
+        mv .gitattributes.dist .gitattributes
+    else
+        if [[ -e ".gitattributes" ]]
+        then
+            echo ".gitattributes file already exists"
+        else
+            echo ".gitattributes file not found"
+        fi
+    fi
+
+    echo "Deleting setup script"
+#    mv setup setup.done
+else
+    echo "Skip setup"
+    echo
+fi
