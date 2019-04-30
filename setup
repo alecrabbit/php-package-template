@@ -16,11 +16,11 @@ else
 
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
-    read -e -i "$package_name" -p "Enter package name: " input
-    package_name="${input:-$package_owner}"
-    read -e -i "$package_description" -p "Enter package description: " input
+    read -e -p "Enter package name  [${package_name}]: " input
+    package_name="${input:-$package_name}"
+    read -e -p "Enter package description  [${package_description}]: " input
     package_description="${input:-$package_description}"
-    package_dir="php-${package_name}"
+    package_dir="${package_name}"
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
 
