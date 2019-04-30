@@ -36,6 +36,7 @@ else
     echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
     echo "Description: ${package_description}"
     echo "Namespace: ${package_namespace}"
+    yellow "Creating ${composer_json_file}"
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
 fi
 
@@ -73,8 +74,10 @@ then
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
     mkdir -p "tests/Unit"
+    yellow "Creating BasicClass.php"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicClass.php.template | tee "src/$package_namespace/BasicClass.php"
     rm  "tests/BasicTest.php"
+    yellow "Creating BasicTest.php"
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicTest.php.template | tee "tests/Unit/BasicTest.php"
     rm composer.lock
     rm composer.json.example
