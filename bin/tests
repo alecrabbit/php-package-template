@@ -53,7 +53,7 @@ then
         dark "Secondary .env file found"
     else
         yellow "Secondary .env file not found"
-        info "Creating symlink to main .env file"
+        green "Creating symlink to main .env file"
         ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
     fi
 else
