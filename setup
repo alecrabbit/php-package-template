@@ -4,9 +4,9 @@ cd bin
 cd ..
 
 user=$(whoami)
-echo "${user}"
 if [[ ${user} = "root" ]]
 then
+    error "Username: ${user}"
     error "DO NOT run this script under root!"
     exit 1
 fi
