@@ -3,10 +3,12 @@ cd bin
 . imports.sh "$@"
 cd ..
 
-echo "This script will make setup"
-if [[ -e "PACKAGE" ]]
+green "This script will make setup"
+composer_json_file="composer.json.result";
+if [[ -e "${composer_json_file}" ]]
 then
-    full_package_name="$(<PACKAGE)"
+    yellow "Found '${composer_json_file}' file:"
+    cat "${composer_json_file}"
 else
     package_owner="dralec"
     package_name="moomba"
@@ -19,21 +21,19 @@ else
     read -e -i "$package_description" -p "Enter package description: " input
     package_description="${input:-$package_description}"
     package_namespace="${package_name^}"
-#    package_namespace="DefaultNamespace"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
+    echo "Creating php package: ${package_owner}/${package_name}"
+    echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
+    echo "Description: ${package_description}"
+    echo "Namespace: ${package_namespace}"
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
 fi
-echo "Creating php package: ${package_owner}/${package_name}"
-echo "Description: ${package_description}"
-echo "Namespace: ${package_namespace}"
-
 
 read -p "Continue? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee composer.json.result
-    cat composer.json.result
 
     user=$(whoami)
     u_id="$(id -u ${user})"
