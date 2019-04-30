@@ -62,8 +62,8 @@ else
     dark "Searched for: ${main_env_file}"
 fi
 
-dark "Setting terminal title... \n'${title}'"
-set_title "${title}"
+dark "Setting terminal title..."
+set_title "${title} - Testing..."
 
 
 if [[ ${EXEC} == 0 ]]
@@ -116,4 +116,6 @@ fi
 end_time=`date +%s`
 run_time=$((end_time-start_time))
 info "Executed in ${run_time}s\nBye!"
+set_title "${title}"
+
 exit 0
