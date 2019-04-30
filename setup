@@ -126,16 +126,6 @@ then
     yellow "Deleting setup script"
     rm setup
 
-    if [[ -x "$(command -v git)" ]]
-    then
-        green "Initializing new repository"
-        git init
-        green "Adding files"
-        git add *
-        green "Committing files"
-        git commit -m 'init'
-    fi
-
 #    green "Initializing new repository"
 #    docker-compose exec app git init
 #    green "Adding files"
@@ -145,6 +135,16 @@ then
 
     green "Run tests script"
     ./bin/tests --all
+
+    if [[ -x "$(command -v git)" ]]
+    then
+        green "Initializing new repository"
+        git init
+        green "Adding files"
+        git add *
+        green "Committing files"
+        git commit -m 'init'
+    fi
 else
     echo "Skip setup"
     echo
