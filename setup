@@ -61,6 +61,7 @@ then
     fi
     mv "${composer_json_file}" composer.json
     rm composer.lock
+    rm *.template
     rm -rf "src"
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
