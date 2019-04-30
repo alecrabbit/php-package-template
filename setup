@@ -5,7 +5,7 @@ cd ..
 
 user=$(whoami)
 echo "${user}"
-if [[ ${user}=='root' ]]
+if [[ ${user} = "root" ]]
 then
     error "DO NOT run this script under root!"
 fi
