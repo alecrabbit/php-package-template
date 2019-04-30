@@ -10,7 +10,10 @@ composer_json_file="composer.json.result";
 if [[ -e "${composer_json_file}" ]]
 then
     yellow "Found '${composer_json_file}' file:"
+    printf "${DARK}"
     cat "${composer_json_file}"
+    printf "${NC}"
+
     package_owner="$(<PKG/OWNER)"
     package_name="$(<PKG/NAME)"
     package_description="$(<PKG/DESCR)"
