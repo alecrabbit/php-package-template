@@ -20,6 +20,10 @@ else
     package_name="${input:-$package_owner}"
     read -e -i "$package_description" -p "Enter package description: " input
     package_description="${input:-$package_description}"
+    package_dir="php-${package_name}"
+    read -e -p "Enter package dir [${package_dir}]: " input
+    package_dir="${input:-$package_dir}"
+
     package_namespace="${package_name^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
@@ -72,8 +76,11 @@ then
     rm .env.dist
     rm *.template
 
+    dark "Deleting old repository"
+    rm -rf .git/
     dark "Deleting setup script"
     rm setup
+
     info "Stopping container if started"
     docker-compose down
     info "Starting container"
