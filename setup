@@ -147,6 +147,7 @@ then
         git add *
         green "Committing files"
         git commit -m 'init'
+        green "Git log:"
         git log --graph --oneline
     fi
     cd ..
