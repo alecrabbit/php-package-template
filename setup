@@ -95,6 +95,9 @@ then
     docker-compose up -d
     info "Installing dependencies"
     docker-compose exec app composer install
+    docker-compose exec app git init
+    docker-compose exec app git add *
+    docker-compose exec app git commit -m 'init'
 
     ./bin/tests --all
 else
