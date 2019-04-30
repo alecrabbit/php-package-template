@@ -55,13 +55,13 @@ then
         echo "Removing .env file"
         rm .env
     fi
-    echo "Creating .env file"
+    green "Creating .env file"
     touch .env
     echo "USER_ID=${u_id}" >> .env
     echo "GROUP_ID=${u_id}" >> .env
     if [[ -e ".gitattributes.dist" ]]
     then
-        echo "Creating .gitattributes file"
+        green "Creating .gitattributes file"
         mv .gitattributes.dist .gitattributes
     else
         if [[ -e ".gitattributes" ]]
@@ -103,8 +103,8 @@ then
     docker-compose exec app git init
     green "Adding files"
     docker-compose exec app git add *
-    green "Committing files"
-    docker-compose exec app git commit -m 'init'
+#    green "Committing files"
+#    docker-compose exec app git commit -m 'init'
 
     yellow "Deleting setup script"
     rm setup
