@@ -12,7 +12,46 @@ $ ./setup
 ```
 Then follow the instructions
 ```
+Enter package owner [alecrabbit]: mike
+Enter package name [moomba]: lyann
+Enter package description [PHP Library]: New awesome package
+Enter package namespace [Lyann]: 
+Enter package dir [lyann]: php-lyann
+Creating composer.json.result
+{
+  "name": "mike/lyann",
+  "description": "New awesome package",
+  "type": "library",
+  "require": {
+    "php": ">=7.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0",
+    "nunomaduro/collision": "^3.0",
+    "symfony/var-dumper": "^4.2"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Lyann\\": "src\\Lyann"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Lyann\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "beta",
+  "prefer-stable": true
+}
+Parameters:
+Directory: php-lyann
+Package: mike/lyann
+Description: New awesome package
+Namespace: Lyann
 
+Continue? 
+...
 ```
 
 
