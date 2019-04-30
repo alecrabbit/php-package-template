@@ -35,6 +35,10 @@ yellow () {
     printf "${YELLOW}${1}${NC}\n"
 }
 
+red () {
+    printf "${RED}${1}${NC}\n"
+}
+
 light_green () {
     printf "${LIGHT_GREEN}${1}${NC}\n"
 }

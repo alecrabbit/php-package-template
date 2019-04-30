@@ -40,7 +40,7 @@ then
 else
     title="${dir}"
     title_file="$(get_realpath ${TITLE_FILE})"
-    error "No title file found."
+    red "No title file found."
     dark "Searched for: ${title_file}"
 fi
 
@@ -52,13 +52,13 @@ then
         env_file="$(get_realpath ${ENV_FILE})"
         dark "Secondary .env file found"
     else
-        comment "Secondary .env file not found"
+        yellow "Secondary .env file not found"
         info "Creating symlink to main .env file"
         ln -s ${MAIN_ENV_FILE} ${ENV_FILE}
     fi
 else
     main_env_file="$(get_realpath ${MAIN_ENV_FILE})"
-    comment "Main .env file not found, using defaults"
+    yellow "Main .env file not found, using defaults"
     dark "Searched for: ${main_env_file}"
 fi
 
@@ -68,7 +68,7 @@ set_title "${title}"
 
 if [[ ${EXEC} == 0 ]]
 then
-    error "No-Exec selected."
+    red "No-Exec selected."
 fi
 options_enabled
 
