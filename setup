@@ -56,10 +56,10 @@ else
     echo "${package_dir}" > PKG/PKGDIR
 fi
 green "Parameters:"
-echo "Directory: ${package_dir}"
-echo "Package: ${package_owner}/${package_name}"
-echo "Description: ${package_description}"
-echo "Namespace: ${package_namespace}"
+echo -e "Directory: ${DARK}${package_dir}${NC}"
+echo -e "Package: ${DARK}${package_owner}/${package_name}${NC}"
+echo -e "Description: ${DARK}${package_description}${NC}"
+echo -e "Namespace: ${DARK}${package_namespace}${NC}"
 
 read -p "Continue? " -n 1 -r
 echo
