@@ -14,19 +14,24 @@ else
     package_name="moomba"
     package_description="PHP Library"
 
+    # Ask owner
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
+    # Ask name
     read -e -p "Enter package name  [${package_name}]: " input
     package_name="${input:-$package_name}"
+    # Ask description
     read -e -p "Enter package description  [${package_description}]: " input
     package_description="${input:-$package_description}"
+    # Ask namespace
+    package_namespace="${package_name^}"
+    read -e -p "Enter package namespace [${package_namespace}]: " input
+    package_namespace="${input:-$package_namespace}"
+    # Ask dir
     package_dir="${package_name}"
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
 
-    package_namespace="${package_name^}"
-    read -e -p "Enter package namespace [${package_namespace}]: " input
-    package_namespace="${input:-$package_namespace}"
     echo "Creating php package: ${package_owner}/${package_name}"
     echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
     echo "Description: ${package_description}"
@@ -34,7 +39,7 @@ else
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
 fi
 
-read -p "Continue? " -n 1 -r
+read -i "y" -p "Continue? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
