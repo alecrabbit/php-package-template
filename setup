@@ -149,15 +149,18 @@ then
         git init
         green "Adding files"
         git add *
-        ./git_user.sh
-        if [[ $?==0 ]]
+        git_user.sh
+        if [[ $? -ne 0 ]]
         then
+            yellow "git user credentials not configured"
+        else
             green "Committing files"
             git commit -m 'init'
             green "Git log:"
             git log --graph --oneline
         fi
     fi
+    rm git_user.sh
     info "Stopping container"
     docker-compose down
 else
