@@ -13,15 +13,20 @@ $ ./setup
 Then follow the instructions
 ```
 Package template setup...
-Enter package owner [alecrabbit]: mikewazowski
-Enter package name [moomba]: monster
-Enter package description [PHP Library]: Awesome library Monsters Inc.
-Enter package namespace [Monster]: 
-Enter package dir [monster]: php-monster
+This name used in LICENSE file
+Enter package owner name [Mike Wazowski]: Bugs Bunny
+Used in composer.json line: "name": "owner/name"
+Enter package owner [mikewazowski]: bugsbunny
+Enter package name [monsters]: looneytunes
+Used in composer.json line: "description": "Your awesome description"
+Enter package description [Awesome library Monsters, Inc.]: Looney Tunes Package Description
+Enter package namespace [Looneytunes]: LooneyTunes
+Enter package owner namespace []: BugsBunny
+Enter package dir [php-monster]: 
 Creating composer.json.result
 {
-  "name": "mikewazowski/monster",
-  "description": "Awesome library Monsters Inc.",
+  "name": "bugsbunny/looneytunes",
+  "description": "Looney Tunes Package Description",
   "type": "library",
   "require": {
     "php": ">=7.2"
@@ -34,22 +39,23 @@ Creating composer.json.result
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Monster\\": "src\\Monster"
+      "BugsBunny\\LooneyTunes\\": "src\\LooneyTunes"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Monster\\Tests\\": "tests"
+      "BugsBunny\\Tests\\LooneyTunes\\": "tests"
     }
   },
   "minimum-stability": "beta",
   "prefer-stable": true
 }
 Parameters:
+Owner name: Bugs Bunny
 Directory: php-monster
-Package: mikewazowski/monster
-Description: Awesome library Monsters Inc.
-Namespace: Monster
+Package: bugsbunny/looneytunes
+Description: Looney Tunes Package Description
+Namespace: BugsBunny\LooneyTunes
 
 Continue? y
 ...
