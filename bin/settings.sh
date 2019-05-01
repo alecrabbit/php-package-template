@@ -105,6 +105,7 @@ COMPOSER_JSON_FILE="composer.json.result";
 COMPOSER_JSON_TEMPLATE="template.composer.json";
 GIT_ATTR_FILE=".gitattributes.dist";
 DIST_ENV_FILE=".env.dist";
+DIST_DEFAULTS=".defaults.dist";
 
 if [[ ${COVERAGE} == 1 ]]
 then

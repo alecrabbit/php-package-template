@@ -28,13 +28,20 @@ then
     package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
 else
-    source "${DIST_ENV_FILE}"
-    user_id="${USER_ID}"
-    error "USER ID: ${user_id}"
-    package_owner="alecrabbit"
-    package_name="moomba"
-    package_description="PHP Library"
-    package_dir="${package_name}"
+
+    if [[ -e "${DIST_DEFAULTS}" ]]
+    then
+        source "${DIST_DEFAULTS}"
+        package_owner="${OWNER_NAME}"
+        package_name="${OWNER}"
+        package_description="${PACKAGE_NAME}"
+        package_dir="${DESCRIPTION}"
+    else
+        package_owner="alecrabbit"
+        package_name="moomba"
+        package_description="PHP Library"
+        package_dir="${package_name}"
+    fi
 
     # Ask owner
     read -e -p "Enter package owner [${package_owner}]: " input
