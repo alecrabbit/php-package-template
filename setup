@@ -146,7 +146,7 @@ then
     rm LICENSE
     if [[ ! ${package_owner_namespace} = "" ]]
     then
-         separator='\\\\'
+         separator='\\'
     else
          separator=""
     fi
