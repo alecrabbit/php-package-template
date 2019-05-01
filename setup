@@ -24,6 +24,7 @@ then
     package_name="$(<PKG/NAME)"
     package_description="$(<PKG/DESCR)"
     package_namespace="$(<PKG/NMSPC)"
+    package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
 else
     package_owner="alecrabbit"
@@ -43,6 +44,10 @@ else
     package_namespace="${package_name^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
+    # Ask owner namespace
+    package_owner_namespace="${package_owner^}"
+    read -e -p "Enter package namespace [${package_owner_namespace}]: " input
+    package_owner_namespace="${input:-$package_owner_namespace}"
     # Ask dir
     package_dir="${package_name}"
     read -e -p "Enter package dir [${package_dir}]: " input
@@ -59,13 +64,15 @@ else
     echo "${package_name}" > PKG/NAME
     echo "${package_description}" > PKG/DESCR
     echo "${package_namespace}" > PKG/NMSPC
+    echo "${package_owner_namespace}" > PKG/OWNR_NMSPC
     echo "${package_dir}" > PKG/PKGDIR
 fi
 green "Parameters:"
 echo -e "Directory: ${CYAN}${package_dir}${NC}"
 echo -e "Package: ${CYAN}${package_owner}/${package_name}${NC}"
 echo -e "Description: ${CYAN}${package_description}${NC}"
-echo -e "Namespace: ${CYAN}${package_namespace}${NC}"
+#echo -e "Namespace: ${CYAN}${package_namespace}${NC}"
+echo -e "Namespace: ${CYAN}${package_owner_namespace}\\${package_namespace}${NC}"
 echo
 read -p "Continue? " -n 1 -r -t 10
 echo
