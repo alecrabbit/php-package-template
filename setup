@@ -117,7 +117,7 @@ then
     rm LICENSE
     yellow "Creating ISSUE_TEMPLATE.md"
     printf "${DARK}"
-    sed "s/PACKAGE_OWNER/${package_owner}/g;" ./.github/ISSUE_TEMPLATE.md | tee ./.github/ISSUE_TEMPLATE.md
+    sed "s/PACKAGE_OWNER/${package_owner}/g;" template.ISSUE_TEMPLATE.md | tee ./.github/ISSUE_TEMPLATE.md
     printf "${NC}"
     yellow "Creating LICENSE"
     printf "${DARK}"
