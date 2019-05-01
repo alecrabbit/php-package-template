@@ -50,7 +50,7 @@ else
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
     # Ask owner namespace
-    package_owner_namespace="${package_owner^}"
+    package_owner_namespace=""
     read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
     package_owner_namespace="${input:-$package_owner_namespace}"
     # Ask dir
