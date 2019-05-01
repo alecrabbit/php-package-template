@@ -32,28 +32,32 @@ else
     if [[ -e "${DIST_DEFAULTS}" ]]
     then
         source "${DIST_DEFAULTS}"
-        package_owner="${OWNER_NAME}"
-        package_name="${OWNER}"
-        package_description="${PACKAGE_NAME}"
-        package_dir="${DESCRIPTION}"
+        package_name="${PACKAGE_NAME}"
+        package_owner="${OWNER}"
+        package_owner_name="${OWNER_NAME}"
+        package_description="${DESCRIPTION}"
+        package_dir="${PACKAGE_DIR}"
     else
         package_owner="alecrabbit"
         package_name="moomba"
         package_description="PHP Library"
         package_dir="${package_name}"
+        package_owner_name="${package_owner^}"
     fi
 
-    # Ask owner
-    read -e -p "Enter package owner [${package_owner}]: " input
-    package_owner="${input:-$package_owner}"
     # Ask owner name
-    package_owner_name="${package_owner^}"
+    dark "This name used in LICENSE file"
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
+    # Ask owner
+    dark "Used in composer.json line: \"name\": \"owner/name\""
+    read -e -p "Enter package owner [${package_owner}]: " input
+    package_owner="${input:-$package_owner}"
     # Ask name
     read -e -p "Enter package name [${package_name}]: " input
     package_name="${input:-$package_name}"
     # Ask description
+    dark "Used in composer.json line: \"description\": \"Your awesome description\""
     read -e -p "Enter package description [${package_description}]: " input
     package_description="${input:-$package_description}"
     # Ask namespace
