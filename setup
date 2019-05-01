@@ -117,7 +117,7 @@ then
     rm composer.lock
     rm composer.json.example
     rm .env.dist
-    rm *.template
+    rm template.*
 
     info "Stopping container if started"
     docker-compose down
