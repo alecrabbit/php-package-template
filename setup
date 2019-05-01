@@ -84,10 +84,10 @@ then
     touch .env
     echo "USER_ID=${u_id}" >> .env
     echo "GROUP_ID=${u_id}" >> .env
-    if [[ -e ".gitattributes.dist" ]]
+    if [[ -e "${GIT_ATTR_FILE}" ]]
     then
         green "Creating .gitattributes file"
-        mv .gitattributes.dist .gitattributes
+        mv ${GIT_ATTR_FILE} .gitattributes
     else
         if [[ -e ".gitattributes" ]]
         then
@@ -115,16 +115,16 @@ then
     sed "s/PACKAGE_NSPACE/${package_namespace}/g;" template.BasicTest.php | tee "tests/Unit/BasicTest.php"
     printf "${NC}"
     rm composer.lock
-    rm composer.json.example
-    rm .env.dist
+    rm example.composer.json
+    rm ${DIST_ENV_FILE}
     rm template.*
 
     info "Stopping container if started"
     docker-compose down
     info "Renaming package dir"
     cd ..
-    mv php-package-template "${package_name}"
-    cd "${package_name}"
+    mv php-package-template "${package_dir}"
+    cd "${package_dir}"
 
     info "Starting container"
     docker-compose up -d

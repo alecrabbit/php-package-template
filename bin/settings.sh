@@ -103,6 +103,8 @@ MAIN_ENV_FILE="../${ENV_FILE}"
 HEADER="$(basename $(dirname "$(pwd)"))"
 COMPOSER_JSON_FILE="composer.json.result";
 COMPOSER_JSON_TEMPLATE="template.composer.json";
+GIT_ATTR_FILE=".gitattributes.dist";
+DIST_ENV_FILE=".env.dist";
 
 if [[ ${COVERAGE} == 1 ]]
 then
