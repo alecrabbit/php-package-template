@@ -96,13 +96,15 @@ fi
 green "Parameters:"
 if [[ ! ${package_owner_namespace} = "" ]]
 then
-     package_owner_namespace="${package_owner_namespace}\\"
+     separator="\\"
+else
+     separator=""
 fi
 echo -e "Owner name: ${CYAN}${package_owner_name}${NC}"
 echo -e "Directory: ${CYAN}${package_dir}${NC}"
 echo -e "Package: ${CYAN}${package_owner}/${package_name}${NC}"
 echo -e "Description: ${CYAN}${package_description}${NC}"
-echo -e "Namespace: ${CYAN}${package_owner_namespace}${package_namespace}${NC}"
+echo -e "Namespace: ${CYAN}${package_owner_namespace}${separator}${package_namespace}${NC}"
 echo
 read -p "Continue? " -n 1 -r -t 10
 echo
@@ -142,6 +144,14 @@ then
     mkdir -p ".github"
 
     rm LICENSE
+    if [[ ! ${package_owner_namespace} = "" ]]
+    then
+         separator='\\\\'
+    else
+         separator=""
+    fi
+
+    rm  "tests/BasicTest.php"
     yellow "Creating ISSUE_TEMPLATE.md"
     printf "${DARK}"
     sed "s/PACKAGE_OWNER/${package_owner}/g;" template.ISSUE_TEMPLATE.md | tee ".github/ISSUE_TEMPLATE.md"
@@ -152,12 +162,11 @@ then
     printf "${NC}"
     yellow "Creating BasicClass.php"
     printf "${DARK}"
-    sed "s/PACKAGE_NSPACE/${package_owner_namespace}${package_namespace}/g;" template.BasicClass.php | tee "src/$package_namespace/BasicClass.php"
+    sed "s/PACKAGE_NSPACE/${package_owner_namespace}${separator}${package_namespace}/g;" template.BasicClass.php | tee "src/$package_namespace/BasicClass.php"
     printf "${NC}"
-    rm  "tests/BasicTest.php"
     yellow "Creating BasicTest.php"
     printf "${DARK}"
-    sed "s/PACKAGE_NSPACE/${package_owner_namespace}${package_namespace}/g;" template.BasicTest.php | tee "tests/Unit/BasicTest.php"
+    sed "s/PACKAGE_NSPACE/${package_owner_namespace}${separator}${package_namespace}/g;" template.BasicTest.php | tee "tests/Unit/BasicTest.php"
     printf "${NC}"
     rm composer.lock
     rm example.composer.json
