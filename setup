@@ -110,16 +110,17 @@ then
         fi
     fi
     mv "${COMPOSER_JSON_FILE}" composer.json
+    rm -rf .github/
     rm -rf "src"
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
     mkdir -p "tests/Unit"
+    mkdir -p ".github"
+
     rm LICENSE
     yellow "Creating ISSUE_TEMPLATE.md"
     printf "${DARK}"
-    rm -rf .github/
-    mkdir .github
-    sed "s/PACKAGE_OWNER/${package_owner}/g;" template.ISSUE_TEMPLATE.md | tee .github/ISSUE_TEMPLATE.md
+    sed "s/PACKAGE_OWNER/${package_owner}/g;" template.ISSUE_TEMPLATE.md | tee ".github/ISSUE_TEMPLATE.md"
     printf "${NC}"
     yellow "Creating LICENSE"
     printf "${DARK}"
