@@ -163,3 +163,17 @@ Time: 201ms; Memory: 6MB
 Executed in 10s
 Bye!
 ```
+```bash
+#!/usr/bin/env bash
+name="Alec Rabbit" 
+package="php-counters"
+prefix='php-'
+if [[ $package == *"${prefix}"* ]]; then
+  echo "It's there!"
+  package=${package#"$prefix"}	
+fi
+echo "${name}"
+echo "${package}"
+name=${name,,}
+echo ${name// /}
+```
