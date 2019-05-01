@@ -65,10 +65,11 @@ else
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]
     then
-      package_name=${package_name#"$prefix"}
+        package_namespace=${package_name#"$prefix"}
+    else
+        package_namespace="${package_name}"
     fi
-
-    package_namespace="${package_name^}"
+    package_namespace="${package_namespace^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
     # Ask owner namespace
@@ -76,6 +77,13 @@ else
     read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
     package_owner_namespace="${input:-$package_owner_namespace}"
     # Ask dir
+    if [[ ! ${package_name} == *"${prefix}"* ]]
+    then
+        package_dir="${package_name}"
+    else
+        package_dir="${prefix}${package_name}"
+    fi
+
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
 
