@@ -77,7 +77,7 @@ else
     read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
     package_owner_namespace="${input:-$package_owner_namespace}"
     # Ask dir
-    if [[ ! ${package_name} == *"${prefix}"* ]]
+    if [[ ${package_name} == *"${prefix}"* ]]
     then
         package_dir="${package_name}"
     else
