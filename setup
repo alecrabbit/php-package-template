@@ -139,7 +139,7 @@ then
     printf "${NC}"
     yellow "Creating BasicClass.php"
     printf "${DARK}"
-    sed "s/PACKAGE_NSPACE/${package_namespace}/g;" template.BasicClass.php | tee "src/$package_namespace/BasicClass.php"
+    sed "s/PACKAGE_NSPACE/${package_owner_namespace}${package_namespace}/g;" template.BasicClass.php | tee "src/$package_namespace/BasicClass.php"
     printf "${NC}"
     rm  "tests/BasicTest.php"
     yellow "Creating BasicTest.php"
