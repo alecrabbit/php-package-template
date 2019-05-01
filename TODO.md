@@ -1,4 +1,5 @@
-- [ ] create `realpath` function
-- [ ] make auto setup
+- [ ] add instructions to add git credentials
 ---
+- [x] make auto setup
+- [x] create `get_realpath` function
 - [x] add TODO.md file
