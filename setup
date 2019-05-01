@@ -82,7 +82,7 @@ else
         package_owner_namespace_sed=""
     fi
 
-    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g; s/PACKAGE_OWNR_NSPACE/${package_owner_namespace_sed}/g;" ${COMPOSER_JSON_TEMPLATE} | tee "${COMPOSER_JSON_FILE}"
+    sed 's/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g; s/PACKAGE_OWNR_NSPACE/${package_owner_namespace_sed}/g;' ${COMPOSER_JSON_TEMPLATE} | tee "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
     mkdir PKG
