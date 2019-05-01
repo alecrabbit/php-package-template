@@ -13,12 +13,11 @@ fi
 set_title "🧰 Setup script..."
 
 green "Package template setup..."
-composer_json_file="composer.json.result";
-if [[ -e "${composer_json_file}" ]]
+if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
-    yellow "Found '${composer_json_file}' file:"
+    yellow "Found '${COMPOSER_JSON_FILE}' file:"
     printf "${DARK}"
-    cat "${composer_json_file}"
+    cat "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
     package_owner="$(<PKG/OWNER)"
@@ -50,9 +49,9 @@ else
     package_dir="${input:-$package_dir}"
 
     echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
-    yellow "Creating ${composer_json_file}"
+    yellow "Creating ${COMPOSER_JSON_FILE}"
     printf "${DARK}"
-    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" composer.json.template | tee "${composer_json_file}"
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" COMPOSER_JSON_TEMPLATE | tee "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
     mkdir PKG
@@ -97,7 +96,7 @@ then
             echo ".gitattributes file not found"
         fi
     fi
-    mv "${composer_json_file}" composer.json
+    mv "${COMPOSER_JSON_FILE}" composer.json
     rm -rf "src"
     mkdir -p "src/$package_namespace"
     mkdir -p "tests/Feature"
@@ -108,12 +107,12 @@ then
     printf "${NC}"
     yellow "Creating BasicClass.php"
     printf "${DARK}"
-    sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicClass.php.template | tee "src/$package_namespace/BasicClass.php"
+    sed "s/PACKAGE_NSPACE/${package_namespace}/g;" template.BasicClass.php | tee "src/$package_namespace/BasicClass.php"
     printf "${NC}"
     rm  "tests/BasicTest.php"
     yellow "Creating BasicTest.php"
     printf "${DARK}"
-    sed "s/PACKAGE_NSPACE/${package_namespace}/g;" BasicTest.php.template | tee "tests/Unit/BasicTest.php"
+    sed "s/PACKAGE_NSPACE/${package_namespace}/g;" template.BasicTest.php | tee "tests/Unit/BasicTest.php"
     printf "${NC}"
     rm composer.lock
     rm composer.json.example

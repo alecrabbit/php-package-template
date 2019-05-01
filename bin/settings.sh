@@ -101,6 +101,8 @@ TITLE_FILE="./../TERMINAL_TITLE"
 ENV_FILE=".env"
 MAIN_ENV_FILE="../${ENV_FILE}"
 HEADER="$(basename $(dirname "$(pwd)"))"
+COMPOSER_JSON_FILE="composer.json.result";
+COMPOSER_JSON_TEMPLATE="template.composer.json";
 
 if [[ ${COVERAGE} == 1 ]]
 then
