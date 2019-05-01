@@ -51,7 +51,7 @@ else
     echo "📦 ${package_owner}/${package_name}" > TERMINAL_TITLE
     yellow "Creating ${COMPOSER_JSON_FILE}"
     printf "${DARK}"
-    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" COMPOSER_JSON_TEMPLATE | tee "${COMPOSER_JSON_FILE}"
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g;" ${COMPOSER_JSON_TEMPLATE} | tee "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
     mkdir PKG
