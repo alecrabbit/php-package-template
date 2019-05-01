@@ -13,12 +13,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "PACKAGE_NSPACE\\": "src\\PACKAGE_NSPACE"
+      "PACKAGE_OWNER_NSPACEPACKAGE_NSPACE\\": "src\\PACKAGE_NSPACE"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PACKAGE_NSPACE\\Tests\\": "tests"
+      "PACKAGE_OWNER_NSPACETests\\PACKAGE_NSPACE\\": "tests"
     }
   },
   "minimum-stability": "beta",
