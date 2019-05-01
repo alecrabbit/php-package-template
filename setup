@@ -44,7 +44,7 @@ else
         package_dir="${package_name}"
         package_owner_name="${package_owner^}"
     fi
-
+    prefix='php-'
     # Ask owner name
     dark "This name used in LICENSE file"
     read -e -p "Enter package owner name [${package_owner_name}]: " input
@@ -63,6 +63,11 @@ else
     read -e -p "Enter package description [${package_description}]: " input
     package_description="${input:-$package_description}"
     # Ask namespace
+    if [[ ${package_name} == *"${prefix}"* ]]
+    then
+      package_name=${package_name#"$prefix"}
+    fi
+
     package_namespace="${package_name^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
