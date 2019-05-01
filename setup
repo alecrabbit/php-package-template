@@ -50,6 +50,8 @@ else
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
     # Ask owner
+    package_owner=${package_owner_name,,}
+    package_owner=${package_owner// /}
     dark "Used in composer.json line: \"name\": \"owner/name\""
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
