@@ -28,6 +28,9 @@ then
     package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
 else
+    source "${DIST_ENV_FILE}"
+    user_id="${USER_ID}"
+    error "USER ID: ${user_id}"
     package_owner="alecrabbit"
     package_name="moomba"
     package_description="PHP Library"
