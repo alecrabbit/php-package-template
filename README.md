@@ -16,6 +16,11 @@ $ rm .defaults.dist  # Optional
 $ ./setup --propagate "Mike Wazowski"
 ...
 ```
+> Note: using `--propagate` is mandatory to pass params, otherwise you'll get an error
+> ```
+> $ ./setup "Mike Wazowski"
+> settings.sh: Unknown argument/option Mike Wazowski
+> ```
 
 Then follow the instructions
 ```
