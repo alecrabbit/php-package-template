@@ -13,11 +13,19 @@ $ rm .defaults.dist  # Optional
 $ ./setup
 ...
 ```
-> Note: you can pass parameters to `./setup "Your Name" package_name package_owner`
+> Note: you can pass parameters to setup script
+> `./setup package_owner package_name "Your Name"`
 > ```bash
-> $ ./setup "Bugs Bunny" looney bunny
+> $ ./setup bunny looney "Bugs Bunny"
 > ``` 
-> it create `bunny/looney` package in `php-looney` dir
+> it'll create `bunny/looney` package in `php-looney` dir
+>
+> `LICENSE` file:
+> ```
+> ...
+> Copyright (c) 2019 Bugs Bunny
+> ...
+> ```
 
 Then follow the instructions
 ```
