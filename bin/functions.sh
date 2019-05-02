@@ -126,3 +126,51 @@ generate_report_file () {
 </body>
 </html>" > ${TEST_REPORT_INDEX}
 }
+
+capitalize_every_word () {
+    echo ${1} | sed -r 's/\<./\U&/g'
+}
+
+remove_spaces () {
+    echo ${1// /}
+}
+
+remove_symbols () {
+    echo ${1//[-_ ]/}
+}
+
+replace_symbols_by_space () {
+    echo ${1//[-_]/ }
+}
+
+select_owner_namespace () {
+    PS3='Please enter your choice of owner namespace: '
+    op1="No namespace"
+    op2="'${1}'"
+    op3="Enter your variant"
+    options=("${op1}" "${op2}" "${op3}")
+    package_owner_namespace=""
+    select opt in "${options[@]}"
+    do
+        case ${opt} in
+            "${op1}")
+                package_owner_namespace=""
+                break
+                ;;
+            "${op2}")
+                package_owner_namespace="${1}"
+                break
+                ;;
+            "${op3}")
+                read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
+                package_owner_namespace=$(replace_symbols_by_space "${input:-$package_owner_namespace}")
+                package_owner_namespace=$(capitalize_every_word "${package_owner_namespace}")
+                package_owner_namespace=$(remove_spaces "${package_owner_namespace}")
+                break
+                ;;
+            *)
+                ;;
+        esac
+    done
+    echo "${package_owner_namespace}"
+}
