@@ -83,9 +83,11 @@ else
     package_namespace="${input:-$package_namespace}"
     accepted_value "${package_namespace}"
     # Ask owner namespace
-    package_owner_namespace=""
-    read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
-    package_owner_namespace="${input:-$package_owner_namespace}"
+    namespace=$(remove_symbols "${package_owner_name}")
+    package_owner_namespace=$(select_owner_namespace "${namespace}")
+#    package_owner_namespace=""
+#    read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
+#    package_owner_namespace="${input:-$package_owner_namespace}"
     accepted_value "${package_owner_namespace}"
     # Ask dir
     if [[ ${package_name} == *"${prefix}"* ]]
