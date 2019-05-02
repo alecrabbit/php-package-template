@@ -49,8 +49,8 @@ else
     dark "This name used in LICENSE file"
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
-    package_owner_name="$(echo ${owner_name} | sed -r 's/\<./\U&/g')"
-    
+    package_owner_name="$(echo ${package_owner_name} | sed -r 's/\<./\U&/g')"
+    dark "Accepted value: ${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
