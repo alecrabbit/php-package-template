@@ -257,7 +257,7 @@ then
             git log --graph --oneline
         fi
     fi
-    dark "Deleting setup script"
+    comment "Deleting setup script"
     rm setup
     rm git_user.sh
     info "Stopping container"
