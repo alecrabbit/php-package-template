@@ -62,8 +62,10 @@ Continue? y
 ```
 
 ### Running tests script
-```
+```bash
 $ ./bin/tests --all
+```
+```
 Tests, coverage, analysis and metrics script
 Version: 0.1.18
 Main .env file found
