@@ -29,7 +29,7 @@ check_if_dir_exists  () {
 }
 
 accepted_value () {
-    printf "${DARK}Accepted value: '${1}'${NC}\n"
+    printf "${DARK}Accepted value: '${1}'${NC}\n\n"
 }
 
 dark () {
