@@ -235,8 +235,8 @@ then
             dark "To configure use following commands:"
             dark "'username@example.com' - your email"
             dark "'name' - your name"
-            dark "git config user.email username@example.com"
-            dark "git config user.name name"
+            dark "git config --global user.email username@example.com"
+            dark "git config --global user.name name"
         else
             green "Committing files"
             git commit -m 'init'
