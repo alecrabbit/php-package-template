@@ -5,22 +5,19 @@ A template to write a php package, consist mostly of boilerplate code
 Includes bash scripts to automate testing
 ### Usage
 > Note: removing file `.defaults.dist` is optional
-
-> Note: parameters for `./setup` are optional
-
-```
+```bash
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
 $ rm .defaults.dist  # Optional
-$ ./setup --propagate "Mike Wazowski"
+$ ./setup
 ...
 ```
-> Note: using `--propagate` is mandatory to pass params, otherwise you'll get an error
-> ```
-> $ ./setup "Mike Wazowski"
-> settings.sh: Unknown argument/option Mike Wazowski
-> ```
+> Note: you can pass parameters to `./setup "Your Name" package_name package_owner`
+> ```bash
+> $ ./setup "Bugs Bunny" looney bunny
+> ``` 
+> it create `bunny/looney` package in `php-looney` dir
 
 Then follow the instructions
 ```
