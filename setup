@@ -229,7 +229,7 @@ then
     info "Renaming package dir"
     old_dir="$(basename $(pwd))"
     cd ..
-    mv "${old_dir}" "${package_dir}"
+    mv -iT "${old_dir}" "${package_dir}"
     cd "${package_dir}"
 
     info "Starting container"
