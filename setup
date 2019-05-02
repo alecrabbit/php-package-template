@@ -112,8 +112,10 @@ else
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
     accepted_value "${package_dir}"
+    title="📦 ${package_owner}/${package_name}"
+    dark "Writing terminal title '${title}' to ${TITLE_FILE} file"
+    echo ${title} > ${TITLE_FILE}
 
-    echo "📦 ${package_owner}/${package_name}" > ${TITLE_FILE}
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
     then
