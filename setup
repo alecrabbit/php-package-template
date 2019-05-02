@@ -74,16 +74,17 @@ else
     then
         package_name="$param_2"
     fi
-    if [[ ! -z "$param_3" ]]
-    then
-        package_owner="$param_3"
-    fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
     accepted_value "${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}
+    if [[ ! -z "$param_3" ]]
+    then
+        package_owner="$param_3"
+    fi
+    package_owner=${package_owner,,}
     package_owner=${package_owner// /}
     package_owner=$(read_value "package owner" "Used in composer.json line: \"name\": \"owner/name\")" "${package_owner}")
     package_owner=${package_owner,,}
