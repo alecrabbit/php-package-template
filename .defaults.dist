@@ -1,5 +1,3 @@
-OWNER_NAME="Alec Rabbit"                        # package_owner_name
-PACKAGE_NAME="new-package"                      # package_name
-DESCRIPTION="Awesome library"                   # package_description
-
-
+OWNER_NAME="Alec Rabbit"
+PACKAGE_NAME="new-package"
+DESCRIPTION="Awesome library"
