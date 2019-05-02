@@ -272,7 +272,6 @@ then
     fi
     comment "Deleting setup script"
     rm setup
-    rm git_user.sh
     info "Stopping container"
     docker-compose down
 else
