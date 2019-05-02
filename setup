@@ -257,4 +257,5 @@ else
     dark "Command to use:"
     dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}"
     echo
+    set_title "$(pwd)"
 fi
