@@ -225,7 +225,7 @@ then
     docker-compose down
     info "Renaming package dir"
     cd ..
-    mv php-package-template "${package_dir}"
+    mv "$(basename $(pwd))" "${package_dir}"
     cd "${package_dir}"
 
     info "Starting container"
