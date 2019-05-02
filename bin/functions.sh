@@ -225,7 +225,8 @@ read_value () {
 }
 
 enter_package_dir() {
-    light_yellow "Make sure you entering unique dir!"
-    package_dir=$(read_value "package directory" "" "${1}")
+    cr=`echo $'\n.'`
+    cr=${cr%.}
+    package_dir=$(read_value "package directory${cr}$(light_yellow "Make sure you entering unique dir!")" "" "${1}")
     accepted_value "${package_dir}"
 }
