@@ -229,6 +229,15 @@ then
     info "Renaming package dir"
     old_dir="$(basename $(pwd))"
     cd ..
+    check_if_dir_exists "${package_dir}"
+    if [[ $? == 1 ]]
+    then
+        error "Dir '${package_dir}' is already taken."
+        comment "You should start over."
+        dark "Cleaning up..."
+        rm -rf "${old_dir}"
+        exit 1
+    fi
     mv -iT "${old_dir}" "${package_dir}"
     cd "${package_dir}"
 

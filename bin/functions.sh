@@ -19,6 +19,15 @@ get_realpath () {
     echo "${path}"
 }
 
+check_if_dir_exists  () {
+    DIRECTORY=$(echo $(get_realpath "${1}"))
+    if [[ -d "${DIRECTORY}" && ! -L "${DIRECTORY}" ]]
+    then
+        return 1
+    fi
+    return 0
+}
+
 accepted_value () {
     printf "${DARK}Accepted value: '${1}'${NC}\n"
 }
