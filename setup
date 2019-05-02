@@ -257,9 +257,10 @@ then
         if [[ $? -ne 0 ]]
         then
             yellow "Can't commit: git user credentials not configured"
-            dark "To configure use following commands:"
+            dark "Assuming:"
             dark "'username@example.com' - your email"
             dark "'name' - your name"
+            dark "Configure with:"
             dark "git config --global user.email username@example.com"
             dark "git config --global user.name name"
         else
