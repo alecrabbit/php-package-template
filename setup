@@ -51,13 +51,13 @@ else
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
-#    read -e -p "Enter package name [${package_name}]: " input
     package_name=$(read_value "package name" "" "${package_name}")
     accepted_value "${package_name}"
     # Ask description
-    dark "Used in composer.json line: \"description\": \"Your awesome description\""
-    read -e -p "Enter package description [${package_description}]: " input
-    package_description="${input:-$package_description}"
+    package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}")
+#    dark "Used in composer.json line: \"description\": \"Your awesome description\""
+#    read -e -p "Enter package description [${package_description}]: " input
+#    package_description="${input:-$package_description}"
     accepted_value "${package_description}"
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]
@@ -70,8 +70,8 @@ else
     package_namespace=${package_namespace// /}
 #
 #    package_namespace="${package_namespace^}"
-    read -e -p "Enter package namespace [${package_namespace}]: " input
-    package_namespace="${input:-$package_namespace}"
+#    read -e -p "Enter package namespace [${package_namespace}]: " input
+    package_namespace=$(read_value "package namespace" "" "${package_namespace}")
     accepted_value "${package_namespace}"
     # Ask owner namespace
     yellow "Type 'y' to choose owner namespace otherwise no namespace will be used"
