@@ -1,8 +1,8 @@
-OWNER_NAME="Mike Wazowski"                      # package_owner_name
-OWNER="mikewazowski"                            # package_owner
-PACKAGE_NAME="monsters-inc"                     # package_name
-DESCRIPTION="Awesome library Monsters, Inc."    # package_description
-PACKAGE_DIR="php-monster"                       # package_dir
+OWNER_NAME="Alec Rabbit"                        # package_owner_name
+PACKAGE_NAME="new-package"                      # package_name
+DESCRIPTION="Awesome library"                   # package_description
+#OWNER="mikewazowski"                            # package_owner
+#PACKAGE_DIR="php-monster"                       # package_dir
 
 
 

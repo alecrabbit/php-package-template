@@ -32,17 +32,20 @@ else
     if [[ -e "${DIST_DEFAULTS}" ]]
     then
         source "${DIST_DEFAULTS}"
-        package_name="${PACKAGE_NAME}"
-        package_owner="${OWNER}"
         package_owner_name="${OWNER_NAME}"
+        package_name="${PACKAGE_NAME}"
         package_description="${DESCRIPTION}"
-        package_dir="${PACKAGE_DIR}"
+
+#        package_owner="${OWNER}"
+#        package_dir="${PACKAGE_DIR}"
     else
-        package_owner="alecrabbit"
-        package_name="moomba"
-        package_description="PHP Library"
-        package_dir="${package_name}"
-        package_owner_name="${package_owner^}"
+        package_owner_name="Mike Wazowski"
+        package_name="monsters-inc"
+        package_description="Awesome library Monsters, Inc."
+
+#        package_owner="alecrabbit"
+#        package_dir="${package_name}"
+
     fi
     prefix='php-'
     # Ask owner name
