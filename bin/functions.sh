@@ -115,15 +115,13 @@ setup_help_message () {
 if [[ ${HELP} == 1 ]]
 then
     echo "Usage:"
-    echo "./setup --propagate \"Your Name\" \"packagename\""
+    echo "./setup \"Your Name\" name owner"
+    echo "\"Your Name\"          - package owner name"
+    echo "owner                  - package owner"
+    echo "name                   - package name"
     echo "Options:"
     echo "  --help               - show this message"
-    echo "  --propagate          - mandatory if you want to pass your options, otherwise you'll get an error"
-
-    if [[ ${PROPAGATE} == 0 ]]
-    then
-        exit 0
-    fi
+    exit 0
 fi
 }
 

@@ -12,6 +12,7 @@ done
 
 param_1="$1"
 param_2="$2"
+param_3="$3"
 
 set -- "${params[@]}"  # overwrites the original positional params
 
@@ -72,6 +73,10 @@ else
     if [[ ! -z "$param_2" ]]
     then
         package_name="$param_2"
+    fi
+    if [[ ! -z "$param_3" ]]
+    then
+        package_owner="$param_3"
     fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
