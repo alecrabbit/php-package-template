@@ -4,14 +4,15 @@ A template to write a php package, consist mostly of boilerplate code
 
 Includes bash scripts to automate testing
 ### Usage
+> Note: removing file `.defaults.dist` is optional
 ```
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
-$ rm .defaults.dist
+$ rm .defaults.dist  # Optional
 $ ./setup
+...
 ```
-> Note: removing `.defaults.dist` file is optional
 
 Then follow the instructions
 ```
@@ -95,6 +96,7 @@ Continue? y
 ```bash
 $ ./bin/tests --all
 ```
+
 ```
 Tests, coverage, analysis and metrics script
 Version: 0.1.18
