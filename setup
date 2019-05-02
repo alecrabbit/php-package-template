@@ -113,7 +113,7 @@ else
     package_dir="${input:-$package_dir}"
     accepted_value "${package_dir}"
 
-    echo "📦 ${package_owner^}/${package_name^}" > TERMINAL_TITLE
+    echo "📦 ${package_owner}/${package_name}" > ${TITLE_FILE}
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
     then
