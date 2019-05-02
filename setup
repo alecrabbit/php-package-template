@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-params=() # reset all params
-
+#params=() # reset all params
+echo "$@"
 for arg
 do
     case "$arg" in
@@ -9,8 +9,10 @@ do
             ;;
     esac
 done
+
 param_1="$1"
 param_2="$2"
+
 set -- "${params[@]}"  # overwrites the original positional params
 
 cd bin

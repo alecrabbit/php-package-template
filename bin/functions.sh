@@ -117,7 +117,7 @@ then
     echo "Usage:"
     echo "./setup --propagate \"Your Name\" \"packagename\""
     echo "Options:"
-    echo "  --help          - show this message"
+    echo "  --help               - show this message"
     echo "  --propagate          - mandatory if you want to pass your options, otherwise you'll get an error"
 
     if [[ ${PROPAGATE} == 0 ]]
