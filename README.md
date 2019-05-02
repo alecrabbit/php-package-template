@@ -5,9 +5,9 @@ A template to write a php package, consist mostly of boilerplate code
 Includes bash scripts to automate testing
 ### Usage
 ```
-$ git clone https://github.com/alecrabbit/php-package-template.git
+$ git clone https://github.com/alecrabbit/php-package-template.git new-template
 ...
-$ cd php-package-template
+$ cd new-template
 $ ./setup
 ```
 Then follow the instructions
