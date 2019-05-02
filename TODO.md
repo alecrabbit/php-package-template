@@ -1,3 +1,9 @@
+- [ ] add owner namespace selection
+    - `0` - no owner namespace
+    - `1` - proposed owner namespace
+    - `2` - enter owner namespace
+    
+- [ ] add package namespace conversion `looney-tunes` `LooneyTunes`
 - [ ] add instructions to add git credentials
 ---
 - [x] make auto setup

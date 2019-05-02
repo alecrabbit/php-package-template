@@ -69,7 +69,10 @@ else
     else
         package_namespace="${package_name}"
     fi
-    package_namespace="${package_namespace^}"
+    package_namespace="$(echo ${package_namespace//[-_]/ }| sed -r 's/\<./\U&/g')"
+    package_namespace=${package_namespace// /}
+#
+#    package_namespace="${package_namespace^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
     # Ask owner namespace
