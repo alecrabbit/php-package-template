@@ -184,8 +184,7 @@ fi
 dark "Timeout 10 seconds..."
 if [[ ${display_attention_message} -ne 0 ]]
 then
-    light_yellow "Attention!!!"
-    red "Parameters ignored!"
+    echo $(light_yellow "Attention!!!") $(red "Parameters ignored!")
 fi
 
 read -p "Continue? " -n 1 -r -t 10
