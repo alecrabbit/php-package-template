@@ -28,31 +28,23 @@ then
     package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
 else
+    package_description="Awesome library Monsters, Inc."
 
     if [[ -e "${DIST_DEFAULTS}" ]]
     then
         source "${DIST_DEFAULTS}"
         package_owner_name="${OWNER_NAME}"
         package_name="${PACKAGE_NAME}"
-        package_description="${DESCRIPTION}"
-
-#        package_owner="${OWNER}"
-#        package_dir="${PACKAGE_DIR}"
     else
         package_owner_name="Mike Wazowski"
         package_name="monsters-inc"
-        package_description="Awesome library Monsters, Inc."
-
-#        package_owner="alecrabbit"
-#        package_dir="${package_name}"
-
     fi
     prefix='php-'
     # Ask owner name
     dark "This name used in LICENSE file"
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
-    package_owner_name="$(echo ${package_owner_name} | sed -r 's/\<./\U&/g')"
+    package_owner_name=$(capitalize_every_word ${package_owner_name})
     accepted_value "${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}

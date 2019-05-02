@@ -1,8 +1,5 @@
 OWNER_NAME="Alec Rabbit"                        # package_owner_name
 PACKAGE_NAME="new-package"                      # package_name
 DESCRIPTION="Awesome library"                   # package_description
-#OWNER="mikewazowski"                            # package_owner
-#PACKAGE_DIR="php-monster"                       # package_dir
-
 
 
