@@ -47,17 +47,12 @@ else
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
-#    echo -e "Enter package owner $(dark "(Used in composer.json line: \"name\": \"owner/name\")")"
-#    read -e -p "[${package_owner}]: " input
     package_owner=$(read_value "package owner" "Used in composer.json line: \"name\": \"owner/name\")" "${package_owner}")
-#    echo -e "Enter package owner $(dark "(Used in composer.json line: \"name\": \"owner/name\")")"
-#    read -e -p "[${package_owner}]: " input
-#    package_owner="${input:-$package_owner}"
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
-    read -e -p "Enter package name [${package_name}]: " input
-    package_name="${input:-$package_name}"
+#    read -e -p "Enter package name [${package_name}]: " input
+    package_name=$(read_value "package name" "" "${package_name}")
     accepted_value "${package_name}"
     # Ask description
     dark "Used in composer.json line: \"description\": \"Your awesome description\""
