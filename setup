@@ -83,7 +83,7 @@ else
     package_namespace="${input:-$package_namespace}"
     accepted_value "${package_namespace}"
     # Ask owner namespace
-    info "Type 'y' to choose owner namespace otherwise no namespace will be used"
+    yellow "Type 'y' to choose owner namespace otherwise no namespace will be used"
     read -p "Select namespace? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
