@@ -231,8 +231,8 @@ then
         then
             yellow "Can't commit: git user credentials not configured"
             dark "To configure use following commands:"
-            dark "where 'username@example.com' - your email"
-            dark "where 'name' - your name"
+            dark "'username@example.com' - your email"
+            dark "'name' - your name"
             dark "git config user.email username@example.com"
             dark "git config user.name name"
         else
@@ -242,12 +242,6 @@ then
             git log --graph --oneline
         fi
     fi
-                dark "To configure use following commands:"
-            dark "where 'username@example.com' - your email"
-            dark "where 'name' - your name"
-            dark "git config user.email username@example.com"
-            dark "git config user.name name"
-
     comment "Deleting setup script"
     rm setup
     rm git_user.sh

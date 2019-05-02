@@ -3,9 +3,10 @@
     - `1` - proposed owner namespace
     - `2` - enter owner namespace
     
-- [ ] add package namespace conversion `looney-tunes` `LooneyTunes`
-- [ ] add instructions to add git credentials
 ---
+- [x] create `accepted_value` function
+- [x] add package namespace conversion `looney-tunes` `LooneyTunes`
+- [x] add instructions to add git credentials
 - [x] make auto setup
 - [x] create `get_realpath` function
 - [x] add TODO.md file
