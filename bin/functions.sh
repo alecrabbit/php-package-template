@@ -203,3 +203,13 @@ select_owner_namespace () {
     done
     echo "${package_owner_namespace}"
 }
+
+read_value () {
+    result=${3}
+    value_name=${1}
+    comment=${2}
+    comment=$(echo -e "Enter ${value_name} $(dark "(${comment})")")
+    read -e -p "${comment} [${result}]: " input
+    result="${input:-$result}"
+    echo "${result}"
+}
