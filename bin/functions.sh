@@ -234,5 +234,4 @@ enter_package_dir() {
     cr=`echo $'\n.'`
     cr=${cr%.}
     package_dir=$(read_value "package directory" "" "${1}" "Make sure you entering unique dir!")
-    accepted_value "${package_dir}"
 }

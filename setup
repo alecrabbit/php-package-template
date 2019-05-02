@@ -30,9 +30,7 @@ then
     if [[ ${package_dir} == "" ]]
     then
         package_dir=$(enter_package_dir "${package_dir}")
-#        light_yellow "Make sure you entering unique dir!"
-#        package_dir=$(read_value "package directory" "" "${package_dir}")
-#        accepted_value "${package_dir}"
+        accepted_value "${package_dir}"
     fi
 
 else
@@ -95,6 +93,8 @@ else
         package_dir="${prefix}${package_name}"
     fi
     package_dir=$(enter_package_dir "${package_dir}")
+    accepted_value "${package_dir}"
+
     # Creating setup
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
