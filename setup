@@ -156,7 +156,7 @@ then
     set_title "🔧 Running setup script..."
     
     # Writing terminal title
-    title="📦 ${package_owner}/${package_name}"
+    title="📦 ${package_name}"
     dark "Writing terminal title '${title}' to ${TERMINAL_TITLE_FILE} file"
     echo ${title} > ${TERMINAL_TITLE_FILE}
     dark "${TERMINAL_TITLE_FILE} contents:"
