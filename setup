@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd bin
-. imports.sh
+. imports.sh "$@"
 cd ..
 
 user=$(whoami)
@@ -49,6 +49,10 @@ else
     if [[ ! -z "$1" ]]
     then
         package_owner_name="$1"
+    fi
+    if [[ ! -z "$2" ]]
+    then
+        package_name="$2"
     fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
