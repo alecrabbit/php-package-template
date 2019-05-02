@@ -123,6 +123,15 @@ echo -e "Description: ${CYAN}${package_description}${NC}"
 echo -e "Namespace: ${CYAN}${package_owner_namespace}${separator}${package_namespace}${NC}"
 echo -e "Directory: ${CYAN}${package_dir}${NC}"
 echo
+
+check_if_dir_exists "../${package_dir}"
+if [[ $? == 1 ]]
+then
+    error "Dir '${package_dir}' is already taken."
+    comment "You should start over."
+    exit 1
+fi
+
 dark "Timeout 10 seconds..."
 read -p "Continue? " -n 1 -r -t 10
 echo
