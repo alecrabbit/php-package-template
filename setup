@@ -224,8 +224,9 @@ then
     info "Stopping container if started"
     docker-compose down
     info "Renaming package dir"
+    old_dir="$(basename $(pwd))"
     cd ..
-    mv "$(basename $(pwd))" "${package_dir}"
+    mv "${old_dir}" "${package_dir}"
     cd "${package_dir}"
 
     info "Starting container"
