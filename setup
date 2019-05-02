@@ -27,7 +27,7 @@ then
     package_namespace="$(<PKG/NMSPC)"
     package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
-    if [[ ! ${package_dir} == "" ]]
+    if [[ ${package_dir} == "" ]]
     then
         light_yellow "Make sure you entering unique dir!"
         package_dir=$(read_value "package directory" "" "${package_dir}")
