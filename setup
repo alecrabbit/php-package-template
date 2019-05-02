@@ -42,17 +42,17 @@ else
     fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
-#    echo -e "Enter package owner name $(dark "(Used in LICENSE file)")"
-#    read -e -p "[${package_owner_name}]: " input
-#    package_owner_name="${input:-$package_owner_name}"
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
     accepted_value "${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
-    echo -e "Enter package owner $(dark "(Used in composer.json line: \"name\": \"owner/name\")")"
-    read -e -p "[${package_owner}]: " input
-    package_owner="${input:-$package_owner}"
+#    echo -e "Enter package owner $(dark "(Used in composer.json line: \"name\": \"owner/name\")")"
+#    read -e -p "[${package_owner}]: " input
+    package_owner=$(read_value "package owner" "Used in composer.json line: \"name\": \"owner/name\")" "${package_owner}")
+#    echo -e "Enter package owner $(dark "(Used in composer.json line: \"name\": \"owner/name\")")"
+#    read -e -p "[${package_owner}]: " input
+#    package_owner="${input:-$package_owner}"
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
