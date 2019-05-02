@@ -67,6 +67,7 @@ else
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
+    package_name=${package_name,,}
     package_name=$(read_value "package name" "" "${package_name}")
     package_name=${package_name,,}
     accepted_value "${package_name}"
