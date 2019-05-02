@@ -19,6 +19,10 @@ get_realpath () {
     echo "${path}"
 }
 
+accepted_value () {
+    printf "${DARK}Accepted value: '${1}'${NC}\n"
+}
+
 dark () {
     printf "${DARK}${1}${NC}\n"
 }

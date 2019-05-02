@@ -50,23 +50,23 @@ else
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
     package_owner_name="$(echo ${package_owner_name} | sed -r 's/\<./\U&/g')"
-    dark "Accepted value: '${package_owner_name}'"
+    accepted_value "'${package_owner_name}'"
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
     dark "Used in composer.json line: \"name\": \"owner/name\""
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
-    dark "Accepted value: '${package_owner}'"
+    accepted_value "'${package_owner}'"
     # Ask name
     read -e -p "Enter package name [${package_name}]: " input
     package_name="${input:-$package_name}"
-    dark "Accepted value: '${package_name}'"
+    accepted_value "'${package_name}'"
     # Ask description
     dark "Used in composer.json line: \"description\": \"Your awesome description\""
     read -e -p "Enter package description [${package_description}]: " input
     package_description="${input:-$package_description}"
-    dark "Accepted value: '${package_description}'"
+    accepted_value "'${package_description}'"
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]
     then
@@ -80,12 +80,12 @@ else
 #    package_namespace="${package_namespace^}"
     read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace="${input:-$package_namespace}"
-    dark "Accepted value: '${package_namespace}'"
+    accepted_value "'${package_namespace}'"
     # Ask owner namespace
     package_owner_namespace=""
     read -e -p "Enter package owner namespace [${package_owner_namespace}]: " input
     package_owner_namespace="${input:-$package_owner_namespace}"
-    dark "Accepted value: '${package_owner_namespace}'"
+    accepted_value "'${package_owner_namespace}'"
     # Ask dir
     if [[ ${package_name} == *"${prefix}"* ]]
     then
@@ -96,7 +96,7 @@ else
 
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
-    dark "Accepted value: '${package_dir}'"
+    accepted_value "'${package_dir}'"
 
     echo "📦 ${package_owner^}/${package_name^}" > TERMINAL_TITLE
     yellow "Creating ${COMPOSER_JSON_FILE}"
