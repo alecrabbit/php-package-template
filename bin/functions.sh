@@ -205,11 +205,13 @@ select_owner_namespace () {
 }
 
 read_value () {
+    cr=`echo $'\n.'`
+    cr=${cr%.}
     result=${3}
     value_name=${1}
     comment=${2}
     comment=$(echo "Enter ${value_name} $(dark "(${comment})")")
-    read -p "${comment}: `echo $'\n'`[${result}] " input
+    read -p "${comment}:${cr}[${result}] " input
     result="${input:-$result}"
     echo "${result}"
 }
