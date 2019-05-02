@@ -1,5 +1,6 @@
-- [ ] get rid of `--propagate`  
+- [ ] move `Parameters ignored!` message closer to `Continue? y`
 ---
+- [x] get rid of `--propagate`  
 - [x] add owner namespace selection
     - `1` - no owner namespace
     - `2` - proposed owner namespace

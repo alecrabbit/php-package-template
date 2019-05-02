@@ -13,6 +13,7 @@ done
 param_1="$1"
 param_2="$2"
 param_3="$3"
+display_attention_message=0
 
 set -- "${params[@]}"  # overwrites the original positional params
 
@@ -35,10 +36,10 @@ set_title "🧰 Setup script..."
 green "Package template setup..."
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
+
     if [[ ! -z "$param_1" ]]
     then
-        light_yellow "Attention!!!"
-        red "Parameters ignored!"
+        display_attention_message=1
     fi
 
     yellow "Found '${COMPOSER_JSON_FILE}' file:"
@@ -181,6 +182,12 @@ then
 fi
 
 dark "Timeout 10 seconds..."
+if [[ ${display_attention_message} -ne 0 ]]
+then
+    light_yellow "Attention!!!"
+    red "Parameters ignored!"
+fi
+
 read -p "Continue? " -n 1 -r -t 10
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
