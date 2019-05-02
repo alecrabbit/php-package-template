@@ -112,13 +112,6 @@ else
     read -e -p "Enter package dir [${package_dir}]: " input
     package_dir="${input:-$package_dir}"
     accepted_value "${package_dir}"
-    # Writing terminal title
-    title="📦 ${package_owner}/${package_name}"
-    dark "Writing terminal title '${title}' to ${TERMINAL_TITLE_FILE} file"
-    echo ${title} > ${TERMINAL_TITLE_FILE}
-    dark "${TERMINAL_TITLE_FILE} contents:"
-    cat ${TERMINAL_TITLE_FILE}
-
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
     then
@@ -158,6 +151,14 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     set_title "🔧 Running setup script..."
+    
+    # Writing terminal title
+    title="📦 ${package_owner}/${package_name}"
+    dark "Writing terminal title '${title}' to ${TERMINAL_TITLE_FILE} file"
+    echo ${title} > ${TERMINAL_TITLE_FILE}
+    dark "${TERMINAL_TITLE_FILE} contents:"
+    cat ${TERMINAL_TITLE_FILE}
+
 
     u_id="$(id -u ${user})"
     g_id="$(id -g ${user})"
