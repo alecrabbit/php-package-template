@@ -48,6 +48,10 @@ yellow () {
     printf "${YELLOW}${1}${NC}\n"
 }
 
+light_yellow () {
+    printf "${YELLOW}${1}${NC}\n"
+}
+
 red () {
     printf "${RED}${1}${NC}\n"
 }
