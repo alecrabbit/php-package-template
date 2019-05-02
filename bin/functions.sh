@@ -214,12 +214,18 @@ read_value () {
     result=${3}
     value_name=${1}
     comment=${2}
+    notice=${4}
+    if [[ ! ${notice} == "" ]]
+    then
+        notice=$(light_yellow "${notice}")
+        notice="${notice}${cr}"
+    fi
     if [[ ! ${comment} == "" ]]
     then
         comment=$(dark "(${comment})")
     fi
     comment=$(echo "Enter ${value_name}:${cr}${comment}")
-    read -p "${comment}${cr}[${result}] " input
+    read -p "${notice}${comment}${cr}[${result}] " input
     result="${input:-$result}"
     echo "${result}"
 }
@@ -227,6 +233,6 @@ read_value () {
 enter_package_dir() {
     cr=`echo $'\n.'`
     cr=${cr%.}
-    package_dir=$(read_value "package directory${cr}$(light_yellow "Make sure you entering unique dir!")" "" "${1}")
+    package_dir=$(read_value "package directory" "" "${1}" "Make sure you entering unique dir!")
     accepted_value "${package_dir}"
 }
