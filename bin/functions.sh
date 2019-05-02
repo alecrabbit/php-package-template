@@ -236,3 +236,17 @@ enter_package_dir() {
     package_dir=$(read_value "package directory" "" "${1}" "Make sure you entering unique dir!")
     echo ${package_dir}
 }
+
+check_git_user () {
+    git_user_email="$(git config user.email)"
+    if [[ -z "$git_user_email" ]]
+    then
+        return 1
+    fi
+    git_user_name="$(git config user.name)"
+    if [[ -z "$git_user_name" ]]
+    then
+        return 1
+    fi
+    return 0
+}

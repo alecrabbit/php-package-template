@@ -252,7 +252,9 @@ then
         git init
         green "Adding files"
         git add --all
-        ./git_user.sh
+#        ./git_user.sh
+        check_git_user
+#        if [[ $? == 1 ]]
         if [[ $? -ne 0 ]]
         then
             yellow "Can't commit: git user credentials not configured"
