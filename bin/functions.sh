@@ -49,7 +49,7 @@ yellow () {
 }
 
 light_yellow () {
-    printf "${YELLOW}${1}${NC}\n"
+    printf "${LIGHT_YELLOW}${1}${NC}\n"
 }
 
 red () {

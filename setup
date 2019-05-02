@@ -55,9 +55,6 @@ else
     accepted_value "${package_name}"
     # Ask description
     package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}")
-#    dark "Used in composer.json line: \"description\": \"Your awesome description\""
-#    read -e -p "Enter package description [${package_description}]: " input
-#    package_description="${input:-$package_description}"
     accepted_value "${package_description}"
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]
@@ -68,9 +65,6 @@ else
     fi
     package_namespace="$(echo ${package_namespace//[-_]/ }| sed -r 's/\<./\U&/g')"
     package_namespace=${package_namespace// /}
-#
-#    package_namespace="${package_namespace^}"
-#    read -e -p "Enter package namespace [${package_namespace}]: " input
     package_namespace=$(read_value "package namespace" "" "${package_namespace}")
     accepted_value "${package_namespace}"
     # Ask owner namespace
@@ -92,6 +86,7 @@ else
     else
         package_dir="${prefix}${package_name}"
     fi
+    light_yellow "Make sure you entering unique dir!"
     package_dir=$(read_value "package directory" "" "${package_dir}")
     accepted_value "${package_dir}"
     # Creating setup
