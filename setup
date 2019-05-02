@@ -68,6 +68,7 @@ else
     accepted_value "${package_owner}"
     # Ask name
     package_name=$(read_value "package name" "" "${package_name}")
+    package_name=${package_name,,}
     accepted_value "${package_name}"
     # Ask description
     package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}")
