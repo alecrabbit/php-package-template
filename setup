@@ -251,7 +251,7 @@ then
     docker-compose down
 else
     echo "Setup skipped..."
-    dark "To run fresh setup delete `${COMPOSER_JSON_FILE}` and dir 'PKG'"
+    dark "To run fresh setup delete '${COMPOSER_JSON_FILE}' and dir 'PKG'"
     dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}"
     echo
 fi
