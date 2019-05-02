@@ -35,6 +35,11 @@ set_title "🧰 Setup script..."
 green "Package template setup..."
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
+    if [[ ! -z "$param_1" ]]
+    then
+        red "Parameters ignored!"
+    fi
+
     yellow "Found '${COMPOSER_JSON_FILE}' file:"
     printf "${DARK}"
     cat "${COMPOSER_JSON_FILE}"
