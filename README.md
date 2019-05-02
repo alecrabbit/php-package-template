@@ -14,20 +14,46 @@ $ ./setup
 Then follow the instructions
 ```
 Package template setup...
-This name used in LICENSE file
-Enter package owner name [Mike Wazowski]: Bugs Bunny
-Used in composer.json line: "name": "owner/name"
-Enter package owner [mikewazowski]: bugsbunny
-Enter package name [monsters]: looneytunes
-Used in composer.json line: "description": "Your awesome description"
-Enter package description [Awesome library Monsters, Inc.]: Looney Tunes Package Description
-Enter package namespace [Looneytunes]: LooneyTunes
-Enter package owner namespace []: BugsBunny
-Enter package dir [php-monster]: 
+Enter package owner name:
+(Used in LICENSE file)
+[Mike Wazowski] Bugs Bunny
+Accepted value: 'Bugs Bunny'
+
+Enter package owner:
+(Used in composer.json line: "name": "owner/name"))
+[bugsbunny] 
+Accepted value: 'bugsbunny'
+
+Enter package name:
+[monsters-inc] looney-tunes
+Accepted value: 'looney-tunes'
+
+Enter package description:
+(Used in composer.json line: "description": "Your awesome description")
+[Awesome library] 
+Accepted value: 'Awesome library'
+
+Enter package namespace:
+[LooneyTunes] 
+Accepted value: 'LooneyTunes'
+
+Type 'y' to choose owner namespace otherwise no namespace will be used
+Select namespace? y
+1) No namespace
+2) 'BugsBunny'
+3) Enter your variant
+Please enter your choice of owner namespace: 2
+Accepted value: 'BugsBunny'
+
+Make sure you entering unique dir!
+Enter package directory:
+[php-looney-tunes] 
+Accepted value: 'php-looney-tunes'
+
 Creating composer.json.result
 {
-  "name": "bugsbunny/looneytunes",
-  "description": "Looney Tunes Package Description",
+  "name": "bugsbunny/looney-tunes",
+  "description": "Awesome library",
   "type": "library",
   "require": {
     "php": ">=7.2"
@@ -52,12 +78,13 @@ Creating composer.json.result
   "prefer-stable": true
 }
 Parameters:
-Owner name: Bugs Bunny
-Directory: php-monster
-Package: bugsbunny/looneytunes
-Description: Looney Tunes Package Description
+Name: Bugs Bunny
+Package: bugsbunny/looney-tunes
+Description: Awesome library
 Namespace: BugsBunny\LooneyTunes
+Directory: php-looney-tunes
 
+Timeout 10 seconds...
 Continue? y
 ...
 ```
