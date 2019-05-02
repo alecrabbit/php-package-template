@@ -19,6 +19,15 @@ get_realpath () {
     echo "${path}"
 }
 
+check_if_dir_exists  () {
+    DIRECTORY=$(echo $(get_realpath "${1}"))
+    if [[ -d "${DIRECTORY}" && ! -L "${DIRECTORY}" ]]
+    then
+        return 1
+    fi
+    return 0
+}
+
 accepted_value () {
     printf "${DARK}Accepted value: '${1}'${NC}\n"
 }
@@ -141,6 +150,26 @@ remove_symbols () {
 
 replace_symbols_by_space () {
     echo ${1//[-_]/ }
+}
+
+remove_prefix () {
+    prefix="${1}"
+    result="${2}"
+    if [[ ${result} == *"${prefix}"* ]]
+    then
+        result=${result#"$prefix"}
+    fi
+    echo "${result}"
+}
+
+remove_suffix () {
+    suffix="${1}"
+    result="${2}"
+    if [[ ${result} == *"${suffix}"* ]]
+    then
+        result=${result%"$suffix"}
+    fi
+    echo "${result}"
 }
 
 select_owner_namespace () {

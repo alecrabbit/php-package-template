@@ -28,28 +28,23 @@ then
     package_owner_namespace="$(<PKG/OWNR_NMSPC)"
     package_dir="$(<PKG/PKGDIR)"
 else
+    package_description="Awesome library Monsters, Inc."
 
     if [[ -e "${DIST_DEFAULTS}" ]]
     then
         source "${DIST_DEFAULTS}"
-        package_name="${PACKAGE_NAME}"
-        package_owner="${OWNER}"
         package_owner_name="${OWNER_NAME}"
-        package_description="${DESCRIPTION}"
-        package_dir="${PACKAGE_DIR}"
+        package_name="${PACKAGE_NAME}"
     else
-        package_owner="alecrabbit"
-        package_name="moomba"
-        package_description="PHP Library"
-        package_dir="${package_name}"
-        package_owner_name="${package_owner^}"
+        package_owner_name="Mike Wazowski"
+        package_name="monsters-inc"
     fi
     prefix='php-'
     # Ask owner name
     dark "This name used in LICENSE file"
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
-    package_owner_name="$(echo ${package_owner_name} | sed -r 's/\<./\U&/g')"
+    package_owner_name=$(capitalize_every_word ${package_owner_name})
     accepted_value "${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}
@@ -153,7 +148,7 @@ then
     set_title "🔧 Running setup script..."
     
     # Writing terminal title
-    title="📦 ${package_owner}/${package_name}"
+    title="📦 ${package_name}"
     dark "Writing terminal title '${title}' to ${TERMINAL_TITLE_FILE} file"
     echo ${title} > ${TERMINAL_TITLE_FILE}
     dark "${TERMINAL_TITLE_FILE} contents:"
@@ -164,7 +159,7 @@ then
     g_id="$(id -g ${user})"
     if [[ -e "${ENV_FILE}" ]]
     then
-        echo "Removing .env file"
+        dark "Removing old .env file"
         rm .env
     fi
     green "Creating .env file"
@@ -178,9 +173,9 @@ then
     else
         if [[ -e ".gitattributes" ]]
         then
-            echo ".gitattributes file already exists"
+            dark ".gitattributes file already exists"
         else
-            echo ".gitattributes file not found"
+            yellow ".gitattributes file not found"
         fi
     fi
     mv "${COMPOSER_JSON_FILE}" composer.json
@@ -226,7 +221,16 @@ then
     info "Renaming package dir"
     old_dir="$(basename $(pwd))"
     cd ..
-    mv "${old_dir}" "${package_dir}"
+    check_if_dir_exists "${package_dir}"
+    if [[ $? == 1 ]]
+    then
+        error "Dir '${package_dir}' is already taken."
+        comment "You should start over."
+        dark "Cleaning up..."
+        rm -rf "${old_dir}"
+        exit 1
+    fi
+    mv -iT "${old_dir}" "${package_dir}"
     cd "${package_dir}"
 
     info "Starting container"
@@ -234,10 +238,10 @@ then
     info "Installing dependencies"
     docker-compose exec app composer install
 
-    yellow "Deleting old repository"
+    dark "Deleting old repository"
     rm -rf .git/
 
-    yellow "Deleting tmp setup dir PKG"
+    dark "Deleting tmp setup dir PKG"
     rm -r PKG
 
     green "Run tests script"
@@ -265,7 +269,7 @@ then
             git log --graph --oneline
         fi
     fi
-    comment "Deleting setup script"
+    dark "Deleting setup script"
     rm setup
     rm git_user.sh
     info "Stopping container"
