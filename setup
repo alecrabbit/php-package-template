@@ -46,6 +46,10 @@ else
         package_owner_name="Mike Wazowski"
         package_name="monsters-inc"
     fi
+    if [[ ! -z "$1" ]]
+    then
+        package_owner_name="$1"
+    fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
