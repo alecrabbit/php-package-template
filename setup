@@ -167,7 +167,7 @@ then
     g_id="$(id -g ${user})"
     if [[ -e "${ENV_FILE}" ]]
     then
-        echo "Removing .env file"
+        dark "Removing old .env file"
         rm .env
     fi
     green "Creating .env file"
@@ -181,9 +181,9 @@ then
     else
         if [[ -e ".gitattributes" ]]
         then
-            echo ".gitattributes file already exists"
+            dark ".gitattributes file already exists"
         else
-            echo ".gitattributes file not found"
+            yellow ".gitattributes file not found"
         fi
     fi
     mv "${COMPOSER_JSON_FILE}" composer.json
@@ -237,10 +237,10 @@ then
     info "Installing dependencies"
     docker-compose exec app composer install
 
-    yellow "Deleting old repository"
+    dark "Deleting old repository"
     rm -rf .git/
 
-    yellow "Deleting tmp setup dir PKG"
+    dark "Deleting tmp setup dir PKG"
     rm -r PKG
 
     green "Run tests script"
@@ -268,7 +268,7 @@ then
             git log --graph --oneline
         fi
     fi
-    comment "Deleting setup script"
+    dark "Deleting setup script"
     rm setup
     rm git_user.sh
     info "Stopping container"
