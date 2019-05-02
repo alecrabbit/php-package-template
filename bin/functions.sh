@@ -223,3 +223,9 @@ read_value () {
     result="${input:-$result}"
     echo "${result}"
 }
+
+enter_package_dir() {
+    light_yellow "Make sure you entering unique dir!"
+    package_dir=$(read_value "package directory" "" "${1}")
+    accepted_value "${package_dir}"
+}
