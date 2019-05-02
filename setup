@@ -3,6 +3,8 @@ cd bin
 . imports.sh
 cd ..
 
+setup_help_message
+
 user=$(whoami)
 if [[ ${user} = "root" ]]
 then

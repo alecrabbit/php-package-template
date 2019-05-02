@@ -111,6 +111,22 @@ then
 fi
 }
 
+setup_help_message () {
+if [[ ${HELP} == 1 ]]
+then
+    echo "Usage:"
+    echo "./setup --propagate \"Your Name\" \"packagename\""
+    echo "Options:"
+    echo "  --help          - show this message"
+    echo "  --propagate          - mandatory if you want to pass your options, otherwise you'll get an error"
+
+    if [[ ${PROPAGATE} == 0 ]]
+    then
+        exit 0
+    fi
+fi
+}
+
 options_enabled () {
     is_active ${RESTART_CONTAINER} "Container restart"
     is_active ${ANALYZE} "Analysis"
