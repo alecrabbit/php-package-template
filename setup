@@ -251,7 +251,7 @@ then
         green "Initializing new repository"
         git init
         green "Adding files"
-        git add --all -v
+        git add --all --verbose
 #        ./git_user.sh
         check_git_user
         if [[ $? -ne 0 ]]
