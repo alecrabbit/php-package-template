@@ -8,6 +8,7 @@ Includes bash scripts to automate testing
 $ git clone https://github.com/alecrabbit/php-package-template.git new-template
 ...
 $ cd new-template
+$ rm .defaults.dist
 $ ./setup
 ```
 Then follow the instructions

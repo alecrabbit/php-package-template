@@ -49,8 +49,8 @@ else
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
-    dark "Used in composer.json line: \"name\": \"owner/name\""
-    read -e -p "Enter package owner $(dark "Used in composer.json line: \"name\": \"owner/name\"") [${package_owner}]: " input
+    echo -e "Enter package owner $(dark "Used in composer.json line: \"name\": \"owner/name\"")"
+    read -e -p "[${package_owner}]: " input
     package_owner="${input:-$package_owner}"
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
