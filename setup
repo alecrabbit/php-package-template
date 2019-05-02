@@ -57,6 +57,7 @@ else
     dark "Used in composer.json line: \"name\": \"owner/name\""
     read -e -p "Enter package owner [${package_owner}]: " input
     package_owner="${input:-$package_owner}"
+    package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
     read -e -p "Enter package name [${package_name}]: " input
