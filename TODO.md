@@ -1,9 +1,9 @@
-- [ ] add owner namespace selection
-    - `0` - no owner namespace
-    - `1` - proposed owner namespace
-    - `2` - enter owner namespace
-    
+- [ ] get rid of `--propagate`  
 ---
+- [x] add owner namespace selection
+    - `1` - no owner namespace
+    - `2` - proposed owner namespace
+    - `3` - enter owner namespace
 - [x] create `accepted_value` function
 - [x] add package namespace conversion `looney-tunes` `LooneyTunes`
 - [x] add instructions to add git credentials
