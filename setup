@@ -67,11 +67,11 @@ else
     fi
     if [[ ! -z "$param_1" ]]
     then
-        package_owner_name="$1"
+        package_owner_name="$param_1"
     fi
     if [[ ! -z "$param_2" ]]
     then
-        package_name="$2"
+        package_name="$param_2"
     fi
     # Ask owner name
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
