@@ -127,12 +127,13 @@ then
 else
      separator=""
 fi
-echo -e "Owner name: ${CYAN}${package_owner_name}${NC}"
-echo -e "Directory: ${CYAN}${package_dir}${NC}"
+echo -e "Name: ${CYAN}${package_owner_name}${NC}"
 echo -e "Package: ${CYAN}${package_owner}/${package_name}${NC}"
 echo -e "Description: ${CYAN}${package_description}${NC}"
 echo -e "Namespace: ${CYAN}${package_owner_namespace}${separator}${package_namespace}${NC}"
+echo -e "Directory: ${CYAN}${package_dir}${NC}"
 echo
+dark "Timeout 10 seconds..."
 read -p "Continue? " -n 1 -r -t 10
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -250,5 +251,7 @@ then
     docker-compose down
 else
     echo "Setup skipped..."
+    dark "To run fresh setup delete `${COMPOSER_JSON_FILE}` and dir 'PKG'"
+    dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}"
     echo
 fi
