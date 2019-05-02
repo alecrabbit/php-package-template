@@ -37,6 +37,7 @@ if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
     if [[ ! -z "$param_1" ]]
     then
+        light_yellow "Attention!!!"
         red "Parameters ignored!"
     fi
 
