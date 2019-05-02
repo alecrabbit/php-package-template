@@ -210,8 +210,8 @@ read_value () {
     result=${3}
     value_name=${1}
     comment=${2}
-    comment=$(echo "Enter ${value_name} $(dark "(${comment})")")
-    read -p "${comment}:${cr}[${result}] " input
+    comment=$(echo "Enter ${value_name}:${cr}$(dark "(${comment})")")
+    read -p "${comment}${cr}[${result}] " input
     result="${input:-$result}"
     echo "${result}"
 }
