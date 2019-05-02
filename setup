@@ -50,7 +50,7 @@ else
     read -e -p "Enter package owner name [${package_owner_name}]: " input
     package_owner_name="${input:-$package_owner_name}"
     package_owner_name="$(echo ${package_owner_name} | sed -r 's/\<./\U&/g')"
-    accepted_value "${package_owner_name}'"
+    accepted_value "${package_owner_name}"
     # Ask owner
     package_owner=${package_owner_name,,}
     package_owner=${package_owner// /}
@@ -230,6 +230,11 @@ then
         if [[ $? -ne 0 ]]
         then
             yellow "Can't commit: git user credentials not configured"
+            dark "To configure use following commands:"
+            dark "where 'username@example.com' - your email"
+            dark "where 'name' - your name"
+            dark "git config user.email username@example.com"
+            dark "git config user.name name"
         else
             green "Committing files"
             git commit -m 'init'
