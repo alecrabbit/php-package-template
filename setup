@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+params=() # reset all params
+
+for arg
+do
+    case "$arg" in
+        --help)
+            params+=("$arg")
+            ;;
+    esac
+done
+param_1="$1"
+param_2="$2"
+set -- "${params[@]}"  # overwrites the original positional params
+
 cd bin
 . imports.sh
 cd ..
@@ -12,6 +26,7 @@ then
     error "DO NOT run this script under root!"
     exit 1
 fi
+
 set_title "🧰 Setup script..."
 
 green "Package template setup..."
@@ -48,11 +63,11 @@ else
         package_owner_name="Mike Wazowski"
         package_name="monsters-inc"
     fi
-    if [[ ! -z "$1" ]]
+    if [[ ! -z "$param_1" ]]
     then
         package_owner_name="$1"
     fi
-    if [[ ! -z "$2" ]]
+    if [[ ! -z "$param_2" ]]
     then
         package_name="$2"
     fi
