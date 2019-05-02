@@ -210,7 +210,10 @@ read_value () {
     result=${3}
     value_name=${1}
     comment=${2}
-    comment=$(dark "(${comment})")
+    if [[ ! ${comment} == "" ]]
+    then
+        comment=$(dark "(${comment})")
+    fi
     comment=$(echo "Enter ${value_name}:${cr}${comment}")
     read -p "${comment}${cr}[${result}] " input
     result="${input:-$result}"
