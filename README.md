@@ -5,12 +5,14 @@ A template to write a php package, consist mostly of boilerplate code
 Includes bash scripts to automate testing
 ### Usage
 ```
-$ git clone https://github.com/alecrabbit/php-package-template.git new-template
+$ git clone https://github.com/alecrabbit/php-package-template.git
 ...
-$ cd new-template
+$ cd php-package-template
 $ rm .defaults.dist
 $ ./setup
 ```
+> Note: removing `.defaults.dist` file is optional
+
 Then follow the instructions
 ```
 Package template setup...
