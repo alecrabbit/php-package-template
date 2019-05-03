@@ -115,10 +115,10 @@ setup_help_message () {
 if [[ ${HELP} == 1 ]]
 then
     echo "Usage:"
-    echo "./setup \"Your Name\" name owner"
-    echo "\"Your Name\"          - package owner name"
+    echo "./setup owner name \"Your Name\""
     echo "owner                  - package owner"
     echo "name                   - package name"
+    echo "\"Your Name\"          - package owner name"
     echo "Options:"
     echo "  --help               - show this message"
     exit 0

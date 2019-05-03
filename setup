@@ -200,7 +200,10 @@ fi
 dark "Timeout 10 seconds..."
 if [[ ${display_attention_message} -ne 0 ]]
 then
-    echo $(light_yellow "Attention!!!") $(red "Parameters ignored!")
+    echo $(light_yellow "Attention!!!") $(yellow "Stored settings found!")
+    echo $(red "Command arguments ignored!")
+    echo $(dark "To remove stored settings use:")
+    echo $(dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}")
 fi
 
 read -p "Continue? " -n 1 -r -t 10
