@@ -36,6 +36,7 @@ green "🔧  Package template setup..."
 dark "Version $(<bin/VERSION)"
 echo
 current_dir="$(basename $(pwd))"
+echo ${current_dir}
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 
