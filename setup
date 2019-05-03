@@ -100,8 +100,8 @@ else
         package_owner="$param_1"
     fi
     package_owner=${package_owner,,}
-    package_owner=${package_owner// /}
     package_owner=$(read_value "package owner" "Used in composer.json line: \"name\": \"owner/name\")" "${package_owner}")
+    package_owner=${package_owner// /}
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
