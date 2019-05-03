@@ -64,8 +64,10 @@ else
     package_description="Awesome library"
     prefix='php-'
 
+    echo ${GLOBAL_DIST_DEFAULTS}
     if [[ -e "${GLOBAL_DIST_DEFAULTS}" ]]
     then
+        red "Sourcing"
         source "${GLOBAL_DIST_DEFAULTS}"
         package_owner_name="${OWNER_NAME}"
         package_name="${PACKAGE_NAME}"
