@@ -96,7 +96,6 @@ else
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
     accepted_value "${package_owner_name}"
     # Ask owner
-#    package_owner=${package_owner_name,,}
     if [[ ! -z "$param_1" ]]
     then
         package_owner="$param_1"
@@ -116,7 +115,7 @@ else
     package_name=${package_name,,}
     accepted_value "${package_name}"
     # Ask description
-    package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}")
+    package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}" "It should be unique among your packages!")
     accepted_value "${package_description}"
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]

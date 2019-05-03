@@ -247,7 +247,7 @@ read_value () {
 enter_package_dir() {
     cr=`echo $'\n.'`
     cr=${cr%.}
-    package_dir=$(read_value "package directory" "" "${1}" "Make sure you entering unique dir!")
+    package_dir=$(read_value "package directory" "" "${1}" "It should be new non-existent dir!")
     echo ${package_dir}
 }
 
