@@ -197,16 +197,14 @@ then
     exit 1
 fi
 
-dark "Timeout 10 seconds..."
 if [[ ${display_attention_message} -ne 0 ]]
 then
     echo $(light_yellow "Attention!!!") $(yellow "Stored settings found!")
     echo $(red "Command arguments ignored!")
-    echo $(dark "To remove stored settings use:")
-    echo $(dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}")
+    echo $(dark "Remove stored settings before using arguments")
 fi
-
-read -p "Continue? " -n 1 -r -t 10
+dark "Timeout 10 seconds..."
+read -p "Continue setup? " -n 1 -r -t 10
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
