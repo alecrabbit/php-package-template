@@ -32,7 +32,7 @@ fi
 
 set_title "🧰 Setup script..."
 
-green "🔧  Package template setup..."
+green "🔧 Package template setup..."
 dark "Version $(<bin/VERSION)"
 current_dir="$(basename $(pwd))"
 dark "Current dir: '${current_dir}'"
