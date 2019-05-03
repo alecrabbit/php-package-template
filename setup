@@ -65,7 +65,7 @@ else
     prefix='php-'
 
     echo ${GLOBAL_DIST_DEFAULTS}
-    if [[ -e "${GLOBAL_DIST_DEFAULTS}" ]]
+    if [[ -e "$(get_realpath ${GLOBAL_DIST_DEFAULTS})" ]]
     then
         red "Sourcing"
         source "${GLOBAL_DIST_DEFAULTS}"
