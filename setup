@@ -174,10 +174,6 @@ else
     printf "${DARK}"
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g; s/PACKAGE_OWNR_NSPACE/${package_owner_namespace}${separator}/g;" ${COMPOSER_JSON_TEMPLATE} | tee "${COMPOSER_JSON_FILE}"
     printf "${NC}"
-    yellow "Creating ${CHANGELOG_MD_FILE}"
-    printf "${DARK}"
-    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g;" ${CHANGELOG_MD_TEMPLATE} | tee "${CHANGELOG_MD_FILE}"
-    printf "${NC}"
 
 fi
 green "Settings:"
@@ -223,6 +219,10 @@ then
     dark "${TERMINAL_TITLE_FILE} contents:"
     cat ${TERMINAL_TITLE_FILE}
 
+    yellow "Creating ${CHANGELOG_MD_FILE}"
+    printf "${DARK}"
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g;" ${CHANGELOG_MD_TEMPLATE} | tee "${CHANGELOG_MD_FILE}"
+    printf "${NC}"
 
     u_id="$(id -u ${user})"
     g_id="$(id -g ${user})"
@@ -258,7 +258,9 @@ then
     mkdir -p "tests/Feature"
     mkdir -p "tests/Unit"
     mkdir -p ".github"
+    green "Writing 'composer.json'"
     mv "${COMPOSER_JSON_FILE}" composer.json
+    green "Writing 'CHANGELOG.md'"
     mv "${CHANGELOG_MD_FILE}" CHANGELOG.md
 
     rm LICENSE
