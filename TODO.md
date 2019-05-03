@@ -1,5 +1,5 @@
-- [ ] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
 ---
+- [x] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
 - [x] move `Parameters ignored!` message closer to `Continue? y`
 - [x] get rid of `--propagate`  
 - [x] add owner namespace selection

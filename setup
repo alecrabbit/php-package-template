@@ -34,6 +34,8 @@ fi
 set_title "🧰 Setup script..."
 
 green "Package template setup..."
+dark"Version $(<bin/VERSION)"
+
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 

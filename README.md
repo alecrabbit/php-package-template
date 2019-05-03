@@ -21,21 +21,35 @@ $ rm .defaults.dist  # Optional
 $ ./setup
 ...
 ```
-> Note: you can pass parameters to setup script
-> `./setup package_owner package_name "Your Name"`
-> ```bash
-> $ ./setup bunny looney "Bugs Bunny"
-> ``` 
-> it'll create `bunny/looney` package in `php-looney` dir
->
-> `LICENSE` file:
-> ```
-> ...
-> Copyright (c) 2019 Bugs Bunny
-> ...
-> ```
+### Settings
+#### Using script arguments
+ You can pass parameters to setup script
+ `./setup package_owner package_name "Your Name"`
+ ```bash
+ $ ./setup bunny looney "Bugs Bunny"
+ ``` 
+ it'll create `bunny/looney` package in `php-looney` dir
 
-Then follow the instructions
+ `LICENSE` file:
+ ```
+ ...
+ Copyright (c) 2019 Bugs Bunny
+ ...
+ ```
+#### Using defaults file
+Create a file `.php-package-template.defaults` in your home directory
+```bash
+$ touch ~/.php-package-template.defaults
+```
+Contents:
+```
+OWNER_NAME="Leeloo Dallas"          # Your name and lastname
+OWNER=""velement"                   # your nickname on packagist
+PACKAGE_NAME="multi-pass"           # default package name
+```
+This file will save you some time if you create a lot of packages :)
+
+#### Setup script example output
 ```
 Package template setup...
 Enter package owner name:
@@ -113,11 +127,11 @@ Continue? y
 ...
 ```
 
-### Running tests script
+#### Running tests script
 ```bash
 $ ./bin/tests --all
 ```
-
+Example output
 ```
 Tests, coverage, analysis and metrics script
 Version: 0.1.18
