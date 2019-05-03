@@ -1,3 +1,10 @@
+- [ ] store settings in `.settings` dir
+- [ ] store settings in `.settings/.entered` file
+- [ ] add configurable package name prefix to `.defaults`
+- [ ] add configurable package name suffix to `.defaults`
+- [ ] add configurable dir prefix to `.defaults`
+- [ ] add configurable dir suffix to `.defaults`
+- [ ] add configurable `use owner namespace` option to `.defaults`
 ---
 - [x] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
 - [x] move `Parameters ignored!` message closer to `Continue? y`
