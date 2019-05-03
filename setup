@@ -35,7 +35,7 @@ set_title "🧰 Setup script..."
 
 green "Package template setup..."
 dark "Version $(<bin/VERSION)"
-
+echo
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 
@@ -152,6 +152,17 @@ else
     accepted_value "${package_dir}"
 
     # Creating setup
+    yellow "Saving settings"
+
+    mkdir PKG
+    echo "${package_owner}" > PKG/OWNER
+    echo "${package_owner_name}" > PKG/OWNER_NAME
+    echo "${package_name}" > PKG/NAME
+    echo "${package_description}" > PKG/DESCR
+    echo "${package_namespace}" > PKG/NMSPC
+    echo "${package_owner_namespace}" > PKG/OWNR_NMSPC
+    echo "${package_dir}" > PKG/PKGDIR
+
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
     then
@@ -163,14 +174,6 @@ else
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g; s/PACKAGE_NSPACE/${package_namespace}/g; s/PACKAGE_OWNR_NSPACE/${package_owner_namespace}${separator}/g;" ${COMPOSER_JSON_TEMPLATE} | tee "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
-    mkdir PKG
-    echo "${package_owner}" > PKG/OWNER
-    echo "${package_owner_name}" > PKG/OWNER_NAME
-    echo "${package_name}" > PKG/NAME
-    echo "${package_description}" > PKG/DESCR
-    echo "${package_namespace}" > PKG/NMSPC
-    echo "${package_owner_namespace}" > PKG/OWNR_NMSPC
-    echo "${package_dir}" > PKG/PKGDIR
 fi
 green "Parameters:"
 if [[ ! ${package_owner_namespace} = "" ]]
