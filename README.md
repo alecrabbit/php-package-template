@@ -54,7 +54,7 @@ This file will save you some time if you create a lot of packages :)
 Package template setup...
 Version 0.2.12
 
-Global settings found: /home/alec/.php-package-template.defaults
+Global settings found: /home/username/.php-package-template.defaults
 Enter package owner name:
 (Used in LICENSE file)
 [Mike Wazowski] Bugs Bunny
