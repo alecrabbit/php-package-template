@@ -34,9 +34,9 @@ set_title "🧰 Setup script..."
 
 green "🔧  Package template setup..."
 dark "Version $(<bin/VERSION)"
-echo
 current_dir="$(basename $(pwd))"
-echo ${current_dir}
+dark "Current  dir ${current_dir}"
+echo
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 
