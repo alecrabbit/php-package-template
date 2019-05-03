@@ -111,11 +111,11 @@ else
         package_name="$param_2"
     fi
     package_name=${package_name,,}
-    package_name=$(read_value "package name" "" "${package_name}")
+    package_name=$(read_value "package name" "" "${package_name}" "It should be unique among your packages!")
     package_name=${package_name,,}
     accepted_value "${package_name}"
     # Ask description
-    package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}" "It should be unique among your packages!")
+    package_description=$(read_value "package description" "Used in composer.json line: \"description\": \"Your awesome description\"" "${package_description}")
     accepted_value "${package_description}"
     # Ask namespace
     if [[ ${package_name} == *"${prefix}"* ]]
