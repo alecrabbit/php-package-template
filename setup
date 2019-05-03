@@ -230,6 +230,11 @@ then
     touch .env
     echo "USER_ID=${u_id}" >> .env
     echo "GROUP_ID=${u_id}" >> .env
+    dark "Removing TODO.md"
+    rm TODO.md
+    green "Creating TODO.md"
+    echo "- [x] add TODO.md file" >> TODO.md
+
     if [[ -e "${GIT_ATTR_FILE}" ]]
     then
         green "Creating .gitattributes file"
