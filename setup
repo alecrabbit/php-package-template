@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#params=() # reset all params
-echo "$@"
+# It's not a well written bash script but it works :)
 for arg
 do
     case "$arg" in
@@ -26,7 +25,7 @@ setup_help_message
 user=$(whoami)
 if [[ ${user} = "root" ]]
 then
-    error "Username: ${user}"
+    red "Username: ${user}"
     error "DO NOT run this script under root!"
     exit 1
 fi
@@ -175,7 +174,7 @@ else
     printf "${NC}"
 
 fi
-green "Parameters:"
+green "Settings:"
 if [[ ! ${package_owner_namespace} = "" ]]
 then
      separator="\\"
