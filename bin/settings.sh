@@ -108,6 +108,7 @@ GIT_ATTR_FILE=".gitattributes.dist";
 DIST_ENV_FILE=".env.dist";
 DIST_DEFAULTS=".defaults.dist";
 GLOBAL_DIST_DEFAULTS="${HOME}/.php-package-template.defaults";
+PKG_SETTINGS_DIR=".settings";
 
 if [[ ${COVERAGE} == 1 ]]
 then

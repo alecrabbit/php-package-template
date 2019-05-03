@@ -48,13 +48,13 @@ then
     cat "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
-    package_owner="$(<PKG/OWNER)"
-    package_owner_name="$(<PKG/OWNER_NAME)"
-    package_name="$(<PKG/NAME)"
-    package_description="$(<PKG/DESCR)"
-    package_namespace="$(<PKG/NMSPC)"
-    package_owner_namespace="$(<PKG/OWNR_NMSPC)"
-    package_dir="$(<PKG/PKGDIR)"
+    package_owner=$(<PKG/OWNER)
+    package_owner_name=$(<PKG/OWNER_NAME)
+    package_name=$(<PKG/NAME)
+    package_description=$(<PKG/DESCR)
+    package_namespace=$(<PKG/NMSPC)
+    package_owner_namespace=$(<PKG/OWNR_NMSPC)
+    package_dir=$(<PKG/PKGDIR)
     if [[ ${package_dir} == "" ]]
     then
         package_dir=$(enter_package_dir "${package_dir}")
