@@ -3,6 +3,14 @@
 A template to write a php package, consist mostly of boilerplate code
 
 Includes bash scripts to automate testing
+
+### Requirements
+ - bash 4
+ - docker
+ - docker-compose
+
+> Note: developed and tested on Ubuntu 18.04(although should work on 16.04)
+
 ### Usage
 > Note: removing file `.defaults.dist` is optional
 ```bash
