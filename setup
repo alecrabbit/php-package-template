@@ -35,7 +35,7 @@ set_title "🧰 Setup script..."
 green "🔧  Package template setup..."
 dark "Version $(<bin/VERSION)"
 current_dir="$(basename $(pwd))"
-dark "Current  dir ${current_dir}"
+dark "Current dir: '${current_dir}'"
 echo
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
@@ -348,9 +348,9 @@ else
     echo "Setup skipped..."
     dark "To continue run setup script again and press 'y'"
     echo
-    dark "To run fresh setup delete '${COMPOSER_JSON_FILE}' and dir '${PKG_SETTINGS_DIR}'"
+    dark "To run fresh setup delete '${PKG_SETTINGS_DIR}' dir"
     dark "Command to use:"
-    dark "rm -r ${PKG_SETTINGS_DIR} && rm ${COMPOSER_JSON_FILE}"
+    dark "rm -r ${PKG_SETTINGS_DIR}"
     echo
     set_title "$(pwd)"
 fi
