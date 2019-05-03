@@ -25,7 +25,7 @@ setup_help_message
 user=$(whoami)
 if [[ ${user} = "root" ]]
 then
-    red "Username: ${user}"
+    light_yellow "Username: ${user}"
     error "DO NOT run this script under root!"
     exit 1
 fi
