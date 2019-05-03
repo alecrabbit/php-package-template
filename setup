@@ -48,13 +48,13 @@ then
     cat "${COMPOSER_JSON_FILE}"
     printf "${NC}"
 
-    package_owner=$(<PKG/OWNER)
-    package_owner_name=$(<PKG/OWNER_NAME)
-    package_name=$(<PKG/NAME)
-    package_description=$(<PKG/DESCR)
-    package_namespace=$(<PKG/NMSPC)
-    package_owner_namespace=$(<PKG/OWNR_NMSPC)
-    package_dir=$(<PKG/PKGDIR)
+    package_owner=$(<${PKG_SETTINGS_DIR}/OWNER)
+    package_owner_name=$(<${PKG_SETTINGS_DIR}/OWNER_NAME)
+    package_name=$(<${PKG_SETTINGS_DIR}/NAME)
+    package_description=$(<${PKG_SETTINGS_DIR}/DESCR)
+    package_namespace=$(<${PKG_SETTINGS_DIR}/NMSPC)
+    package_owner_namespace=$(<${PKG_SETTINGS_DIR}/OWNR_NMSPC)
+    package_dir=$(<${PKG_SETTINGS_DIR}/PKGDIR)
     if [[ ${package_dir} == "" ]]
     then
         package_dir=$(enter_package_dir "${package_dir}")
@@ -154,14 +154,14 @@ else
     # Creating setup
     yellow "Saving settings"
 
-    mkdir PKG
-    echo "${package_owner}" > PKG/OWNER
-    echo "${package_owner_name}" > PKG/OWNER_NAME
-    echo "${package_name}" > PKG/NAME
-    echo "${package_description}" > PKG/DESCR
-    echo "${package_namespace}" > PKG/NMSPC
-    echo "${package_owner_namespace}" > PKG/OWNR_NMSPC
-    echo "${package_dir}" > PKG/PKGDIR
+    mkdir ${PKG_SETTINGS_DIR}
+    echo "${package_owner}" > ${PKG_SETTINGS_DIR}/OWNER
+    echo "${package_owner_name}" > ${PKG_SETTINGS_DIR}/OWNER_NAME
+    echo "${package_name}" > ${PKG_SETTINGS_DIR}/NAME
+    echo "${package_description}" > ${PKG_SETTINGS_DIR}/DESCR
+    echo "${package_namespace}" > ${PKG_SETTINGS_DIR}/NMSPC
+    echo "${package_owner_namespace}" > ${PKG_SETTINGS_DIR}/OWNR_NMSPC
+    echo "${package_dir}" > ${PKG_SETTINGS_DIR}/PKGDIR
 
     yellow "Creating ${COMPOSER_JSON_FILE}"
     if [[ ! ${package_owner_namespace} = "" ]]
@@ -194,7 +194,7 @@ if [[ $? == 1 ]]
 then
     error "Dir '${package_dir}' is already taken."
     comment "You should start over."
-    echo "" > PKG/PKGDIR
+    echo "" > ${PKG_SETTINGS_DIR}/PKGDIR
     exit 1
 fi
 
@@ -309,8 +309,8 @@ then
     dark "Deleting old repository"
     rm -rf .git/
 
-    dark "Deleting tmp setup dir PKG"
-    rm -r PKG
+    dark "Deleting tmp setup dir ${PKG_SETTINGS_DIR}"
+    rm -r ${PKG_SETTINGS_DIR}
 
     green "Run tests script"
     ./bin/tests --all
@@ -347,9 +347,9 @@ else
     echo "Setup skipped..."
     dark "To continue run setup script again and press 'y'"
     echo
-    dark "To run fresh setup delete '${COMPOSER_JSON_FILE}' and dir 'PKG'"
+    dark "To run fresh setup delete '${COMPOSER_JSON_FILE}' and dir '${PKG_SETTINGS_DIR}'"
     dark "Command to use:"
-    dark "rm -r PKG && rm ${COMPOSER_JSON_FILE}"
+    dark "rm -r ${PKG_SETTINGS_DIR} && rm ${COMPOSER_JSON_FILE}"
     echo
     set_title "$(pwd)"
 fi
