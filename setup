@@ -210,7 +210,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     set_title "🔧 Running setup script..."
-    
+    comment "🚀 Setting up..."
     # Writing terminal title
     title="📦 ${package_name}"
     dark "Writing terminal title '${title}' to ${TERMINAL_TITLE_FILE} file"
