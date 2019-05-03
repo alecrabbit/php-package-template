@@ -111,6 +111,7 @@ else
     fi
     package_name=${package_name,,}
     package_name=$(read_value "package name" "" "${package_name}" "It should be unique among your packages!")
+    package_name=${package_name// /}
     package_name=${package_name,,}
     accepted_value "${package_name}"
     # Ask description
