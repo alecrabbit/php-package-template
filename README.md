@@ -52,6 +52,9 @@ This file will save you some time if you create a lot of packages :)
 #### Setup script example output
 ```
 Package template setup...
+Version 0.2.12
+
+Global settings found: /home/alec/.php-package-template.defaults
 Enter package owner name:
 (Used in LICENSE file)
 [Mike Wazowski] Bugs Bunny
@@ -59,11 +62,12 @@ Accepted value: 'Bugs Bunny'
 
 Enter package owner:
 (Used in composer.json line: "name": "owner/name"))
-[bugsbunny] 
-Accepted value: 'bugsbunny'
+[mike-wazowski] Bugs-Bunny
+Accepted value: 'bugs-bunny'
 
+It should be unique among your packages!
 Enter package name:
-[monsters-inc] looney-tunes
+[monsters-inc] Looney -Tunes
 Accepted value: 'looney-tunes'
 
 Enter package description:
@@ -83,14 +87,16 @@ Select namespace? y
 Please enter your choice of owner namespace: 2
 Accepted value: 'BugsBunny'
 
-Make sure you entering unique dir!
+It should be new non-existent yet dir name!
 Enter package directory:
+('php-package-template' -> 'php-looney-tunes' ?)
 [php-looney-tunes] 
 Accepted value: 'php-looney-tunes'
 
+Saving settings
 Creating composer.json.result
 {
-  "name": "bugsbunny/looney-tunes",
+  "name": "bugs-bunny/looney-tunes",
   "description": "Awesome library",
   "type": "library",
   "require": {
@@ -115,15 +121,15 @@ Creating composer.json.result
   "minimum-stability": "beta",
   "prefer-stable": true
 }
-Parameters:
+Settings:
 Name: Bugs Bunny
-Package: bugsbunny/looney-tunes
+Package: bugs-bunny/looney-tunes
 Description: Awesome library
 Namespace: BugsBunny\LooneyTunes
 Directory: php-looney-tunes
 
 Timeout 10 seconds...
-Continue? y
+Continue setup? y
 ...
 ```
 
