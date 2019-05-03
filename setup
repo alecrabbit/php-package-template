@@ -35,7 +35,7 @@ set_title "🧰 Setup script..."
 green "🔧  Package template setup..."
 dark "Version $(<bin/VERSION)"
 echo
-old_dir="$(basename $(pwd))"
+current_dir="$(basename $(pwd))"
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 
@@ -148,7 +148,7 @@ else
     else
         package_dir="${prefix}${package_name}"
     fi
-    package_dir=$(enter_package_dir "${package_dir}" "${old_dir}")
+    package_dir=$(enter_package_dir "${package_dir}" "${current_dir}")
     accepted_value "${package_dir}"
 
     # Creating setup
@@ -295,10 +295,10 @@ then
         error "Dir '${package_dir}' is already taken."
         comment "You should start over."
         dark "Cleaning up..."
-        rm -rf "${old_dir}"
+        rm -rf "${current_dir}"
         exit 1
     fi
-    mv -iT "${old_dir}" "${package_dir}"
+    mv -iT "${current_dir}" "${package_dir}"
     cd "${package_dir}"
 
     info "Starting container"
