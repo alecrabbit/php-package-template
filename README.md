@@ -140,7 +140,7 @@ $ ./bin/tests --all
 Example output
 ```
 Tests, coverage, analysis and metrics script
-Version: 0.1.18
+Version: 0.2.12
 Main .env file found
 Secondary .env file not found
 Creating symlink to main .env file
@@ -155,11 +155,11 @@ Setting terminal title...
 [ ON ]  Beautifier
 
 Restarting container...
-Stopping monster_app_1 ... done
-Removing monster_app_1 ... done
-Removing network monster_default
-Creating network "monster_default" with the default driver
-Creating monster_app_1 ... done
+Stopping php-monsters-inc_app_1 ... done
+Removing php-monsters-inc_app_1 ... done
+Removing network php-monsters-inc_default
+Creating network "php-monsters-inc_default" with the default driver
+Creating php-monsters-inc_app_1 ... done
 
 Processing...
 
@@ -181,7 +181,7 @@ PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
 
 .                                                                   1 / 1 (100%)
 
-Time: 72 ms, Memory: 6.00 MB
+Time: 73 ms, Memory: 6.00 MB
 
 OK (1 test, 1 assertion)
 
@@ -191,18 +191,20 @@ Generating code coverage report in HTML format ... done
 
 
 Code Coverage Report:   
-  2019-05-01 13:54:09   
+  2019-05-03 12:54:45   
                         
  Summary:               
   Classes: 100.00% (1/1)
   Methods: 100.00% (1/1)
   Lines:   100.00% (1/1)
 
-\Monster::Monster\BasicClass
+\MonstersInc::MonstersInc\BasicClass
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 
 PHPStan...
 PHPStan - PHP Static Analysis Tool 0.11.5
+ 1/1 [****************************] 100%
+
                                                                                                                         
  [OK] No errors                                                                                                         
                                                                                                                         
@@ -211,7 +213,7 @@ PHPStan - PHP Static Analysis Tool 0.11.5
 Psalm config found...
 
 Psalm...
-Psalm 3.2.9@473c8cb83209de1b66a1487400c0ea47a2ee65cc
+Psalm 3.2.10@b9bece4cbcb3f342c8412618f73ca02db98064e8
 Scanning files...
 Analyzing files...
 
@@ -219,7 +221,7 @@ Analyzing files...
 No errors found!
 ------------------------------
 
-Checks took 0.21 seconds and used 26.973MB of memory
+Checks took 0.22 seconds and used 27.032MB of memory
 Psalm was able to infer types for 100% of the codebase
 
 Generating report file: ./../tests/report.html
@@ -232,9 +234,9 @@ PHP_CodeSniffer version 3.4.2 (stable) by Squiz (http://www.squiz.net)
 
 No fixable errors were found
 
-Time: 201ms; Memory: 6MB
+Time: 205ms; Memory: 6MB
 
 
-Executed in 10s
+Executed in 11s
 Bye!
 ```
