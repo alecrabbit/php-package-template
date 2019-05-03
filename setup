@@ -64,14 +64,21 @@ else
     package_description="Awesome library"
     prefix='php-'
 
-    if [[ -e "${DIST_DEFAULTS}" ]]
+    if [[ -e "${GLOBAL_DIST_DEFAULTS}" ]]
     then
-        source "${DIST_DEFAULTS}"
+        source "${GLOBAL_DIST_DEFAULTS}"
         package_owner_name="${OWNER_NAME}"
         package_name="${PACKAGE_NAME}"
     else
-        package_owner_name="Mike Wazowski"
-        package_name="monsters-inc"
+        if [[ -e "${DIST_DEFAULTS}" ]]
+        then
+            source "${DIST_DEFAULTS}"
+            package_owner_name="${OWNER_NAME}"
+            package_name="${PACKAGE_NAME}"
+        else
+            package_owner_name="Mike Wazowski"
+            package_name="monsters-inc"
+        fi
     fi
     # Ask owner name
     if [[ ! -z "$param_3" ]]
