@@ -20,6 +20,8 @@ $ cd php-package-template
 $ rm .defaults.dist  # Optional
 $ ./setup
 ...
+$ cd ..              # 'php-package-template' dir was renamed so don't forget to cd 
+...
 ```
 ### Settings
 #### Using script arguments
