@@ -247,7 +247,7 @@ read_value () {
 enter_package_dir() {
     cr=`echo $'\n.'`
     cr=${cr%.}
-    package_dir=$(read_value "package directory" "" "${1}" "It should be new non-existent yet dir name!")
+    package_dir=$(read_value "package directory" "Dir '${2}' will be renamed to '${1}'" "${1}" "It should be new non-existent yet dir name!")
     echo ${package_dir}
 }
 

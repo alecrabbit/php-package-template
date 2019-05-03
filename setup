@@ -147,7 +147,8 @@ else
     else
         package_dir="${prefix}${package_name}"
     fi
-    package_dir=$(enter_package_dir "${package_dir}")
+    old_dir="$(basename $(pwd))"
+    package_dir=$(enter_package_dir "${package_dir}" "${old_dir}")
     accepted_value "${package_dir}"
 
     # Creating setup
@@ -281,7 +282,6 @@ then
     info "Stopping container if started"
     docker-compose down
     info "Renaming package dir"
-    old_dir="$(basename $(pwd))"
     cd ..
     check_if_dir_exists "${package_dir}"
     if [[ $? == 1 ]]
