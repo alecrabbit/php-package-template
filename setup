@@ -70,15 +70,18 @@ else
 
         source "${GLOBAL_DIST_DEFAULTS}"
         package_owner_name="${OWNER_NAME}"
+        package_owner="${OWNER}"
         package_name="${PACKAGE_NAME}"
     else
         if [[ -e "${DIST_DEFAULTS}" ]]
         then
             source "${DIST_DEFAULTS}"
             package_owner_name="${OWNER_NAME}"
+            package_owner="${OWNER}"
             package_name="${PACKAGE_NAME}"
         else
             package_owner_name="Mike Wazowski"
+            package_owner="mike-wazowski"
             package_name="monsters-inc"
         fi
     fi
@@ -91,7 +94,7 @@ else
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
     accepted_value "${package_owner_name}"
     # Ask owner
-    package_owner=${package_owner_name,,}
+#    package_owner=${package_owner_name,,}
     if [[ ! -z "$param_1" ]]
     then
         package_owner="$param_1"
