@@ -1,4 +1,4 @@
-- [ ] store settings in `.settings` dir
+- [ ] consistent message coloring
 - [ ] store settings in `.settings/.entered` file
 - [ ] add configurable package name prefix to `.defaults`
 - [ ] add configurable package name suffix to `.defaults`
@@ -6,6 +6,7 @@
 - [ ] add configurable dir suffix to `.defaults`
 - [ ] add configurable `use owner namespace` option to `.defaults`
 ---
+- [x] store settings in `.settings` dir
 - [x] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
 - [x] move `Parameters ignored!` message closer to `Continue? y`
 - [x] get rid of `--propagate`  
