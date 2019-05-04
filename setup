@@ -322,6 +322,10 @@ then
 
     green "Run tests script"
     ./bin/tests --all
+    
+    comment "Deleting setup script"
+    rm setup
+    rm .defaults.dist
 
     if [[ -x "$(command -v git)" ]]
     then
@@ -347,9 +351,6 @@ then
             git log --graph --oneline
         fi
     fi
-    comment "Deleting setup script"
-    rm setup
-    rm .defaults.dist
     info "Stopping container"
     docker-compose down
 else
