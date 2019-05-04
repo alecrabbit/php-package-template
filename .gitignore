@@ -4,5 +4,3 @@
 /tests/tmp/
 /tests/report.html
 /.phpunit.result.cache
-
-composer\.json\.result

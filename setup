@@ -322,18 +322,20 @@ then
 
     green "Run tests script"
     ./bin/tests --all
-    
-    comment "Deleting setup script"
+
+    yellow "Deleting setup script"
     rm setup
     rm .defaults.dist
 
+    green "Enhance '.gitignore'"
+    echo '/bin/' >> .gitignore
+
     if [[ -x "$(command -v git)" ]]
     then
-        green "Initializing new repository"
+        green "Initializing new git repository"
         git init
         green "Adding files"
         git add --all --verbose
-#        ./git_user.sh
         check_git_user
         if [[ $? -ne 0 ]]
         then
