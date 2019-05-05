@@ -1,3 +1,4 @@
+- [ ] move `bin` to `scripts`
 - [ ] consistent message coloring
 - [ ] store settings in `.settings/.entered` file
 - [ ] add configurable package name prefix to `.defaults`
