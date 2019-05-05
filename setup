@@ -59,7 +59,7 @@ then
     package_dir=$(<${PKG_SETTINGS_DIR}/PKGDIR)
     if [[ ${package_dir} == "" ]]
     then
-        package_dir=$(enter_package_dir "${package_dir}")
+        package_dir=$(enter_package_dir "${package_dir}" "${current_dir}")
         accepted_value "${package_dir}"
     fi
 
