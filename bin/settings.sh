@@ -108,6 +108,8 @@ COMPOSER_JSON_TEMPLATE="template.composer.json"
 COMPOSER_JSON_FILE="${PKG_SETTINGS_DIR}/composer.json.result"
 CHANGELOG_MD_TEMPLATE="template.CHANGELOG.md"
 CHANGELOG_MD_FILE="${PKG_SETTINGS_DIR}/CHANGELOG.md.result"
+README_MD_TEMPLATE="template.README.md"
+README_MD_FILE="${PKG_SETTINGS_DIR}/README.md.result"
 
 GIT_ATTR_FILE=".gitattributes.dist";
 DIST_ENV_FILE=".env.dist";

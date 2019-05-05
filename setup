@@ -223,6 +223,10 @@ then
     printf "${DARK}"
     sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g;" ${CHANGELOG_MD_TEMPLATE} | tee "${CHANGELOG_MD_FILE}"
     printf "${NC}"
+    yellow "Creating ${README_MD_FILE}"
+    printf "${DARK}"
+    sed "s/PACKAGE_OWNER/${package_owner}/g; s/PACKAGE_NAME/${package_name}/g; s/PACKAGE_DESCRIPTION/${package_description}/g;" ${README_MD_TEMPLATE} | tee "${README_MD_FILE}"
+    printf "${NC}"
 
     u_id="$(id -u ${user})"
     g_id="$(id -g ${user})"
@@ -262,6 +266,8 @@ then
     mv "${COMPOSER_JSON_FILE}" composer.json
     green "Writing 'CHANGELOG.md'"
     mv "${CHANGELOG_MD_FILE}" CHANGELOG.md
+    green "Writing 'README.md'"
+    mv "${README_MD_FILE}" README.md
 
     rm LICENSE
     if [[ ! ${package_owner_namespace} = "" ]]
