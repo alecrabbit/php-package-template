@@ -375,6 +375,7 @@ then
             green "Git log:"
             git log --graph --oneline
         fi
+        info "Remote"
         add_origin "${package_owner}" "${package_name}"
     fi
     info "Stopping container"
