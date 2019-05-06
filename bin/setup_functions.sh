@@ -17,6 +17,8 @@ fi
 add_origin () {
     param_package_owner="$1"
     param_package_name="$2"
+    do_add_origin="$3"
+    vcs_service="$4"
     remote="https://github.com/${param_package_owner}/${param_package_name}.git"
     ask_question "Add remote on '${remote}'?"
     if [[ $? -ne 0 ]]

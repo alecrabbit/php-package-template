@@ -15,6 +15,8 @@ param_package_name="$1"
 param_owner="$2"
 param_owner_name="$3"
 display_attention_message=0
+do_add_origin=0
+vcs_service="https://github.com/"
 
 set -- "${params[@]}"  # overwrites the original positional params
 
@@ -356,6 +358,9 @@ then
         git init
         green "Adding files"
         git add --all --verbose
+        info "Remote"
+        add_origin "${package_owner}" "${package_name}" ${do_add_origin} ${vcs_service}
+
         check_git_user
         if [[ $? -ne 0 ]]
         then
@@ -372,8 +377,6 @@ then
             green "Git log:"
             git log --graph --oneline
         fi
-        info "Remote"
-        add_origin "${package_owner}" "${package_name}"
     fi
 
     green "Run tests script"
