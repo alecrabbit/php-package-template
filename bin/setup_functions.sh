@@ -25,7 +25,7 @@ add_origin () {
 }
 
 ask_question () {
-    read -p "$(dark "Timeout 10 seconds...") ${1}" -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") ${1} " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
