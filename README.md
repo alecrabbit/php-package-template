@@ -26,9 +26,9 @@ $ cd ..              # 'php-package-template' dir was renamed so don't forget to
 ### Settings
 #### Using script arguments
  You can pass parameters to setup script
- `./setup package_owner package_name "Your Name"`
+ `./setup package_name package_owner "Your Name"`
  ```bash
- $ ./setup bunny looney "Bugs Bunny"
+ $ ./setup looney bunny "Bugs Bunny"
  ``` 
  it'll create `bunny/looney` package in `php-looney` dir
 
@@ -130,8 +130,7 @@ Description: Awesome library
 Namespace: BugsBunny\LooneyTunes
 Directory: php-looney-tunes
 
-Timeout 10 seconds...
-Continue setup? y
+Timeout 10 seconds... Continue setup? y
 ...
 ```
 
