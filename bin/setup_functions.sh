@@ -21,11 +21,11 @@ add_origin () {
     vcs_service="$4"
     remote="https://github.com/${param_package_owner}/${param_package_name}.git"
     ask_question "Add remote on '${remote}'?"
-    if [[ $? -ne 0 ]]
+    if [[ $? -eq 1 ]]
     then
         git remote add origin "${remote}"
-        echo
         dark "Added remote ${remote}"
+        echo
     fi
 }
 
