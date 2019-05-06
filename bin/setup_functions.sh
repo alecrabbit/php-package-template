@@ -5,7 +5,7 @@ if [[ ${HELP} == 1 ]]
 then
     echo "Options:"
     echo "    --help                 - show this message"
-    echo "Usage:"
+    echo "Usage(positional arguments):"
     echo "./setup name owner \"Your Name\""
     echo "    name                   - package name"
     echo "    owner                  - package owner"
