@@ -11,9 +11,9 @@ done
 
 continue_setup=0
 
-param_1="$1"
-param_2="$2"
-param_3="$3"
+param_package_name="$1"
+param_owner="$2"
+param_owner_name="$3"
 display_attention_message=0
 
 set -- "${params[@]}"  # overwrites the original positional params
@@ -42,7 +42,7 @@ echo
 if [[ -e "${COMPOSER_JSON_FILE}" ]]
 then
 
-    if [[ ! -z "$param_1" ]]
+    if [[ ! -z "$param_owner" ]]
     then
         display_attention_message=1
     fi
@@ -91,17 +91,17 @@ else
         fi
     fi
     # Ask owner name
-    if [[ ! -z "$param_3" ]]
+    if [[ ! -z "$param_owner_name" ]]
     then
-        package_owner_name="$param_3"
+        package_owner_name="$param_owner_name"
     fi
     package_owner_name=$(read_value "package owner name" "Used in LICENSE file" "${package_owner_name}")
     package_owner_name=$(capitalize_every_word "${package_owner_name}")
     accepted_value "${package_owner_name}"
     # Ask owner
-    if [[ ! -z "$param_1" ]]
+    if [[ ! -z "$param_owner" ]]
     then
-        package_owner="$param_1"
+        package_owner="$param_owner"
     fi
     package_owner=${package_owner,,}
     package_owner=$(read_value "package owner" "Used in composer.json line: \"name\": \"owner/name\")" "${package_owner}")
@@ -109,9 +109,9 @@ else
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
     # Ask name
-    if [[ ! -z "$param_2" ]]
+    if [[ ! -z "$param_package_name" ]]
     then
-        package_name="$param_2"
+        package_name="$param_package_name"
     fi
     package_name=${package_name,,}
     package_name=$(read_value "package name" "" "${package_name}" "It should be unique among your packages!")
