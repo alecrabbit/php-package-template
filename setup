@@ -225,7 +225,7 @@ then
         continue_setup=1
     fi
 fi
-if [[ ${continue_setup} -ne 1 ]]
+if [[ ${continue_setup} -ne 0 ]]
 then
     set_title "🔧 Running setup script..."
     comment "🚀 Setting up..."
