@@ -343,9 +343,6 @@ then
     dark "Deleting tmp setup dir ${PKG_SETTINGS_DIR}"
     rm -r ${PKG_SETTINGS_DIR}
 
-    green "Run tests script"
-    ./bin/tests --all
-
     yellow "Deleting setup script"
     rm setup
     rm .defaults.dist
@@ -378,6 +375,10 @@ then
         info "Remote"
         add_origin "${package_owner}" "${package_name}"
     fi
+
+    green "Run tests script"
+    ./bin/tests --all
+
     info "Stopping container"
     docker-compose down
 else
