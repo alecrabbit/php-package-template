@@ -218,7 +218,7 @@ then
 fi
 if [[ ${continue_setup} -ne 1 ]]
 then
-    read -p "$(dark "Timeout 10 seconds...")Continue setup? " -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") Continue setup? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -375,6 +375,7 @@ then
             green "Git log:"
             git log --graph --oneline
         fi
+        add_origin "${package_owner}" "${package_name}"
     fi
     info "Stopping container"
     docker-compose down
