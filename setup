@@ -9,6 +9,8 @@ do
     esac
 done
 
+continue_setup=0
+
 param_1="$1"
 param_2="$2"
 param_3="$3"
@@ -194,12 +196,13 @@ check_if_dir_exists "../${package_dir}"
 if [[ $? == 1 ]]
 then
     error "Target dir '${package_dir}' is already taken."
-    read -p "$(dark "Timeout 10 seconds...") Delete target directory? " -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") Delete target directory and continue setup? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
         green "Deleting"
         rm -rf "../${package_dir}"
+        continue_setup=1
     else
         yellow "You should start over."
         echo "" > ${PKG_SETTINGS_DIR}/PKGDIR
@@ -213,11 +216,15 @@ then
     echo $(red "Command arguments ignored!")
     echo $(dark "Remove stored settings before using arguments")
 fi
-dark "Timeout 10 seconds..."
-read -p "Continue setup? " -n 1 -r -t 10
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+if [[ ${continue_setup} -ne 1 ]]
 then
+    read -p "$(dark "Timeout 10 seconds...")Continue setup? " -n 1 -r -t 10
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        continue_setup=1
+    fi
+else
     set_title "🔧 Running setup script..."
     comment "🚀 Setting up..."
     # Writing terminal title
