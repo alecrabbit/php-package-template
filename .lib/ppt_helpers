@@ -1,0 +1,69 @@
+#!/usr/bin/env sh
+
+_PPT_SETTINGS_DIR=".settings";
+_PPT_TEMPLATES_DIR=".templates";
+COMPOSER_JSON="composer.json"
+CHANGELOG_MD="CHANGELOG.md"
+README_MD="README.md"
+
+COMPOSER_JSON_TEMPLATE="${_PPT_TEMPLATES_DIR}/${COMPOSER_JSON}"
+COMPOSER_JSON_FILE="${_PPT_SETTINGS_DIR}/${COMPOSER_JSON}"
+
+CHANGELOG_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${CHANGELOG_MD}"
+CHANGELOG_MD_FILE="${_PPT_SETTINGS_DIR}/${CHANGELOG_MD}"
+
+README_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${README_MD}"
+README_MD_FILE="${_PPT_SETTINGS_DIR}/${README_MD}"
+
+_ppt_declare_variables_defaults() {
+    # Variables defaults
+    continue_setup=${PPT_FALSE}
+    silent_setup=${PPT_FALSE}
+    display_attention_message=${PPT_FALSE}
+    do_add_origin=${PPT_FALSE}
+    vcs_service="github"
+    # Arguments defaults
+    param_package_name=""
+    param_owner=""
+    param_owner_name=""
+    # Values
+    current_dir="$(basename $(pwd))"
+}
+
+_ppt_echo_variables () {
+    echo "param_package_name: '${param_package_name}'"
+    echo "param_owner: '${param_owner}'"
+    echo "param_owner_name: '${param_owner_name}'"
+    echo "continue_setup: '${continue_setup}'"
+    echo "silent_setup: '${silent_setup}'"
+    echo "display_attention_message: '${display_attention_message}'"
+    echo "do_add_origin: '${do_add_origin}'"
+    echo "vcs_service: '${vcs_service}'"
+    echo "current_dir: '${current_dir}'"
+}
+
+_ppt_realpath()
+{
+    if [ -x "$(command -v realpath)" ]
+    then
+        echo "$(realpath ${1})"
+    else
+        ppt_path_=${1}
+
+        # prepend current directory to relative paths
+        echo "${ppt_path_}" |grep '^/' >/dev/null 2>&1 \
+            || ppt_path_="${PWD}/${ppt_path_}"
+
+        # clean up the path. if all seds supported true regular expressions, then
+        # this is what it would be:
+        ppt_old_=${ppt_path_}
+        while true; do
+            ppt_new_=`echo "${ppt_old_}" | sed 's/[^/]*\/\.\.\/*//;s/\/\.\//\//'`
+            [ "${ppt_old_}" = "${ppt_new_}" ] && break
+            ppt_old_=${ppt_new_}
+        done
+        echo "${ppt_new_}"
+
+        unset ppt_path_ ppt_old_ ppt_new_
+    fi
+}
