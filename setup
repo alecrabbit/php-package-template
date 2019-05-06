@@ -207,7 +207,7 @@ then
         yellow "You should start over."
         echo "" > ${PKG_SETTINGS_DIR}/PKGDIR
         exit 1
-   fi
+    fi
 fi
 
 if [[ ${display_attention_message} -ne 0 ]]
@@ -220,9 +220,17 @@ if [[ ${continue_setup} -ne 1 ]]
 then
     read -p "$(dark "Timeout 10 seconds...")Continue setup? " -n 1 -r -t 10
     echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
+    if [[ ! $REPLY =~ ^[Yy]$ ]]
     then
-        continue_setup=1
+        echo "Setup skipped..."
+        dark "To continue run setup script again and press 'y'"
+        echo
+        dark "To run fresh setup delete '${PKG_SETTINGS_DIR}' dir"
+        dark "Command to use:"
+        dark "rm -r ${PKG_SETTINGS_DIR}"
+        echo
+        set_title "$(pwd)"
+        exit
     fi
 else
     set_title "🔧 Running setup script..."
@@ -376,13 +384,4 @@ else
     fi
     info "Stopping container"
     docker-compose down
-else
-    echo "Setup skipped..."
-    dark "To continue run setup script again and press 'y'"
-    echo
-    dark "To run fresh setup delete '${PKG_SETTINGS_DIR}' dir"
-    dark "Command to use:"
-    dark "rm -r ${PKG_SETTINGS_DIR}"
-    echo
-    set_title "$(pwd)"
 fi
