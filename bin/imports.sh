@@ -8,3 +8,4 @@ fi
 . colors.sh "$@"
 . settings.sh "$@"
 . functions.sh "$@"
+. setup_functions.sh "$@"
