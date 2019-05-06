@@ -194,8 +194,7 @@ check_if_dir_exists "../${package_dir}"
 if [[ $? == 1 ]]
 then
     error "Target dir '${package_dir}' is already taken."
-    dark "Timeout 10 secs..."
-    read -p "Delete target directory? " -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") Delete target directory? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
