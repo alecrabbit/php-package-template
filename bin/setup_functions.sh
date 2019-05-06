@@ -21,6 +21,7 @@ add_origin () {
     if [[ $(ask_question "Add remote on '${remote}'?") == 1 ]]
     then
         git remote add origin "${remote}"
+        echo
         dark "Added remote ${remote}"
     fi
 }
