@@ -18,7 +18,8 @@ add_origin () {
     param_package_owner="$1"
     param_package_name="$2"
     remote="https://github.com/${param_package_owner}/${param_package_name}.git"
-    if [[ $(ask_question "Add remote on '${remote}'?") == 1 ]]
+    ask_question "Add remote on '${remote}'?"
+    if [[ $? -ne 0 ]]
     then
         git remote add origin "${remote}"
         echo
