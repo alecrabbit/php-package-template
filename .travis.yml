@@ -20,7 +20,7 @@ cache:
   bundler: true
 
 install:
-  - travis_retry ./bin/travis/travis-init.sh
+  - travis_retry ./.travis/travis-init.sh
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
