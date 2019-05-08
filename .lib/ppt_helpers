@@ -46,23 +46,34 @@ _ppt_declare_variables_defaults() {
 
     _ppt_load_defaults_file
 
-    ### Read positional arguments
-    _ppt_param_package_name="${1:-}"
-    _ppt_param_owner="${2:-}"
-    _ppt_param_owner_name="${3:-}"
-
-    _ppt_reassign_variables
+    _ppt_reassign_variables_with_args "$@"
 }
 
 _ppt_load_defaults_file () {
+    _ppt_debug "Searching settings: ${PPT_GLOBAL_SETTINGS_DEFAULTS}"
     if [ -e ${PPT_GLOBAL_SETTINGS_DEFAULTS} ]
     then
         . ${PPT_GLOBAL_SETTINGS_DEFAULTS}
+        _ppt_info "Using global settings file"
+        _ppt_debug "${PPT_GLOBAL_SETTINGS_DEFAULTS}"
     fi
+    _ppt_debug "Searching settings: ${PPT_SETTINGS_DEFAULTS}"
     if [ -e ${PPT_SETTINGS_DEFAULTS} ]
     then
         . ${PPT_SETTINGS_DEFAULTS}
+        _ppt_info "Using settings file"
+        _ppt_debug "${PPT_SETTINGS_DEFAULTS}"
     fi
+
+    _ppt_debug "PPT_PACKAGE_OWNER: ${PPT_PACKAGE_OWNER}"
+    _ppt_debug "PPT_PACKAGE_OWNER_NAME: ${PPT_PACKAGE_OWNER_NAME}"
+    _ppt_debug "PPT_PACKAGE_NAME: ${PPT_PACKAGE_NAME}"
+    _ppt_debug "PPT_PACKAGE_DESCRIPTION: ${PPT_PACKAGE_DESCRIPTION}"
+    _ppt_debug "PPT_PACKAGE_NAMESPACE: ${PPT_PACKAGE_NAMESPACE}"
+    _ppt_debug "PPT_PACKAGE_OWNER_NAMESPACE: ${PPT_PACKAGE_OWNER_NAMESPACE}"
+    _ppt_debug "PPT_PACKAGE_DIR: ${PPT_PACKAGE_DIR}"
+
+
     # Settings defaults
     package_owner=${PPT_PACKAGE_OWNER:-$package_owner}
     package_owner_name=${PPT_PACKAGE_OWNER_NAME:-$package_owner_name}
@@ -73,7 +84,12 @@ _ppt_load_defaults_file () {
     package_dir=${PPT_PACKAGE_DIR:-$package_dir}
 }
 
-_ppt_reassign_variables () {
+_ppt_reassign_variables_with_args () {
+    ### Read positional arguments
+    _ppt_param_package_name="${1:-}"
+    _ppt_param_owner="${2:-}"
+    _ppt_param_owner_name="${3:-}"
+
     if [ ! -z ${_ppt_param_owner} ]
     then
         package_owner=${_ppt_param_owner}

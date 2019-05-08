@@ -30,8 +30,17 @@ PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
+if [ ${PPT_DEBUG} -eq 1 ]
+then
+    _ppt_notice "DEBUG Enabled"
+fi
+
 ### Check if user is 'root'
 _ppt_check_user
+
+### Greeting
+_ppt_info "🔧 Package template setup..."
+_ppt_dark "Version ${PPT_VERSION}"
 
 ### Declare variables
 _ppt_declare_variables_defaults "$@"
@@ -50,8 +59,6 @@ do
 done
 
 ### Set terminal title
-_ppt_info "🔧 Package template setup..."
-_ppt_dark "Version ${PPT_VERSION}"
 _ppt_set_terminal_title "🧰 Setup script..."
 
 ### Check if '.settings' dir exists and is consistent
@@ -62,7 +69,7 @@ then
     _ppt_load_values
     ### Read data from '.settings' dir
 else
-    _ppt_dark "Saved settings not found"
+    _ppt_debug "Package settings not found"
     ### Ask user for data
     _ppt_ask_values
 

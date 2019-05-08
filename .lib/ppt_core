@@ -3,6 +3,7 @@
 PPT_TRUE=0
 PPT_FALSE=1
 PPT_ERROR=2
+PPT_DEBUG=${PPT_DEBUG:-0}
 PPT_TITLE=${PPT_TITLE:-1}
 PPT_ALLOW_ROOT=${PPT_ALLOW_ROOT:-0}
 
@@ -69,15 +70,25 @@ _ppt_fatal() {
   exit ${PPT_ERROR}
 }
 ### Messages functions
+_ppt_debug() {
+if [ ${PPT_DEBUG} -eq 1 ]
+then
+    _ppt_dark "${1}"
+fi
+}
+
 _ppt_dark() {
   echo "${__ppt_ansi_dark}$*${__ppt_ansi_none}" >&2
 }
+
 _ppt_info() {
   echo "${__ppt_ansi_green}$*${__ppt_ansi_none}" >&2
 }
+
 _ppt_comment() {
   echo "${__ppt_ansi_yellow}$*${__ppt_ansi_none}" >&2
 }
+
 _ppt_notice() {
   echo "${__ppt_ansi_bold_yellow}$*${__ppt_ansi_none}" >&2
 }
