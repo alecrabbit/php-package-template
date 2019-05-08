@@ -73,7 +73,7 @@ _ppt_fatal() {
 _ppt_debug() {
 if [ ${PPT_DEBUG} -eq 1 ]
 then
-    _ppt_dark "${1}"
+    _ppt_dark "Debug: ${1}"
 fi
 }
 

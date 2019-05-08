@@ -20,6 +20,31 @@ LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 . "${LIB_DIR}/ppt_functions" || die "Unable to load 'ppt_functions' library."
 . "${LIB_DIR}/ppt_helpers" || die "Unable to load 'ppt_helpers' library."
 
+__ppt_param1=""
+__ppt_param2=""
+__ppt_param3=""
+
+### Read options
+while getopts "yp:o:n:h" OPTION; do
+        case ${OPTION} in
+                y)
+                    _ppt_silent_setup=${PPT_TRUE}
+                    ;;
+                p)
+                    __ppt_param1="${OPTARG:-}"
+                    ;;
+                o)
+                    __ppt_param2="${OPTARG:-}"
+                    ;;
+                n)
+                    __ppt_param3="${OPTARG:-}"
+                    ;;
+                h)
+                    _ppt_help_message
+                    ;;
+
+        esac
+done
 ### Reassign
 BASE_DIR=$(_ppt_realpath ${BASE_DIR})
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
@@ -30,34 +55,34 @@ PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
-### Check arguments
-for arg
-do
-    case "$arg" in
-        --help)
-            _ppt_help_message
-            ;;
-        -y)
-            _ppt_silent_setup=${PPT_TRUE}
-            ;;
-    esac
-done
-
-
 if [ ${PPT_DEBUG} -eq 1 ]
 then
     _ppt_notice "DEBUG Enabled"
 fi
-if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
+if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
 then
     _ppt_debug "No confirmation needed"
 fi
 
+### Declare variables
+_ppt_declare_variables_defaults "${__ppt_param1}" "${__ppt_param2}" "${__ppt_param3}"
+unset  __ppt_param1 __ppt_param2 __ppt_param3
+
+### Check arguments
+#for arg
+#do
+#    case "$arg" in
+#        --help)
+#            _ppt_help_message
+#            ;;
+#        -y)
+#            _ppt_silent_setup=${PPT_TRUE}
+#            ;;
+#    esac
+#done
+
 ### Check if user is 'root'
 _ppt_check_user
-
-### Declare variables
-_ppt_declare_variables_defaults "$@"
 
 ### Greeting
 _ppt_info "🔧 Package template setup..."

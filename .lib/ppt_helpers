@@ -90,15 +90,15 @@ _ppt_reassign_variables_with_args () {
     _ppt_param_owner="${2:-}"
     _ppt_param_owner_name="${3:-}"
 
-    if [ ! -z ${_ppt_param_owner} ]
+    if [ ! -z "${_ppt_param_owner}" ]
     then
         package_owner=${_ppt_param_owner}
     fi
-    if [ ! -z ${_ppt_param_package_name} ]
+    if [ ! -z "${_ppt_param_package_name}" ]
     then
         package_name=${_ppt_param_package_name}
     fi
-    if [ ! -z ${_ppt_param_owner_name} ]
+    if [ ! -z "${_ppt_param_owner_name}" ]
     then
         package_owner_name=${_ppt_param_owner_name}
     fi
