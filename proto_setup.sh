@@ -30,16 +30,11 @@ PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
-### Declare variables
-_ppt_declare_variables_defaults
-
-### Read positional arguments
-param_package_name="${1:-}"
-param_owner="${2:-}"
-param_owner_name="${3:-}"
-
 ### Check if user is 'root'
 _ppt_check_user
+
+### Declare variables
+_ppt_declare_variables_defaults "$@"
 
 ### Check arguments
 for arg
@@ -49,7 +44,7 @@ do
             _ppt_help_message
             ;;
         -y)
-            silent_setup=${PPT_TRUE}
+            _ppt_silent_setup=${PPT_TRUE}
             ;;
     esac
 done
@@ -75,7 +70,7 @@ else
 fi
 
 ### Make setup here
-if [ ${silent_setup} -eq ${PPT_TRUE} ]
+if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
 then
     _ppt_info "No confirmation needed"
 fi

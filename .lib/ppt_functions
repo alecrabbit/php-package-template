@@ -55,13 +55,27 @@ _ppt_has_docker_compose ()
     return ${PPT_TRUE}
 }
 
+_ppt_show_accepted_value () {
+    echo "${__ppt_ansi_dark} Accepted value: '${1}'${__ppt_ansi_none}"
+    echo
+}
 _ppt_ask_values () {
-    package_owner_name=$(_ppt_read_value "package owner name" "000")
-    echo ${package_owner_name}
-    package_owner_name=$(_ppt_read_value "package owner name" "111" "Used in LICENSE file")
-    echo ${package_owner_name}
-    package_owner_name=$(_ppt_read_value "package owner name" "222" "Used in LICENSE file" "Notice!")
-    echo ${package_owner_name}
+    package_name=$(_ppt_read_value "package name" "${package_name}" "" "It should be unique among your packages!")
+    _ppt_show_accepted_value "${package_name}"
+    package_owner=$(_ppt_read_value "package owner" "${package_owner}" "Used in composer.json line: \"name\": \"owner/name\")")
+    _ppt_show_accepted_value "${package_owner}"
+    package_owner_name=$(_ppt_read_value "package owner name" "${package_owner_name}" "Used in LICENSE file")
+    _ppt_show_accepted_value "${package_owner_name}"
+    package_description=$(_ppt_read_value "package description" "${package_description}" "Used in composer.json line: \"description\": \"Your awesome description\"")
+    _ppt_show_accepted_value "${package_description}"
+    package_namespace=$(_ppt_read_value "package namespace" "${package_namespace}")
+    _ppt_show_accepted_value "${package_namespace}"
+    package_owner_namespace=$(_ppt_read_value "package owner namespace" "${package_owner_namespace}")
+    _ppt_show_accepted_value "${package_owner_namespace}"
+    package_dir=$(_ppt_read_value "package dir" "${package_dir}" "" "It should be new non-existent yet dir name!")
+    _ppt_show_accepted_value "${package_dir}"
+
+
 #    __ppt_ask_question "Are you ready?"
 #    if [ $? -eq ${PPT_TRUE} ]
 #    then
@@ -72,8 +86,8 @@ _ppt_ask_values () {
 #add_origin () {
 #    param_package_owner="$1"
 #    param_package_name="$2"
-#    do_add_origin="$3"
-#    vcs_service="$4"
+#    _ppt_do_add_origin="$3"
+#    _ppt_vcs_service="$4"
 #    remote="https://github.com/${param_package_owner}/${param_package_name}.git"
 #    ask_question "Add remote on '${remote}'?"
 #    if [[ $? -eq 1 ]]
@@ -128,7 +142,9 @@ _ppt_read_value () {
         __ppt_comment=$(printf "${__ppt_ansi_dark}(${__ppt_comment})${__ppt_ansi_none}\n ")
     fi
     __ppt_question=$(printf "${__ppt_space}Enter ${__ppt_value_name}:\n ")
-    read -p "${__ppt_notice}${__ppt_question}${__ppt_comment}[${__ppt_result}] " __ppt_input
+    __ppt_question="${__ppt_notice}${__ppt_question}${__ppt_comment}[${__ppt_result}] "
+
+    read -p "${__ppt_question}" __ppt_input
     echo "${__ppt_input:-$__ppt_result}"
     unset __ppt_value_name __ppt_question __ppt_comment __ppt_result __ppt_notice __ppt_input __ppt_space
 }
