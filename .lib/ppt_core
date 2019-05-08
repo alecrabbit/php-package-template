@@ -179,30 +179,6 @@ _ppt_settings_dir_is_consistent () {
     return ${PPT_TRUE}
 }
 
-_ppt_read_options () {
-    __ppt_param1=""
-    __ppt_param2=""
-    __ppt_param3=""
-
-    ### Read options
-    while getopts "yp:o:n:h" OPTION; do
-            case ${OPTION} in
-                    y)
-                        _ppt_silent_setup=${PPT_TRUE}
-                        ;;
-                    p)
-                        __ppt_param1="${OPTARG:-}"
-                        ;;
-                    o)
-                        __ppt_param2="${OPTARG:-}"
-                        ;;
-                    n)
-                        __ppt_param3="${OPTARG:-}"
-                        ;;
-                    h)
-                        _ppt_help_message
-                        ;;
-
-            esac
-    done
+_ppt_capitalize_every_word () {
+    echo "${1}" | sed -r 's/\<./\U&/g'
 }

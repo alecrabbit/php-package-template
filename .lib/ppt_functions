@@ -133,4 +133,3 @@ _ppt_read_value () {
     echo "${__ppt_input:-$__ppt_result}"
     unset __ppt_value_name __ppt_question __ppt_comment __ppt_result __ppt_notice __ppt_input __ppt_space
 }
-

@@ -107,7 +107,7 @@ _ppt_reassign_variables_with_args () {
     then
         package_owner_name=${_ppt_param_owner_name}
     fi
-    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
+#    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
  }
 _ppt_color_cyan () {
    echo "${__ppt_ansi_cyan}${1}${__ppt_ansi_none}"
@@ -150,12 +150,46 @@ _ppt_show_messages () {
         _ppt_error "NO docker-compose"
     fi
 
+#    _ppt_print $(_ppt_capitalize_every_word ${_ppt_param_owner_name})
+
     _ppt_dark "dark sample message"
     _ppt_notice "notice sample message"
     _ppt_comment "comment sample message"
     _ppt_info "info sample message"
     _ppt_warn "warning sample message"
     _ppt_error "error sample message"
+
+    _ppt_echo_variables
+
+    ### Fatal message and exit!
     _ppt_fatal "fatal sample message"
+}
+
+_ppt_read_options () {
+    __ppt_param1=""
+    __ppt_param2=""
+    __ppt_param3=""
+
+    ### Read options
+    while getopts "yp:o:n:h" OPTION; do
+            case ${OPTION} in
+                    y)
+                        _ppt_silent_setup=${PPT_TRUE}
+                        ;;
+                    p)
+                        __ppt_param1="${OPTARG:-}"
+                        ;;
+                    o)
+                        __ppt_param2="${OPTARG:-}"
+                        ;;
+                    n)
+                        __ppt_param3="${OPTARG:-}"
+                        ;;
+                    h)
+                        _ppt_help_message
+                        ;;
+
+            esac
+    done
 }
 
