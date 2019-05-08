@@ -15,7 +15,7 @@ _ppt_help_message () {
 
 _ppt_realpath ()
 {
-    if [ -x "$(command -v realpath)" ]
+    if _ppt_check_command "realpath"
     then
         echo "$(realpath ${1})"
     else
