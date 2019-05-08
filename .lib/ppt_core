@@ -3,9 +3,12 @@
 PPT_TRUE=0
 PPT_FALSE=1
 PPT_ERROR=2
-PPT_DEBUG=${PPT_DEBUG:-0}
+# Debug settings
+PPT_DEBUG=${DEBUG:-0}
 PPT_TITLE=${PPT_TITLE:-1}
 PPT_ALLOW_ROOT=${PPT_ALLOW_ROOT:-0}
+### Set color output
+PPT_COLOR=${PPT_COLOR:-auto} # Options are 'never', 'always', or 'auto'.
 
 ### COLORS
 # Black        0;30     Dark Gray     1;30

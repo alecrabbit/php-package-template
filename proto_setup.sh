@@ -2,15 +2,14 @@
 ### Treat unset variables as an error.
 set -u
 
+
 die() {
   [ $# -gt 0 ] && echo "error: $*" >&2
   exit 1
 }
 
-### Set color output
-PPT_COLOR=${PPT_COLOR:-auto} # Options are 'never', 'always', or 'auto'.
-
 ### Base directory
+BASE_FILENAME=$(basename "$0")
 BASE_DIR=$(dirname "$0")
 LIB_SOURCE='.lib'
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
@@ -20,50 +19,27 @@ LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 . "${LIB_DIR}/ppt_functions" || die "Unable to load 'ppt_functions' library."
 . "${LIB_DIR}/ppt_helpers" || die "Unable to load 'ppt_helpers' library."
 
-#__ppt_param1=""
-#__ppt_param2=""
-#__ppt_param3=""
-#
+### Configure color
+_ppt_configureColor ${PPT_COLOR}
+
 ### Read options
 _ppt_read_options "$@"
 
-#while getopts "yp:o:n:h" OPTION; do
-#        case ${OPTION} in
-#                y)
-#                    _ppt_silent_setup=${PPT_TRUE}
-#                    ;;
-#                p)
-#                    __ppt_param1="${OPTARG:-}"
-#                    ;;
-#                o)
-#                    __ppt_param2="${OPTARG:-}"
-#                    ;;
-#                n)
-#                    __ppt_param3="${OPTARG:-}"
-#                    ;;
-#                h)
-#                    _ppt_help_message
-#                    ;;
-#
-#        esac
-#done
-### Reassign
+### Reassign directories
 BASE_DIR=$(_ppt_realpath ${BASE_DIR})
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 
 ### Set Version
 PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 
-### Configure color
-_ppt_configureColor ${PPT_COLOR}
-
 if [ ${PPT_DEBUG} -eq 1 ]
 then
     _ppt_notice "DEBUG Enabled"
 fi
+_ppt_debug "Filename '${BASE_FILENAME}'"
 if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
 then
-    _ppt_debug "No confirmation needed"
+    _ppt_debug "Option '-y' used: no confirmation needed"
 fi
 
 ### Declare variables

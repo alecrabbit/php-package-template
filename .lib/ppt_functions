@@ -1,13 +1,15 @@
 #!/usr/bin/env sh
 
 _ppt_help_message () {
+    echo "Usage:"
+    echo "./${BASE_FILENAME} [options]"
+    echo
     echo "Options:"
-    echo "    --help                 - show this message"
-    echo "Usage(positional arguments):"
-    echo "./setup name owner \"Your Name\""
-    echo "    name                   - package name"
-    echo "    owner                  - package owner"
-    echo "    \"Your Name\"            - package owner name"
+    echo "    -h                 - show this help message and exit"
+    echo "    -y                 - do not ask questions"
+    echo "    -p name            - package name"
+    echo "    -o owner           - package owner"
+    echo "    -n name            - package owner name"
     exit 0
 }
 
