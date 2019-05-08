@@ -39,22 +39,39 @@ _ppt_realpath ()
     fi
 }
 
+_ppt_check_command () {
+    if [ -x "$(command -v ${1})" ]
+    then
+        return ${PPT_TRUE}
+    fi
+    return ${PPT_FALSE}
+}
+
 _ppt_has_docker ()
 {
-    if [ ! -x "$(command -v docker)" ]
+    if _ppt_check_command "docker"
     then
-        return ${PPT_FALSE}
+        return ${PPT_TRUE}
     fi
-    return ${PPT_TRUE}
+    return ${PPT_FALSE}
 }
+
+#_ppt_has_docker ()
+#{
+#    if [ -x "$(command -v docker)" ]
+#    then
+#        return ${PPT_TRUE}
+#    fi
+#    return ${PPT_FALSE}
+#}
 
 _ppt_has_docker_compose ()
 {
-    if [ ! -x "$(command -v docker-compose)" ]
+    if _ppt_check_command "docker-compose"
     then
-        return ${PPT_FALSE}
+        return ${PPT_TRUE}
     fi
-    return ${PPT_TRUE}
+    return ${PPT_FALSE}
 }
 
 _ppt_show_accepted_value () {

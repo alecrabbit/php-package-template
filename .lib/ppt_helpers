@@ -137,20 +137,19 @@ _ppt_echo_variables () {
 }
 
 _ppt_show_messages () {
-    _ppt_has_docker
-    if [ $? -eq ${PPT_TRUE} ]
+    if _ppt_has_docker
     then
         _ppt_info "🐳 has docker"
     else
         _ppt_error "NO docker"
     fi
-    _ppt_has_docker_compose
-    if [ $? -eq ${PPT_TRUE} ]
+    if _ppt_has_docker_compose
     then
         _ppt_info "🐳 has docker-compose"
     else
         _ppt_error "NO docker-compose"
     fi
+
     _ppt_dark "dark sample message"
     _ppt_notice "notice sample message"
     _ppt_comment "comment sample message"
