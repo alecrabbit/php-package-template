@@ -182,3 +182,19 @@ _ppt_settings_dir_is_consistent () {
 _ppt_capitalize_every_word () {
     echo "$@" | sed -f "${LIB_DIR}/capitalize.sed"
 }
+
+_ppt_remove_spaces () {
+    echo ${1} | sed "s/ //g"
+}
+
+_ppt_remove_symbols () {
+    __symbols="[${1}]"
+    echo ${2} | sed "s/${__symbols}//g"
+    unset __symbols
+}
+
+_ppt_replace_symbols_by_space () {
+    __symbols="[${1}]"
+    echo ${2} | sed "s/${__symbols}/ /g"
+    unset __symbols
+}
