@@ -75,8 +75,8 @@ _ppt_has_docker_compose ()
 }
 
 _ppt_show_accepted_value () {
-    echo "${__ppt_ansi_dark} Accepted value: '${1}'${__ppt_ansi_none}"
-    echo
+    _ppt_print "${__ppt_ansi_dark} Accepted value: '${1}'${__ppt_ansi_none}"
+    _ppt_print ""
 }
 _ppt_ask_values () {
     package_name=$(_ppt_read_value "package name" "${package_name}" "" "It should be unique among your packages!")
@@ -94,9 +94,7 @@ _ppt_ask_values () {
     package_dir=$(_ppt_read_value "package dir" "${package_dir}" "" "It should be new non-existent yet dir name!")
     _ppt_show_accepted_value "${package_dir}"
 
-
-#    __ppt_ask_question "Are you ready?"
-#    if [ $? -eq ${PPT_TRUE} ]
+#    if __ppt_ask_question "Are you ready?"
 #    then
 #        _ppt_info "OK"
 #    fi
