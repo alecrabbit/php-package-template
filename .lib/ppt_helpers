@@ -148,3 +148,4 @@ _ppt_show_messages () {
     _ppt_error "error sample message"
     _ppt_fatal "fatal sample message"
 }
+
