@@ -44,26 +44,30 @@ _ppt_declare_variables_defaults() {
     # Values
     current_dir="$(basename $(pwd))"
 
-    _ppt_load_defaults_file
+    _ppt_load_defaults
 
     _ppt_reassign_variables_with_args "$@"
 }
 
+_ppt_load_defaults_files () {
+    _ppt_load_defaults_file ${PPT_GLOBAL_SETTINGS_DEFAULTS} ||
+     _ppt_load_defaults_file ${PPT_SETTINGS_DEFAULTS}
+}
 _ppt_load_defaults_file () {
-    _ppt_debug "Searching settings: ${PPT_GLOBAL_SETTINGS_DEFAULTS}"
-    if [ -e ${PPT_GLOBAL_SETTINGS_DEFAULTS} ]
+    _ppt_debug "Searching settings: '${1}'"
+    if [ -e ${1} ]
     then
-        . ${PPT_GLOBAL_SETTINGS_DEFAULTS}
-        _ppt_info "Using global settings file"
-        _ppt_debug "${PPT_GLOBAL_SETTINGS_DEFAULTS}"
+        . ${1}
+        _ppt_debug "Using settings file '${1}'"
+        return ${PPT_TRUE}
     fi
-    _ppt_debug "Searching settings: ${PPT_SETTINGS_DEFAULTS}"
-    if [ -e ${PPT_SETTINGS_DEFAULTS} ]
-    then
-        . ${PPT_SETTINGS_DEFAULTS}
-        _ppt_info "Using settings file"
-        _ppt_debug "${PPT_SETTINGS_DEFAULTS}"
-    fi
+    _ppt_debug "Settings not found: '${1}'"
+
+    return ${PPT_FALSE}
+}
+
+_ppt_load_defaults () {
+    _ppt_load_defaults_files
 
     _ppt_debug "PPT_PACKAGE_OWNER: ${PPT_PACKAGE_OWNER}"
     _ppt_debug "PPT_PACKAGE_OWNER_NAME: ${PPT_PACKAGE_OWNER_NAME}"
@@ -73,7 +77,6 @@ _ppt_load_defaults_file () {
     _ppt_debug "PPT_PACKAGE_OWNER_NAMESPACE: ${PPT_PACKAGE_OWNER_NAMESPACE}"
     _ppt_debug "PPT_PACKAGE_DIR: ${PPT_PACKAGE_DIR}"
 
-
     # Settings defaults
     package_owner=${PPT_PACKAGE_OWNER:-$package_owner}
     package_owner_name=${PPT_PACKAGE_OWNER_NAME:-$package_owner_name}
@@ -82,6 +85,8 @@ _ppt_load_defaults_file () {
     package_namespace=${PPT_PACKAGE_NAMESPACE:-$package_namespace}
     package_owner_namespace=${PPT_PACKAGE_OWNER_NAMESPACE:-$package_owner_namespace}
     package_dir=${PPT_PACKAGE_DIR:-$package_dir}
+
+    unset PPT_PACKAGE_OWNER PPT_PACKAGE_OWNER_NAME PPT_PACKAGE_NAME PPT_PACKAGE_DESCRIPTION PPT_PACKAGE_NAMESPACE PPT_PACKAGE_OWNER_NAMESPACE PPT_PACKAGE_DIR
 }
 
 _ppt_reassign_variables_with_args () {
@@ -104,6 +109,19 @@ _ppt_reassign_variables_with_args () {
     fi
     unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
  }
+_ppt_color_cyan () {
+   echo "${__ppt_ansi_cyan}${1}${__ppt_ansi_none}"
+}
+_ppt_color_bold_cyan () {
+   echo "${__ppt_ansi_bold_cyan}${1}${__ppt_ansi_none}"
+}
+_ppt_show_values () {
+    _ppt_print "Name: $(_ppt_color_bold_cyan "${package_owner_name}")"
+    _ppt_print "Package: $(_ppt_color_bold_cyan "${package_owner}/${package_name}")"
+    _ppt_print "Description: $(_ppt_color_bold_cyan "${package_description}")"
+    _ppt_print "Namespace: $(_ppt_color_bold_cyan "${package_owner_namespace}${package_namespace}")"
+    _ppt_print "Directory: $(_ppt_color_bold_cyan "${package_dir}")"
+}
 
 _ppt_echo_variables () {
     echo "param_package_name: '${_ppt_param_package_name}'"
@@ -115,14 +133,7 @@ _ppt_echo_variables () {
     echo "_ppt_do_add_origin: '${_ppt_do_add_origin}'"
     echo "_ppt_vcs_service: '${_ppt_vcs_service}'"
     echo "current_dir: '${current_dir}'"
-
-    echo "package_owner: ${package_owner}"
-    echo "package_owner_name: ${package_owner_name}"
-    echo "package_name: ${package_name}"
-    echo "package_description: ${package_description}"
-    echo "package_namespace: ${package_namespace}"
-    echo "package_owner_namespace: ${package_owner_namespace}"
-    echo "package_dir: ${package_dir}"
+    _ppt_show_values
 }
 
 _ppt_show_messages () {

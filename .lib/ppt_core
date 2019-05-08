@@ -5,8 +5,8 @@ PPT_FALSE=1
 PPT_ERROR=2
 # Debug settings
 PPT_DEBUG=${DEBUG:-0}
+PPT_ALLOW_ROOT=${ALLOW_ROOT:-0}
 PPT_TITLE=${PPT_TITLE:-1}
-PPT_ALLOW_ROOT=${PPT_ALLOW_ROOT:-0}
 ### Set color output
 PPT_COLOR=${PPT_COLOR:-auto} # Options are 'never', 'always', or 'auto'.
 
@@ -73,6 +73,10 @@ _ppt_fatal() {
   exit ${PPT_ERROR}
 }
 ### Messages functions
+_ppt_print () {
+    echo "${1}" >&2
+}
+
 _ppt_debug() {
 if [ ${PPT_DEBUG} -eq 1 ]
 then

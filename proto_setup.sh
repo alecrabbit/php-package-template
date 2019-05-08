@@ -2,13 +2,12 @@
 ### Treat unset variables as an error.
 set -u
 
-
 die() {
   [ $# -gt 0 ] && echo "error: $*" >&2
   exit 1
 }
 
-### Base directory
+### Base constants
 BASE_FILENAME=$(basename "$0")
 BASE_DIR=$(dirname "$0")
 LIB_SOURCE='.lib'
@@ -19,18 +18,18 @@ LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 . "${LIB_DIR}/ppt_functions" || die "Unable to load 'ppt_functions' library."
 . "${LIB_DIR}/ppt_helpers" || die "Unable to load 'ppt_helpers' library."
 
+### Set Version
+PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
+
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
 ### Read options
 _ppt_read_options "$@"
 
-### Reassign directories
+### Reassign directories using realpath
 BASE_DIR=$(_ppt_realpath ${BASE_DIR})
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
-
-### Set Version
-PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 
 if [ ${PPT_DEBUG} -eq 1 ]
 then
@@ -70,6 +69,8 @@ else
 
     ### Save data to '.settings' dir
 fi
+
+_ppt_show_values
 
 ### Make setup here
 
