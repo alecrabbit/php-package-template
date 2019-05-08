@@ -198,3 +198,11 @@ _ppt_replace_symbols_by_space () {
     echo ${2} | sed "s/${__symbols}/ /g"
     unset __symbols
 }
+
+_ppt_remove_prefix () {
+    echo "${2#${1}}"
+}
+
+_ppt_remove_suffix () {
+    echo "${2%${1}}"
+}
