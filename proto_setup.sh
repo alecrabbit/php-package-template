@@ -10,9 +10,9 @@ die() {
 ### Set color output
 PPT_COLOR=${PPT_COLOR:-auto} # Options are 'never', 'always', or 'auto'.
 
-LIB_SOURCE='.lib'
 ### Base directory
 BASE_DIR=$(dirname "$0")
+LIB_SOURCE='.lib'
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 
 ### Load libraries(DO NOT CHANGE LOAD ORDER)
@@ -24,7 +24,7 @@ LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 BASE_DIR=$(_ppt_realpath ${BASE_DIR})
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 
-### Load Version
+### Set Version
 PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 
 ### Configure color
@@ -64,6 +64,7 @@ _ppt_check_if_dir_exists ${_PPT_SETTINGS_DIR}
 if [ $? -eq ${PPT_TRUE} ]
 then
     _ppt_settings_dir_is_consistent && _ppt_dark "Found saved settings" || _ppt_fatal "Saved settings are inconsistent."
+    _ppt_load_values
     ### Read data from '.settings' dir
 else
     _ppt_dark "Saved settings not found"
@@ -81,6 +82,7 @@ fi
 _ppt_set_terminal_title "$(basename $(pwd))"
 
 ### Debug code
+_ppt_show_messages
 #_ppt_echo_variables
 #echo ${__ppt_ansi_dark}
 #cat LICENSE
