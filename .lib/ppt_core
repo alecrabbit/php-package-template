@@ -180,5 +180,5 @@ _ppt_settings_dir_is_consistent () {
 }
 
 _ppt_capitalize_every_word () {
-    echo "$@" | sed -r 's/\<./\U&/g'
+    echo "$@" | sed -f "${LIB_DIR}/capitalize.sed"
 }
