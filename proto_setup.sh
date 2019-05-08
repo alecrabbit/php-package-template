@@ -42,8 +42,9 @@ then
 fi
 
 ### Declare variables
-_ppt_declare_variables_defaults "${__ppt_param1}" "${__ppt_param2}" "${__ppt_param3}"
-unset  __ppt_param1 __ppt_param2 __ppt_param3
+_ppt_declare_variables_defaults "${__ppt_param1}" "${__ppt_param2}" "${__ppt_param3}" "${__ppt_param4}"
+__ppt_use_empty_owner_namespace=${__ppt_param5}
+unset  __ppt_param1 __ppt_param2 __ppt_param3 __ppt_param4 __ppt_param5
 
 ### Check if user is 'root'
 _ppt_check_user
@@ -54,10 +55,14 @@ _ppt_dark "Version ${PPT_VERSION}"
 
 ### Set terminal title
 _ppt_set_terminal_title "🧰 Setup script..."
+if [ ${__ppt_use_empty_owner_namespace} -eq ${PPT_TRUE} ]
+then
+    _ppt_package_owner_namespace=""
+fi
+unset  __ppt_use_empty_owner_namespace
 
 ### Check if '.settings' dir exists and is consistent
-_ppt_check_if_dir_exists ${_PPT_SETTINGS_DIR}
-if [ $? -eq ${PPT_TRUE} ]
+if _ppt_check_if_dir_exists ${_PPT_SETTINGS_DIR}
 then
     _ppt_settings_dir_is_consistent && _ppt_dark "Found saved settings" || _ppt_fatal "Saved settings are inconsistent."
     _ppt_load_values
@@ -76,6 +81,12 @@ _ppt_show_values
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
+
+if _ppt_check_git_user
+then
+    _ppt_debug "Git user configured"
+fi
+
 
 ### Debug code
 _ppt_show_messages

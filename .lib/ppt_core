@@ -206,3 +206,15 @@ _ppt_remove_prefix () {
 _ppt_remove_suffix () {
     echo "${2%${1}}"
 }
+
+_ppt_check_git_user () {
+    if [ -z "$(git config user.email)" ]
+    then
+        return ${PPT_FALSE}
+    fi
+    if [ -z "$(git config user.name)" ]
+    then
+        return ${PPT_FALSE}
+    fi
+    return ${PPT_TRUE}
+}

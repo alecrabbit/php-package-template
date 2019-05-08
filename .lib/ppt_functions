@@ -10,6 +10,8 @@ _ppt_help_message () {
     echo "    -p name            - package name"
     echo "    -o owner           - package owner"
     echo "    -n name            - package owner name"
+    echo "    -s namespace       - package owner namespace"
+    echo "    -x                 - do not use package owner namespace"
     exit 0
 }
 
@@ -99,16 +101,6 @@ __ppt_ask_question () {
     unset __ppt_answer
     return ${PPT_FALSE}
 }
-#__ppt_ask_question () {
-#    while true; do
-#        read -p "${1} " yn
-#        case $yn in
-#            [Yy]* ) return ${PPT_TRUE}; break;;
-#            [Nn]* ) return ${PPT_FALSE};;
-#            * ) echo "Please answer yes or no.";;
-#        esac
-#    done
-#}
 
 _ppt_read_value () {
     __ppt_value_name=${1}

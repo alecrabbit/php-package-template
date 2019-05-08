@@ -38,7 +38,7 @@ _ppt_declare_variables_defaults() {
     _ppt_package_name="new-package"
     _ppt_package_description="Awesome description"
     _ppt_package_namespace="Package"
-    _ppt_package_owner_namespace="MikeWazowski"
+    _ppt_package_owner_namespace=""
     _ppt_package_dir="php-new-package"
 
     # Values
@@ -94,7 +94,7 @@ _ppt_reassign_variables_with_args () {
     _ppt_param_package_name="${1:-}"
     _ppt_param_owner="${2:-}"
     _ppt_param_owner_name="${3:-}"
-
+    _ppt_param_owner_namespace="${4:-}"
     if [ ! -z "${_ppt_param_owner}" ]
     then
         _ppt_package_owner=${_ppt_param_owner}
@@ -107,7 +107,11 @@ _ppt_reassign_variables_with_args () {
     then
         _ppt_package_owner_name=${_ppt_param_owner_name}
     fi
-    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
+    if [ ! -z "${_ppt_param_owner_namespace}" ]
+    then
+        _ppt_package_owner_namespace=${_ppt_param_owner_namespace}
+    fi
+    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name _ppt_param_owner_namespace
  }
 _ppt_color_cyan () {
    echo "${__ppt_ansi_cyan}${1}${__ppt_ansi_none}"
@@ -116,11 +120,17 @@ _ppt_color_bold_cyan () {
    echo "${__ppt_ansi_bold_cyan}${1}${__ppt_ansi_none}"
 }
 _ppt_show_values () {
+    __separator=""
+    if [ ${_ppt_package_owner_namespace} != "" ]
+    then
+        __separator='\\'
+    fi
     _ppt_print "Name: $(_ppt_color_bold_cyan "${_ppt_package_owner_name}")"
     _ppt_print "Package: $(_ppt_color_bold_cyan "${_ppt_package_owner}/${_ppt_package_name}")"
     _ppt_print "Description: $(_ppt_color_bold_cyan "${_ppt_package_description}")"
-    _ppt_print "Namespace: $(_ppt_color_bold_cyan "${_ppt_package_owner_namespace}${_ppt_package_namespace}")"
+    _ppt_print "Namespace: $(_ppt_color_bold_cyan "${_ppt_package_owner_namespace}${__separator}${_ppt_package_namespace}")"
     _ppt_print "Directory: $(_ppt_color_bold_cyan "${_ppt_package_dir}")"
+    unset __separator
 }
 
 _ppt_echo_variables () {
@@ -169,9 +179,11 @@ _ppt_read_options () {
     __ppt_param1=""
     __ppt_param2=""
     __ppt_param3=""
+    __ppt_param4=""
+    __ppt_param5=${PPT_FALSE}
 
     ### Read options
-    while getopts "yp:o:n:h" OPTION; do
+    while getopts "yp:o:n:s:xh" OPTION; do
             case ${OPTION} in
                     y)
                         _ppt_silent_setup=${PPT_TRUE}
@@ -184,6 +196,12 @@ _ppt_read_options () {
                         ;;
                     n)
                         __ppt_param3="${OPTARG:-}"
+                        ;;
+                    s)
+                        __ppt_param4="${OPTARG:-}"
+                        ;;
+                    x)
+                        __ppt_param5=${PPT_TRUE}
                         ;;
                     h)
                         _ppt_help_message
