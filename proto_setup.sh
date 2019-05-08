@@ -69,6 +69,8 @@ then
 else
     _ppt_dark "Saved settings not found"
     ### Ask user for data
+    _ppt_ask_values
+
     ### Save data to '.settings' dir
 fi
 

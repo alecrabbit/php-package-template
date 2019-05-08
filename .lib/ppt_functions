@@ -11,6 +11,57 @@ _ppt_help_message () {
     exit 0
 }
 
+_ppt_realpath ()
+{
+    if [ -x "$(command -v realpath)" ]
+    then
+        echo "$(realpath ${1})"
+    else
+        ppt_path_=${1}
+
+        # prepend current directory to relative paths
+        echo "${ppt_path_}" |grep '^/' >/dev/null 2>&1 \
+            || ppt_path_="${PWD}/${ppt_path_}"
+
+        # clean up the path. if all seds supported true regular expressions, then
+        # this is what it would be:
+        ppt_old_=${ppt_path_}
+        while true; do
+            ppt_new_=`echo "${ppt_old_}" | sed 's/[^/]*\/\.\.\/*//;s/\/\.\//\//'`
+            [ "${ppt_old_}" = "${ppt_new_}" ] && break
+            ppt_old_=${ppt_new_}
+        done
+        echo "${ppt_new_}"
+
+        unset ppt_path_ ppt_old_ ppt_new_
+    fi
+}
+
+_ppt_has_docker ()
+{
+    if [ ! -x "$(command -v docker)" ]
+    then
+        return ${PPT_FALSE}
+    fi
+    return ${PPT_TRUE}
+}
+
+_ppt_has_docker_compose ()
+{
+    if [ ! -x "$(command -v docker-compose)" ]
+    then
+        return ${PPT_FALSE}
+    fi
+    return ${PPT_TRUE}
+}
+
+_ppt_ask_values () {
+    __ppt_ask_question "Are you ready?"
+    if [ $? -eq ${PPT_TRUE} ]
+    then
+        _ppt_info "OK"
+    fi
+}
 
 #add_origin () {
 #    param_package_owner="$1"
@@ -27,12 +78,31 @@ _ppt_help_message () {
 #    fi
 #}
 #
-#ask_question () {
-#    read -p "$(dark "Timeout 10 seconds...") ${1} " -n 1 -r -t 10
-#    echo
-#    if [[ $REPLY =~ ^[Yy]$ ]]
-#    then
-#        return 1
-#    fi
-#    return 0
+__ppt_ask_question () {
+    printf "${1} [y/n] "
+    __ppt_old_stty_cfg=$(stty -g)
+    stty raw -echo
+#    __ppt_answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )  # only yn accepted
+    __ppt_answer=$(head -c 1)  # anything accepted
+    stty ${__ppt_old_stty_cfg}
+    unset __ppt_old_stty_cfg
+    echo
+    if echo "$__ppt_answer" | grep -iq "^y" ;then
+        unset __ppt_answer
+        return ${PPT_TRUE}
+    fi
+    unset __ppt_answer
+    return ${PPT_FALSE}
+}
+#__ppt_ask_question () {
+#    while true; do
+#        read -p "${1} " yn
+#        case $yn in
+#            [Yy]* ) return ${PPT_TRUE}; break;;
+#            [Nn]* ) return ${PPT_FALSE};;
+#            * ) echo "Please answer yes or no.";;
+#        esac
+#    done
 #}
+
+
