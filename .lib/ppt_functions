@@ -56,11 +56,17 @@ _ppt_has_docker_compose ()
 }
 
 _ppt_ask_values () {
-    __ppt_ask_question "Are you ready?"
-    if [ $? -eq ${PPT_TRUE} ]
-    then
-        _ppt_info "OK"
-    fi
+    package_owner_name=$(_ppt_read_value "package owner name" "000")
+    echo ${package_owner_name}
+    package_owner_name=$(_ppt_read_value "package owner name" "111" "Used in LICENSE file")
+    echo ${package_owner_name}
+    package_owner_name=$(_ppt_read_value "package owner name" "222" "Used in LICENSE file" "Notice!")
+    echo ${package_owner_name}
+#    __ppt_ask_question "Are you ready?"
+#    if [ $? -eq ${PPT_TRUE} ]
+#    then
+#        _ppt_info "OK"
+#    fi
 }
 
 #add_origin () {
@@ -105,4 +111,25 @@ __ppt_ask_question () {
 #    done
 #}
 
+_ppt_read_value () {
+    __ppt_value_name=${1}
+    __ppt_result=${2}
+    __ppt_comment=${3:-}
+    __ppt_notice=${4:-}
+    __ppt_space=" "
+
+    if [ ! -z "${__ppt_notice}" ]
+    then
+        __ppt_notice=$(printf "${__ppt_ansi_bold_yellow}${__ppt_notice}${__ppt_ansi_none}\n ")
+        __ppt_space=""
+    fi
+    if [ ! -z "${__ppt_comment}" ]
+    then
+        __ppt_comment=$(printf "${__ppt_ansi_dark}(${__ppt_comment})${__ppt_ansi_none}\n ")
+    fi
+    __ppt_question=$(printf "${__ppt_space}Enter ${__ppt_value_name}:\n ")
+    read -p "${__ppt_notice}${__ppt_question}${__ppt_comment}[${__ppt_result}] " __ppt_input
+    echo "${__ppt_input:-$__ppt_result}"
+    unset __ppt_value_name __ppt_question __ppt_comment __ppt_result __ppt_notice __ppt_input __ppt_space
+}
 
