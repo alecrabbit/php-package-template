@@ -62,20 +62,20 @@ _ppt_show_accepted_value () {
     _ppt_print ""
 }
 _ppt_ask_values () {
-    package_name=$(_ppt_read_value "package name" "${package_name}" "" "It should be unique among your packages!")
-    _ppt_show_accepted_value "${package_name}"
-    package_owner=$(_ppt_read_value "package owner" "${package_owner}" "Used in composer.json line: \"name\": \"owner/name\")")
-    _ppt_show_accepted_value "${package_owner}"
-    package_owner_name=$(_ppt_read_value "package owner name" "${package_owner_name}" "Used in LICENSE file")
-    _ppt_show_accepted_value "${package_owner_name}"
-    package_description=$(_ppt_read_value "package description" "${package_description}" "Used in composer.json line: \"description\": \"Your awesome description\"")
-    _ppt_show_accepted_value "${package_description}"
-    package_namespace=$(_ppt_read_value "package namespace" "${package_namespace}")
-    _ppt_show_accepted_value "${package_namespace}"
-    package_owner_namespace=$(_ppt_read_value "package owner namespace" "${package_owner_namespace}")
-    _ppt_show_accepted_value "${package_owner_namespace}"
-    package_dir=$(_ppt_read_value "package dir" "${package_dir}" "" "It should be new non-existent yet dir name!")
-    _ppt_show_accepted_value "${package_dir}"
+    _ppt_package_name=$(_ppt_read_value "package name" "${_ppt_package_name}" "" "It should be unique among your packages!")
+    _ppt_show_accepted_value "${_ppt_package_name}"
+    _ppt_package_owner=$(_ppt_read_value "package owner" "${_ppt_package_owner}" "Used in composer.json line: \"name\": \"owner/name\")")
+    _ppt_show_accepted_value "${_ppt_package_owner}"
+    _ppt_package_owner_name=$(_ppt_read_value "package owner name" "${_ppt_package_owner_name}" "Used in LICENSE file")
+    _ppt_show_accepted_value "${_ppt_package_owner_name}"
+    _ppt_package_description=$(_ppt_read_value "package description" "${_ppt_package_description}" "Used in composer.json line: \"description\": \"Your awesome description\"")
+    _ppt_show_accepted_value "${_ppt_package_description}"
+    _ppt_package_namespace=$(_ppt_read_value "package namespace" "${_ppt_package_namespace}")
+    _ppt_show_accepted_value "${_ppt_package_namespace}"
+    _ppt_package_owner_namespace=$(_ppt_read_value "package owner namespace" "${_ppt_package_owner_namespace}")
+    _ppt_show_accepted_value "${_ppt_package_owner_namespace}"
+    _ppt_package_dir=$(_ppt_read_value "package dir" "${_ppt_package_dir}" "" "It should be new non-existent yet dir name!")
+    _ppt_show_accepted_value "${_ppt_package_dir}"
 
 #    if __ppt_ask_question "Are you ready?"
 #    then

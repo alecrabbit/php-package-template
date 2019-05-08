@@ -33,13 +33,13 @@ _ppt_declare_variables_defaults() {
     _ppt_param_owner_name=""
 
     # Settings defaults
-    package_owner="mike-wazowski"
-    package_owner_name="Mike Wazowski"
-    package_name="new-package"
-    package_description="Awesome description"
-    package_namespace="Package"
-    package_owner_namespace="MikeWazowski"
-    package_dir="php-new-package"
+    _ppt_package_owner="mike-wazowski"
+    _ppt_package_owner_name="Mike Wazowski"
+    _ppt_package_name="new-package"
+    _ppt_package_description="Awesome description"
+    _ppt_package_namespace="Package"
+    _ppt_package_owner_namespace="MikeWazowski"
+    _ppt_package_dir="php-new-package"
 
     # Values
     current_dir="$(basename $(pwd))"
@@ -78,13 +78,13 @@ _ppt_load_defaults () {
     _ppt_debug "PPT_PACKAGE_DIR: ${PPT_PACKAGE_DIR}"
 
     # Settings defaults
-    package_owner=${PPT_PACKAGE_OWNER:-$package_owner}
-    package_owner_name=${PPT_PACKAGE_OWNER_NAME:-$package_owner_name}
-    package_name=${PPT_PACKAGE_NAME:-$package_name}
-    package_description=${PPT_PACKAGE_DESCRIPTION:-$package_description}
-    package_namespace=${PPT_PACKAGE_NAMESPACE:-$package_namespace}
-    package_owner_namespace=${PPT_PACKAGE_OWNER_NAMESPACE:-$package_owner_namespace}
-    package_dir=${PPT_PACKAGE_DIR:-$package_dir}
+    _ppt_package_owner=${PPT_PACKAGE_OWNER:-$_ppt_package_owner}
+    _ppt_package_owner_name=${PPT_PACKAGE_OWNER_NAME:-$_ppt_package_owner_name}
+    _ppt_package_name=${PPT_PACKAGE_NAME:-$_ppt_package_name}
+    _ppt_package_description=${PPT_PACKAGE_DESCRIPTION:-$_ppt_package_description}
+    _ppt_package_namespace=${PPT_PACKAGE_NAMESPACE:-$_ppt_package_namespace}
+    _ppt_package_owner_namespace=${PPT_PACKAGE_OWNER_NAMESPACE:-$_ppt_package_owner_namespace}
+    _ppt_package_dir=${PPT_PACKAGE_DIR:-$_ppt_package_dir}
 
     unset PPT_PACKAGE_OWNER PPT_PACKAGE_OWNER_NAME PPT_PACKAGE_NAME PPT_PACKAGE_DESCRIPTION PPT_PACKAGE_NAMESPACE PPT_PACKAGE_OWNER_NAMESPACE PPT_PACKAGE_DIR
 }
@@ -97,17 +97,17 @@ _ppt_reassign_variables_with_args () {
 
     if [ ! -z "${_ppt_param_owner}" ]
     then
-        package_owner=${_ppt_param_owner}
+        _ppt_package_owner=${_ppt_param_owner}
     fi
     if [ ! -z "${_ppt_param_package_name}" ]
     then
-        package_name=${_ppt_param_package_name}
+        _ppt_package_name=${_ppt_param_package_name}
     fi
     if [ ! -z "${_ppt_param_owner_name}" ]
     then
-        package_owner_name=${_ppt_param_owner_name}
+        _ppt_package_owner_name=${_ppt_param_owner_name}
     fi
-#    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
+    unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name
  }
 _ppt_color_cyan () {
    echo "${__ppt_ansi_cyan}${1}${__ppt_ansi_none}"
@@ -116,15 +116,15 @@ _ppt_color_bold_cyan () {
    echo "${__ppt_ansi_bold_cyan}${1}${__ppt_ansi_none}"
 }
 _ppt_show_values () {
-    _ppt_print "Name: $(_ppt_color_bold_cyan "${package_owner_name}")"
-    _ppt_print "Package: $(_ppt_color_bold_cyan "${package_owner}/${package_name}")"
-    _ppt_print "Description: $(_ppt_color_bold_cyan "${package_description}")"
-    _ppt_print "Namespace: $(_ppt_color_bold_cyan "${package_owner_namespace}${package_namespace}")"
-    _ppt_print "Directory: $(_ppt_color_bold_cyan "${package_dir}")"
+    _ppt_print "Name: $(_ppt_color_bold_cyan "${_ppt_package_owner_name}")"
+    _ppt_print "Package: $(_ppt_color_bold_cyan "${_ppt_package_owner}/${_ppt_package_name}")"
+    _ppt_print "Description: $(_ppt_color_bold_cyan "${_ppt_package_description}")"
+    _ppt_print "Namespace: $(_ppt_color_bold_cyan "${_ppt_package_owner_namespace}${_ppt_package_namespace}")"
+    _ppt_print "Directory: $(_ppt_color_bold_cyan "${_ppt_package_dir}")"
 }
 
 _ppt_echo_variables () {
-    echo "param_package_name: '${_ppt_param_package_name}'"
+    echo "param__ppt_package_name: '${_ppt_param_package_name}'"
     echo "param_owner: '${_ppt_param_owner}'"
     echo "param_owner_name: '${_ppt_param_owner_name}'"
     echo "_ppt_continue_setup: '${_ppt_continue_setup}'"
@@ -133,7 +133,6 @@ _ppt_echo_variables () {
     echo "_ppt_do_add_origin: '${_ppt_do_add_origin}'"
     echo "_ppt_vcs_service: '${_ppt_vcs_service}'"
     echo "current_dir: '${current_dir}'"
-    _ppt_show_values
 }
 
 _ppt_show_messages () {
@@ -150,7 +149,9 @@ _ppt_show_messages () {
         _ppt_error "NO docker-compose"
     fi
 
-#    _ppt_print $(_ppt_capitalize_every_word ${_ppt_param_owner_name})
+    _ppt_print "${_ppt_package_owner_name} -> $(_ppt_capitalize_every_word "${_ppt_package_owner_name}")"
+
+    _ppt_show_values
 
     _ppt_dark "dark sample message"
     _ppt_notice "notice sample message"
@@ -159,7 +160,6 @@ _ppt_show_messages () {
     _ppt_warn "warning sample message"
     _ppt_error "error sample message"
 
-    _ppt_echo_variables
 
     ### Fatal message and exit!
     _ppt_fatal "fatal sample message"
