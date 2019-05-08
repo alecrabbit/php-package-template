@@ -30,21 +30,6 @@ PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
-if [ ${PPT_DEBUG} -eq 1 ]
-then
-    _ppt_notice "DEBUG Enabled"
-fi
-
-### Check if user is 'root'
-_ppt_check_user
-
-### Greeting
-_ppt_info "🔧 Package template setup..."
-_ppt_dark "Version ${PPT_VERSION}"
-
-### Declare variables
-_ppt_declare_variables_defaults "$@"
-
 ### Check arguments
 for arg
 do
@@ -57,6 +42,26 @@ do
             ;;
     esac
 done
+
+
+if [ ${PPT_DEBUG} -eq 1 ]
+then
+    _ppt_notice "DEBUG Enabled"
+fi
+if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
+then
+    _ppt_debug "No confirmation needed"
+fi
+
+### Check if user is 'root'
+_ppt_check_user
+
+### Declare variables
+_ppt_declare_variables_defaults "$@"
+
+### Greeting
+_ppt_info "🔧 Package template setup..."
+_ppt_dark "Version ${PPT_VERSION}"
 
 ### Set terminal title
 _ppt_set_terminal_title "🧰 Setup script..."
@@ -77,10 +82,6 @@ else
 fi
 
 ### Make setup here
-if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
-then
-    _ppt_info "No confirmation needed"
-fi
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
