@@ -19,7 +19,14 @@ _ppt_realpath ()
 {
     if _ppt_check_command "realpath"
     then
-        echo "$(realpath ${1})"
+        ppt_new_="$(realpath ${1} 2>&1)"
+#        ppt_new_="$(realpath ${1} 2> /dev/null)"
+        _ppt_debug "${ppt_new_}"
+        if [ $? -ne ${PPT_TRUE} ]
+        then
+            return ${PPT_ERROR}
+        fi
+        echo "${ppt_new_}"
     else
         ppt_path_=${1}
 
@@ -272,35 +279,4 @@ $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_pack
     _ppt_comment "Saved '${PPT_BASIC_TEST_PHP_FILE}'"
 
     unset __separator
-}
-
-_ppt_create_dir () {
-    __dir="${1}"
-    _ppt_debug "Create: checking dir '$(_ppt_realpath ${__dir})'"
-    if _ppt_check_if_dir_exists "${__dir}"
-    then
-        _ppt_warn "Directory '${__dir}' already exists"
-    else
-        _ppt_debug "Creating directory '${__dir}'"
-        mkdir -p ${__dir}
-    fi
-    unset __dir
-}
-
-_ppt_remove_dir () {
-    __dir="${1}"
-    _ppt_debug "Remove: checking dir '$(_ppt_realpath ${__dir})'"
-    if _ppt_check_if_dir_exists "${__dir}"
-    then
-        _ppt_debug "Removing directory '${__dir}'"
-        rm -r ${__dir}
-        if [ $? -ne ${PPT_TRUE} ]; then
-            _ppt_warn "Unable to remove dir"
-            _ppt_comment "Dir: '$(_ppt_realpath ${__dir})'"
-            _ppt_comment "Remove manually"
-        fi
-    else
-        _ppt_debug "Directory '${__dir}' not exists"
-    fi
-    unset __dir
 }

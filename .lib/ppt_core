@@ -199,3 +199,35 @@ _ppt_check_git_user () {
     fi
     return ${PPT_TRUE}
 }
+
+
+_ppt_create_dir () {
+    __dir="${1}"
+    _ppt_debug "Create: checking dir '${__dir}'"
+    if _ppt_check_if_dir_exists "${__dir}"
+    then
+        _ppt_warn "Directory '${__dir}' already exists"
+    else
+        _ppt_debug "Creating directory '${__dir}'"
+        mkdir -p ${__dir}
+    fi
+    unset __dir
+}
+
+_ppt_remove_dir () {
+    __dir="${1}"
+    _ppt_debug "Remove: checking dir '${__dir}'"
+    if _ppt_check_if_dir_exists "${__dir}"
+    then
+        _ppt_debug "Removing directory '${__dir}'"
+        rm -r ${__dir}
+        if [ $? -ne ${PPT_TRUE} ]; then
+            _ppt_warn "Unable to remove dir"
+            _ppt_comment "Dir: '${__dir}'"
+            _ppt_comment "Remove manually"
+        fi
+    else
+        _ppt_debug "Directory '${__dir}' not exists"
+    fi
+    unset __dir
+}
