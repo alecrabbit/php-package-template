@@ -24,9 +24,6 @@ PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
 ### Configure color
 _ppt_configureColor ${PPT_COLOR}
 
-### Read options
-_ppt_read_options "$@"
-
 ### Reassign directories using realpath
 BASE_DIR=$(_ppt_realpath ${BASE_DIR})
 LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
@@ -36,10 +33,9 @@ then
     _ppt_notice "DEBUG Enabled"
 fi
 _ppt_debug "Filename '${BASE_FILENAME}'"
-if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
-then
-    _ppt_debug "Option '-y' used: no confirmation needed"
-fi
+
+### Read options
+_ppt_read_options "$@"
 
 ### Declare variables
 _ppt_declare_variables_defaults "${__ppt_param1}" "${__ppt_param2}" "${__ppt_param3}" "${__ppt_param4}"
@@ -69,10 +65,15 @@ then
     ### Read data from '.settings' dir
 else
     _ppt_debug "Package settings not found"
-    ### Ask user for data
-    _ppt_ask_values
+    if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
+    then
+        _ppt_debug "Option '-y' used: no confirmation needed"
+        ### Ask user for data
+        _ppt_ask_values
+    fi
 
     ### Save data to '.settings' dir
+    _ppt_save_values
 fi
 
 _ppt_show_values

@@ -7,6 +7,7 @@ PPT_SETTINGS_DEFAULTS="${LIB_DIR}/${PPT_SETTINGS_FILENAME}"
 _PPT_SETTINGS_DIR=".settings";
 _PPT_TEMPLATES_DIR=".templates";
 
+_SETTINGS_FILE="settings.env"
 _COMPOSER_JSON="composer.json"
 _CHANGELOG_MD="CHANGELOG.md"
 _README_MD="README.md"
@@ -51,8 +52,9 @@ _ppt_declare_variables_defaults() {
 
 _ppt_load_defaults_files () {
     _ppt_load_defaults_file ${PPT_GLOBAL_SETTINGS_DEFAULTS} ||
-     _ppt_load_defaults_file ${PPT_SETTINGS_DEFAULTS}
+    _ppt_load_defaults_file ${PPT_SETTINGS_DEFAULTS}
 }
+
 _ppt_load_defaults_file () {
     _ppt_debug "Searching settings: '${1}'"
     if [ -e ${1} ]
@@ -121,7 +123,7 @@ _ppt_color_bold_cyan () {
 }
 _ppt_show_values () {
     __separator=""
-    if [ ${_ppt_package_owner_namespace} != "" ]
+    if [ ! ${_ppt_package_owner_namespace} = "" ]
     then
         __separator='\\'
     fi
@@ -187,23 +189,30 @@ _ppt_read_options () {
             case ${OPTION} in
                     y)
                         _ppt_silent_setup=${PPT_TRUE}
+                        _ppt_debug "Option '-y': no confirmation needed"
                         ;;
                     p)
                         __ppt_param1="${OPTARG:-}"
+                        _ppt_debug "Option '-p': package name set [${__ppt_param1}]"
                         ;;
                     o)
                         __ppt_param2="${OPTARG:-}"
+                        _ppt_debug "Option '-o': package owner set [${__ppt_param2}]"
                         ;;
                     n)
                         __ppt_param3="${OPTARG:-}"
+                        _ppt_debug "Option '-n': package owner name set [${__ppt_param3}]"
                         ;;
                     s)
                         __ppt_param4="${OPTARG:-}"
+                        _ppt_debug "Option '-s': package owner namespace set [${__ppt_param4}]"
                         ;;
                     x)
                         __ppt_param5=${PPT_TRUE}
+                        _ppt_debug "Option '-x': do not use package owner namespace"
                         ;;
                     h)
+                        _ppt_debug "Option '-h': show help message"
                         _ppt_help_message
                         ;;
 

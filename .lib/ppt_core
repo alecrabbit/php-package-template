@@ -162,23 +162,6 @@ _ppt_check_if_dir_exists  () {
     return ${PPT_FALSE}
 }
 
-_ppt_settings_dir_is_consistent () {
-    __PPT_FILES=""
-    __PPT_FILES="${__PPT_FILES} ${_COMPOSER_JSON}"
-    __PPT_FILES="${__PPT_FILES} ${_CHANGELOG_MD}"
-    __PPT_FILES="${__PPT_FILES} ${_README_MD}"
-    for __FILE in ${__PPT_FILES}; do
-        if [ ! -e "${_PPT_SETTINGS_DIR}/${__FILE}" ]
-        then
-            _ppt_dark "Not found: ${_PPT_SETTINGS_DIR}/${__FILE}"
-            unset __PPT_FILES __FILE
-            return ${PPT_FALSE}
-        fi
-    done
-    unset __PPT_FILES __FILE
-    return ${PPT_TRUE}
-}
-
 _ppt_capitalize_every_word () {
     echo "$@" | sed -f "${LIB_DIR}/capitalize.sed"
 }

@@ -11,7 +11,7 @@ _ppt_help_message () {
     echo "    -o owner           - package owner"
     echo "    -n name            - package owner name"
     echo "    -s namespace       - package owner namespace"
-    echo "    -x                 - do not use package owner namespace"
+    echo "    -x                 - do not use package owner namespace, overrides '-s' option"
     exit 0
 }
 
@@ -85,6 +85,28 @@ _ppt_ask_values () {
 #    fi
 }
 
+_ppt_save_values () {
+    _ppt_debug "Saving settings"
+    __dir=$(_ppt_realpath ${_PPT_SETTINGS_DIR})
+    if [ -d ${__dir} ]
+    then
+        _ppt_error "Directory '${__dir}' exists"
+    else
+        _ppt_info "Creating directory '${_PPT_SETTINGS_DIR}'"
+        _ppt_debug "Full path '${__dir}'"
+        mkdir -p ${__dir}
+    fi
+
+    echo "PPT_PACKAGE_OWNER=\"${_ppt_package_owner}\"
+PPT_PACKAGE_OWNER_NAME=\"${_ppt_package_owner_name}\"
+PPT_PACKAGE_NAME=\"${_ppt_package_name}\"
+PPT_PACKAGE_DESCRIPTION=\"${_ppt_package_description}\"
+PPT_PACKAGE_NAMESPACE=\"${_ppt_package_namespace}\"
+PPT_PACKAGE_OWNER_NAMESPACE=\"${_ppt_package_owner_namespace}\"
+PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"
+" > "${__dir}/${_SETTINGS_FILE}"
+}
+
 __ppt_ask_question () {
     printf "${1} [y/n] "
     __ppt_old_stty_cfg=$(stty -g)
@@ -125,3 +147,22 @@ _ppt_read_value () {
     echo "${__ppt_input:-$__ppt_result}"
     unset __ppt_value_name __ppt_question __ppt_comment __ppt_result __ppt_notice __ppt_input __ppt_space
 }
+
+_ppt_settings_dir_is_consistent () {
+    __PPT_FILES=""
+    __PPT_FILES="${__PPT_FILES} ${_SETTINGS_FILE}"
+    __PPT_FILES="${__PPT_FILES} ${_COMPOSER_JSON}"
+    __PPT_FILES="${__PPT_FILES} ${_CHANGELOG_MD}"
+    __PPT_FILES="${__PPT_FILES} ${_README_MD}"
+    for __FILE in ${__PPT_FILES}; do
+        if [ ! -e "${_PPT_SETTINGS_DIR}/${__FILE}" ]
+        then
+            _ppt_dark "Not found: ${_PPT_SETTINGS_DIR}/${__FILE}"
+            unset __PPT_FILES __FILE
+            return ${PPT_FALSE}
+        fi
+    done
+    unset __PPT_FILES __FILE
+    return ${PPT_TRUE}
+}
+
