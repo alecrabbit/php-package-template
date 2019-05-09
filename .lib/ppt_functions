@@ -102,7 +102,8 @@ _ppt_refine_package_name () {
 }
 
 _ppt_prepare_package_dir () {
-    _ppt_package_dir="${PPT_PACKAGE_DIR_PREFIX}$(_ppt_remove_prefix "${PPT_PACKAGE_DIR_PREFIX}" "${_ppt_package_name}")"
+    _ppt_package_dir="$(_ppt_remove_suffix "${PPT_PACKAGE_DIR_SUFFIX}" "${_ppt_package_name}")"
+    _ppt_package_dir="${PPT_PACKAGE_DIR_PREFIX}$(_ppt_remove_prefix "${PPT_PACKAGE_DIR_PREFIX}" "${_ppt_package_dir}")${PPT_PACKAGE_DIR_SUFFIX}"
 }
 
 _ppt_refine_package_owner () {
