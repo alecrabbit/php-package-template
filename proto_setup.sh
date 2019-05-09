@@ -60,7 +60,7 @@ unset  __ppt_use_empty_owner_namespace
 ### Check if '.settings' dir exists and is consistent
 if _ppt_check_if_dir_exists ${_PPT_SETTINGS_DIR}
 then
-    _ppt_settings_dir_is_consistent && _ppt_dark "Found saved settings" || _ppt_fatal "Saved settings are inconsistent."
+    _ppt_settings_dir_is_consistent || _ppt_fatal "Saved settings are inconsistent."
     _ppt_load_values
     ### Read data from '.settings' dir
 else

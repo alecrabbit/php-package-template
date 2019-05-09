@@ -110,6 +110,7 @@ PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${__dir}/${_SETTINGS_FILE}"
 
 _ppt_load_values() {
     __dir=$(_ppt_realpath ${_PPT_SETTINGS_DIR})
+    _ppt_dark "Found saved settings: '${__dir}/${_SETTINGS_FILE}'"
     . "${__dir}/${_SETTINGS_FILE}"
     _ppt_package_owner=${PPT_PACKAGE_OWNER}
     _ppt_package_owner_name=${PPT_PACKAGE_OWNER_NAME}
@@ -182,7 +183,13 @@ _ppt_settings_dir_is_consistent () {
 }
 
 _ppt_create_files_from_templates() {
-    _ppt_prepare_dir "${_PPT_RESULTS_DIR}"
+    _ppt_debug "Preparing and writing results"
+    # Remove old results
+    _ppt_remove_dir "${_PPT_RESULTS_DIR}"
+    # Prepare dir
+    _ppt_create_dir "${_PPT_RESULTS_DIR}"
+    _ppt_create_dir "${_PPT_GITHUB_DIR}"
+    _ppt_debug "Writing files"
     # Saving .env
     __ppt_user="$(whoami)"
 
@@ -219,17 +226,50 @@ $(sed "s/PACKAGE_OWNER/${_ppt_package_owner}/g; s/PACKAGE_NAME/${_ppt_package_na
 $(sed "s/PACKAGE_OWNER/${_ppt_package_owner}/g; s/PACKAGE_NAME/${_ppt_package_name}/g; s/PACKAGE_DESCRIPTION/${_ppt_package_description}/g;" ${PPT_README_MD_TEMPLATE} | tee "${PPT_README_MD_FILE}")"
     _ppt_comment "Saved '${PPT_README_MD_FILE}'"
 
+    # Saving .github/ISSUE_TEMPLATE.md
+    _ppt_debug "Contents of '${PPT_ISSUE_TEMPLATE_MD_FILE}':
+$(sed "s/PACKAGE_OWNER/${_ppt_package_owner}/g;" ${PPT_ISSUE_TEMPLATE_MD_TEMPLATE} | tee "${PPT_ISSUE_TEMPLATE_MD_FILE}")"
+    _ppt_comment "Saved '${PPT_ISSUE_TEMPLATE_MD_FILE}'"
+
+    # Saving LICENSE
+    _ppt_debug "Contents of '${PPT_LICENSE_FILE}':
+$(sed "s/__YEAR/$(date +%Y)/g; s/PACKAGE_OWNER_NAME/${_ppt_package_owner_name}/g;" ${PPT_LICENSE_TEMPLATE} | tee "${PPT_LICENSE_FILE}")"
+    _ppt_comment "Saved '${PPT_LICENSE_FILE}'"
+
+    # Saving LICENSE
+    _ppt_debug "Contents of '${PPT_TITLE_FILE}':
+$(sed "s/PACKAGE_NAME/${_ppt_package_name}/g;" ${PPT_TITLE_TEMPLATE} | tee "${PPT_TITLE_FILE}")"
+    _ppt_comment "Saved '${PPT_TITLE_FILE}'"
+
 }
 
-_ppt_prepare_dir () {
+_ppt_create_dir () {
     __dir="${1}"
-    _ppt_debug "Preparing dir '$(_ppt_realpath ${__dir})'"
-    if [ -d ${__dir} ]
+    _ppt_debug "Create: checking dir '$(_ppt_realpath ${__dir})'"
+    if _ppt_check_if_dir_exists "${__dir}"
     then
-        _ppt_error "Directory '${__dir}' exists"
+        _ppt_warn "Directory '${__dir}' already exists"
     else
         _ppt_debug "Creating directory '${__dir}'"
-        mkdir ${__dir}
+        mkdir -p ${__dir}
+    fi
+    unset __dir
+}
+
+_ppt_remove_dir () {
+    __dir="${1}"
+    _ppt_debug "Remove: checking dir '$(_ppt_realpath ${__dir})'"
+    if _ppt_check_if_dir_exists "${__dir}"
+    then
+        _ppt_debug "Removing directory '${__dir}'"
+        rm -r ${__dir}
+        if [ $? -ne ${PPT_TRUE} ]; then
+            _ppt_warn "Unable to remove dir"
+            _ppt_comment "Dir: '$(_ppt_realpath ${__dir})'"
+            _ppt_comment "Remove manually"
+        fi
+    else
+        _ppt_debug "Directory '${__dir}' not exists"
     fi
     unset __dir
 }

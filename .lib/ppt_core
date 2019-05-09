@@ -130,10 +130,8 @@ _ppt_configureColor() {
 }
 
 _ppt_check_user () {
-    if [ $(whoami) = "root" ]
-    then
-        if [ ${PPT_ALLOW_ROOT} -eq 0 ]
-            then
+    if [ $(whoami) = "root" ]; then
+        if [ ${PPT_ALLOW_ROOT} -eq 0 ]; then
                 _ppt_fatal "DO NOT run this script under root!"
             fi
     fi
