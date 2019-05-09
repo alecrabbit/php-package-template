@@ -164,6 +164,14 @@ _ppt_capitalize_every_word () {
     echo "$@" | sed -f "${LIB_DIR}/capitalize.sed"
 }
 
+_ppt_lowercase () {
+    echo ${1} |tr '[:upper:]' '[:lower:]'
+}
+
+_ppt_uppercase () {
+    echo ${1} | tr '[:lower:]' '[:upper:]'
+}
+
 _ppt_remove_spaces () {
     echo ${1} | sed "s/ //g"
 }
