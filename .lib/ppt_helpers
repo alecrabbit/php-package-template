@@ -146,6 +146,11 @@ _ppt_reassign_variables_with_args () {
     then
         _ppt_package_owner_namespace=${_ppt_param_owner_namespace}
     fi
+    _ppt_refine_package_name
+    _ppt_refine_package_owner
+
+    _ppt_prepare_package_dir
+
     unset _ppt_param_package_name _ppt_param_owner _ppt_param_owner_name _ppt_param_owner_namespace
  }
 _ppt_color_cyan () {
