@@ -1,12 +1,12 @@
 - [ ] move `bin` to `scripts`
 - [ ] consistent message coloring
-- [ ] store settings in `.settings/.entered` file
 - [ ] add configurable package name prefix to `.defaults`
 - [ ] add configurable package name suffix to `.defaults`
 - [ ] add configurable dir prefix to `.defaults`
 - [ ] add configurable dir suffix to `.defaults`
 - [ ] add configurable `use owner namespace` option to `.defaults`
 ---
+- [x] store settings in `.settings/settings.env` file (0.3.0)
 - [x] store settings in `.settings` dir
 - [x] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
 - [x] move `Parameters ignored!` message closer to `Continue? y`

@@ -103,8 +103,7 @@ PPT_PACKAGE_NAME=\"${_ppt_package_name}\"
 PPT_PACKAGE_DESCRIPTION=\"${_ppt_package_description}\"
 PPT_PACKAGE_NAMESPACE=\"${_ppt_package_namespace}\"
 PPT_PACKAGE_OWNER_NAMESPACE=\"${_ppt_package_owner_namespace}\"
-PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"
-" > "${__dir}/${_SETTINGS_FILE}"
+PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${__dir}/${_SETTINGS_FILE}"
 }
 
 __ppt_ask_question () {
