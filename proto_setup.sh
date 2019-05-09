@@ -65,7 +65,7 @@ then
     ### Read data from '.settings' dir
 else
     _ppt_debug "Package settings not found"
-    _ppt_debug ${_ppt_silent_setup}
+    _ppt_debug "Silent setup option(0: TRUE, 1: FALSE): [${_ppt_silent_setup}]"
     if [ ${_ppt_silent_setup} -eq ${PPT_FALSE} ]
     then
         ### Ask user for data
