@@ -70,7 +70,7 @@ _ppt_declare_variables_defaults() {
     _ppt_package_owner_name="Mike Wazowski"
     _ppt_package_name="new-package"
     _ppt_package_description="Awesome description"
-    _ppt_package_namespace="Package"
+    _ppt_package_namespace="NewPackage"
     _ppt_package_owner_namespace=""
     _ppt_package_dir="php-new-package"
 
@@ -80,6 +80,7 @@ _ppt_declare_variables_defaults() {
     _ppt_load_defaults
 
     _ppt_reassign_variables_with_args "$@"
+    _ppt_package_namespace=$(_ppt_prepare_package_namespace "${_ppt_package_name}")
 }
 
 _ppt_load_defaults_files () {

@@ -110,7 +110,7 @@ else
     package_owner=${package_owner// /}
     package_owner=${package_owner,,}
     accepted_value "${package_owner}"
-    # Ask name
+    # Ask package name
     if [[ ! -z "$param_package_name" ]]
     then
         package_name="$param_package_name"

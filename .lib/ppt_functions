@@ -79,6 +79,7 @@ _ppt_ask_values () {
     _ppt_show_accepted_value "${_ppt_package_owner_name}"
     _ppt_package_description=$(_ppt_read_value "package description" "${_ppt_package_description}" "Used in composer.json line: \"description\": \"Your awesome description\"")
     _ppt_show_accepted_value "${_ppt_package_description}"
+    _ppt_package_namespace=$(_ppt_prepare_package_namespace "${_ppt_package_name}")
     _ppt_package_namespace=$(_ppt_read_value "package namespace" "${_ppt_package_namespace}")
     _ppt_show_accepted_value "${_ppt_package_namespace}"
     _ppt_package_owner_namespace=$(_ppt_read_value "package owner namespace" "${_ppt_package_owner_namespace}")
@@ -90,6 +91,15 @@ _ppt_ask_values () {
 #    then
 #        _ppt_info "OK"
 #    fi
+}
+
+_ppt_prepare_package_namespace () {
+    _ppt_debug "Preparing  package namespace"
+    __name=${1}
+    __name=$(_ppt_remove_symbols "-_" $(_ppt_capitalize_every_word $(_ppt_remove_prefix "${PPT_PACKAGE_DIR_PREFIX}" "${__name}")))
+    _ppt_debug "${__name}"
+    echo "${__name}"
+    unset __name
 }
 
 _ppt_save_values () {
