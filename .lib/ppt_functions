@@ -121,15 +121,14 @@ _ppt_prepare_package_namespace () {
 
 _ppt_save_values () {
     _ppt_debug "Saving settings"
-#    __dir="$(_ppt_realpath ${_PPT_SETTINGS_DIR})"
     _ppt_debug "Full path '$(_ppt_realpath ${_PPT_SETTINGS_DIR})'"
     __dir="${_PPT_SETTINGS_DIR}"
-    if [ -d ${__dir} ]
+    if [ -d "${__dir}" ]
     then
         _ppt_error "Directory '${__dir}' exists"
     else
-        _ppt_info "Creating directory '${_PPT_SETTINGS_DIR}'"
-        mkdir -p ${__dir}
+        _ppt_info "Creating directory '${__dir}'"
+        mkdir -p "${__dir}"
     fi
 
     echo "PPT_PACKAGE_OWNER=\"${_ppt_package_owner}\"
@@ -143,7 +142,7 @@ PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${PPT_SETTINGS_STORAGE}"
 }
 
 _ppt_load_values() {
-    __dir=$(_ppt_realpath ${_PPT_SETTINGS_DIR})
+    __dir="$(_ppt_realpath ${_PPT_SETTINGS_DIR})"
     _ppt_dark "Found saved settings: '${PPT_SETTINGS_STORAGE}'"
     . "${PPT_SETTINGS_STORAGE}"
     _ppt_package_owner=${PPT_PACKAGE_OWNER}
