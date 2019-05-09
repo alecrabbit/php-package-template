@@ -21,9 +21,9 @@ _ppt_realpath ()
     then
         ppt_new_="$(realpath ${1} 2>&1)"
 #        ppt_new_="$(realpath ${1} 2> /dev/null)"
-        _ppt_debug "${ppt_new_}"
         if [ $? -ne ${PPT_TRUE} ]
         then
+            _ppt_debug "${ppt_new_}"
             return ${PPT_ERROR}
         fi
         echo "${ppt_new_}"
@@ -173,19 +173,32 @@ _ppt_read_value () {
 _ppt_settings_dir_is_consistent () {
     __PPT_FILES=""
     __PPT_FILES="${__PPT_FILES} ${_SETTINGS_FILE}"
-#    __PPT_FILES="${__PPT_FILES} ${_COMPOSER_JSON}"
-#    __PPT_FILES="${__PPT_FILES} ${_CHANGELOG_MD}"
-#    __PPT_FILES="${__PPT_FILES} ${_README_MD}"
+    _ppt_dir_is_consistent "${_PPT_SETTINGS_DIR}" "${__PPT_FILES}"
+    return $?
+}
+
+_ppt_results_dir_is_consistent () {
+    __PPT_FILES=""
+    __PPT_FILES="${__PPT_FILES} ${_COMPOSER_JSON}"
+    __PPT_FILES="${__PPT_FILES} ${_CHANGELOG_MD}"
+    __PPT_FILES="${__PPT_FILES} ${_README_MD}"
+    _ppt_dir_is_consistent "${_PPT_RESULTS_DIR}" "${__PPT_FILES}"
+    return $?
+}
+
+_ppt_dir_is_consistent () {
+    __PPT_FILES="${2}"
+    __PPT_DIR="${1}"
     for __FILE in ${__PPT_FILES}; do
-        if [ ! -e "${_PPT_SETTINGS_DIR}/${__FILE}" ]
+        if [ ! -e "${__PPT_DIR}/${__FILE}" ]
         then
-            _ppt_dark "Not found: '${_PPT_SETTINGS_DIR}/${__FILE}'"
-            _ppt_dark "To start over remove dir '${_PPT_SETTINGS_DIR}' "
+            _ppt_dark "Not found: '${__PPT_DIR}/${__FILE}'"
+            _ppt_dark "To start over remove dir '${__PPT_DIR}' "
             unset __PPT_FILES __FILE
             return ${PPT_FALSE}
         fi
     done
-    unset __PPT_FILES __FILE
+    unset __PPT_DIR __PPT_FILES __FILE
     return ${PPT_TRUE}
 }
 
@@ -279,4 +292,21 @@ $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_pack
     _ppt_comment "Saved '${PPT_BASIC_TEST_PHP_FILE}'"
 
     unset __separator
+}
+
+_ppt_continue_setup() {
+    if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
+    then
+        return ${PPT_TRUE}
+    else
+        if __ppt_ask_question "Continue setup?"
+        then
+        return ${PPT_TRUE}
+        fi
+    fi
+    return ${PPT_FALSE}
+}
+
+_ppt_make_setup () {
+    _ppt_warn "MAKING SETUP"
 }

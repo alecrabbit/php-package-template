@@ -77,10 +77,17 @@ else
     ### Save data to '.settings' dir
     _ppt_save_values
 fi
-_ppt_show_values
 _ppt_info "Preparing setup"
+_ppt_info "Using values:"
+_ppt_show_values
+_ppt_dark ""
 _ppt_create_files_from_templates
+_ppt_info "Files prepared"
+
 ### Make setup here
+if _ppt_continue_setup; then
+    _ppt_make_setup
+fi
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
