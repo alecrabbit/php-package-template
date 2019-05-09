@@ -291,6 +291,12 @@ $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_pack
 $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_package_namespace}/g;" ${PPT_BASIC_TEST_PHP_TEMPLATE} | tee "${PPT_BASIC_TEST_PHP_FILE}")"
     _ppt_comment "Saved '${PPT_BASIC_TEST_PHP_FILE}'"
 
+    # Saving .gitattributes
+    cp "${PPT_GITATTRIBUTES_TEMPLATE}" "${PPT_GITATTRIBUTES_FILE}"
+    _ppt_debug "Contents of '${PPT_GITATTRIBUTES_FILE}':
+$(cat "${PPT_GITATTRIBUTES_FILE}")"
+    _ppt_comment "Saved '${PPT_GITATTRIBUTES_FILE}'"
+
     unset __separator
 }
 
