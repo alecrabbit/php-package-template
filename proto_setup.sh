@@ -87,6 +87,7 @@ _ppt_info "Files prepared"
 ### Make setup here
 if _ppt_continue_setup; then
     _ppt_make_setup
+    _ppt_make_cleanup
 fi
 
 ### Set terminal title - to dir name
