@@ -104,14 +104,14 @@ PPT_PACKAGE_NAME=\"${_ppt_package_name}\"
 PPT_PACKAGE_DESCRIPTION=\"${_ppt_package_description}\"
 PPT_PACKAGE_NAMESPACE=\"${_ppt_package_namespace}\"
 PPT_PACKAGE_OWNER_NAMESPACE=\"${_ppt_package_owner_namespace}\"
-PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${__dir}/${_SETTINGS_FILE}"
+PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${PPT_SETTINGS_STORAGE}"
     unset __dir
 }
 
 _ppt_load_values() {
     __dir=$(_ppt_realpath ${_PPT_SETTINGS_DIR})
-    _ppt_dark "Found saved settings: '${__dir}/${_SETTINGS_FILE}'"
-    . "${__dir}/${_SETTINGS_FILE}"
+    _ppt_dark "Found saved settings: '${PPT_SETTINGS_STORAGE}'"
+    . "${PPT_SETTINGS_STORAGE}"
     _ppt_package_owner=${PPT_PACKAGE_OWNER}
     _ppt_package_owner_name=${PPT_PACKAGE_OWNER_NAME}
     _ppt_package_name=${PPT_PACKAGE_NAME}
@@ -188,6 +188,8 @@ _ppt_create_files_from_templates() {
     _ppt_remove_dir "${_PPT_RESULTS_DIR}"
     # Prepare dir
     _ppt_create_dir "${_PPT_RESULTS_DIR}"
+    _ppt_create_dir "${_PPT_RESULTS_DIR}/${_SRC_DIR}/${_ppt_package_namespace}"
+    _ppt_create_dir "${_PPT_RESULTS_DIR}/${_TESTS_DIR}"
     _ppt_create_dir "${_PPT_GITHUB_DIR}"
     _ppt_debug "Writing files"
     # Saving .env
@@ -236,11 +238,36 @@ $(sed "s/PACKAGE_OWNER/${_ppt_package_owner}/g;" ${PPT_ISSUE_TEMPLATE_MD_TEMPLAT
 $(sed "s/__YEAR/$(date +%Y)/g; s/PACKAGE_OWNER_NAME/${_ppt_package_owner_name}/g;" ${PPT_LICENSE_TEMPLATE} | tee "${PPT_LICENSE_FILE}")"
     _ppt_comment "Saved '${PPT_LICENSE_FILE}'"
 
-    # Saving LICENSE
+    # Saving TERMINAL_TITLE
     _ppt_debug "Contents of '${PPT_TITLE_FILE}':
 $(sed "s/PACKAGE_NAME/${_ppt_package_name}/g;" ${PPT_TITLE_TEMPLATE} | tee "${PPT_TITLE_FILE}")"
     _ppt_comment "Saved '${PPT_TITLE_FILE}'"
 
+    # Saving TODO.md
+    _ppt_debug "Contents of '${PPT_TODO_FILE}':
+$(sed "s/PACKAGE_OWNER/${_ppt_package_owner}/g; s/PACKAGE_NAME/${_ppt_package_name}/g;" ${PPT_TODO_MD_TEMPLATE} | tee "${PPT_TODO_FILE}")"
+    _ppt_comment "Saved '${PPT_TODO_FILE}'"
+
+    # Separator
+    if [ ! ${_ppt_package_owner_namespace} = "" ]
+    then
+        __separator='\\'
+    else
+        __separator=''
+    fi
+    # Saving BasicClass.php
+    __PHP_FILE="$(echo "${PPT_BASIC_CLASS_PHP_FILE}" |sed "s/PACKAGE_NSPACE/${_ppt_package_namespace}/g;")"
+    _ppt_debug "Contents of '${__PHP_FILE}':
+$(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_package_namespace}/g;" ${PPT_BASIC_CLASS_PHP_TEMPLATE} | tee "${__PHP_FILE}")"
+    _ppt_comment "Saved '${__PHP_FILE}'"
+    unset __PHP_FILE
+
+    # Saving BasicTest.php
+    _ppt_debug "Contents of '${PPT_BASIC_TEST_PHP_FILE}':
+$(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_package_namespace}/g;" ${PPT_BASIC_TEST_PHP_TEMPLATE} | tee "${PPT_BASIC_TEST_PHP_FILE}")"
+    _ppt_comment "Saved '${PPT_BASIC_TEST_PHP_FILE}'"
+
+    unset __separator
 }
 
 _ppt_create_dir () {
