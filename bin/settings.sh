@@ -111,7 +111,7 @@ CHANGELOG_MD_FILE="${PKG_SETTINGS_DIR}/CHANGELOG.md.result"
 README_MD_TEMPLATE="template.README.md"
 README_MD_FILE="${PKG_SETTINGS_DIR}/README.md.result"
 
-GIT_ATTR_FILE="template..gitattributes";
+GIT_ATTR_FILE=".gitattributes.dist";
 DIST_ENV_FILE=".env.dist";
 DIST_DEFAULTS=".defaults.dist";
 GLOBAL_DIST_DEFAULTS="${HOME}/.php-package-template.defaults"
