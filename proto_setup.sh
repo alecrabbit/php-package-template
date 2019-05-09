@@ -65,19 +65,21 @@ then
     ### Read data from '.settings' dir
 else
     _ppt_debug "Package settings not found"
-    if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
+    _ppt_debug ${_ppt_silent_setup}
+    if [ ${_ppt_silent_setup} -eq ${PPT_FALSE} ]
     then
-        _ppt_debug "Option '-y' used: no confirmation needed"
         ### Ask user for data
         _ppt_ask_values
+    else
+        _ppt_debug "Option '-y' used: no confirmation needed"
     fi
 
     ### Save data to '.settings' dir
     _ppt_save_values
 fi
-
 _ppt_show_values
-
+_ppt_info "Preparing setup"
+_ppt_create_files_from_templates
 ### Make setup here
 
 ### Set terminal title - to dir name
@@ -90,7 +92,7 @@ fi
 
 
 ### Debug code
-_ppt_show_messages
+#_ppt_show_messages
 #_ppt_echo_variables
 #echo ${__ppt_ansi_dark}
 #cat LICENSE

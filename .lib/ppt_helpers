@@ -5,26 +5,39 @@ PPT_GLOBAL_SETTINGS_DEFAULTS="${HOME}/${PPT_SETTINGS_FILENAME}"
 PPT_SETTINGS_DEFAULTS="${LIB_DIR}/${PPT_SETTINGS_FILENAME}"
 
 _PPT_SETTINGS_DIR=".settings";
+_PPT_RESULTS_DIR=".results";
 _PPT_TEMPLATES_DIR=".templates";
 
 _SETTINGS_FILE="settings.env"
+
+_ENV_FILE=".env"
+_TITLE_FILE="TERMINAL_TITLE"
+_LICENSE_FILE="LICENSE"
 _COMPOSER_JSON="composer.json"
 _CHANGELOG_MD="CHANGELOG.md"
 _README_MD="README.md"
+_TODO_MD="TODO.md"
 
-COMPOSER_JSON_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_COMPOSER_JSON}"
-COMPOSER_JSON_FILE="${_PPT_SETTINGS_DIR}/${_COMPOSER_JSON}"
+_TEMPLATE="template."
 
-CHANGELOG_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_CHANGELOG_MD}"
-CHANGELOG_MD_FILE="${_PPT_SETTINGS_DIR}/${_CHANGELOG_MD}"
+PPT_COMPOSER_JSON_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_TEMPLATE}${_COMPOSER_JSON}"
+PPT_CHANGELOG_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_TEMPLATE}${_CHANGELOG_MD}"
+PPT_README_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_TEMPLATE}${_README_MD}"
+PPT_TODO_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_TEMPLATE}${_TODO_MD}"
+PPT_LICENSE_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_TEMPLATE}${_LICENSE_FILE}"
 
-README_MD_TEMPLATE="${_PPT_TEMPLATES_DIR}/${_README_MD}"
-README_MD_FILE="${_PPT_SETTINGS_DIR}/${_README_MD}"
+PPT_ENV_FILE="${_PPT_RESULTS_DIR}/${_ENV_FILE}"
+PPT_TITLE_FILE="${_PPT_RESULTS_DIR}/${_TITLE_FILE}"
+PPT_LICENSE_FILE="${_PPT_RESULTS_DIR}/${_LICENSE_FILE}"
+PPT_COMPOSER_JSON_FILE="${_PPT_RESULTS_DIR}/${_COMPOSER_JSON}"
+PPT_CHANGELOG_MD_FILE="${_PPT_RESULTS_DIR}/${_CHANGELOG_MD}"
+PPT_README_MD_FILE="${_PPT_RESULTS_DIR}/${_README_MD}"
+
 
 _ppt_declare_variables_defaults() {
     # Variables defaults
     _ppt_continue_setup=${PPT_FALSE}
-    _ppt_silent_setup=${PPT_FALSE}
+    _ppt_silent_setup=${_ppt_silent_setup:=${PPT_FALSE}}
     display_attention_message=${PPT_FALSE}
     _ppt_do_add_origin=${PPT_FALSE}
     _ppt_vcs_service="github"
@@ -163,7 +176,7 @@ _ppt_show_messages () {
 
     _ppt_print "${_ppt_package_owner_name} -> $(_ppt_capitalize_every_word "${_ppt_package_owner_name}")"
 
-    _ppt_show_values
+#    _ppt_show_values
 
     _ppt_dark "dark sample message"
     _ppt_notice "notice sample message"
@@ -183,13 +196,13 @@ _ppt_read_options () {
     __ppt_param3=""
     __ppt_param4=""
     __ppt_param5=${PPT_FALSE}
-
+#    _ppt_silent_setup=${PPT_FALSE}
     ### Read options
     while getopts "yp:o:n:s:xh" OPTION; do
             case ${OPTION} in
                     y)
                         _ppt_silent_setup=${PPT_TRUE}
-                        _ppt_debug "Option '-y': no confirmation needed"
+                        _ppt_debug "Option '-y': no confirmation needed [${PPT_TRUE}]"
                         ;;
                     p)
                         __ppt_param1="${OPTARG:-}"
