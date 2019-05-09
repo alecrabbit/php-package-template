@@ -42,7 +42,7 @@ _ppt_declare_variables_defaults "${__ppt_param1}" "${__ppt_param2}" "${__ppt_par
 __ppt_use_empty_owner_namespace=${__ppt_param5}
 unset  __ppt_param1 __ppt_param2 __ppt_param3 __ppt_param4 __ppt_param5
 
-### Check if user is 'root'
+### Check if user is not 'root'
 _ppt_check_user
 
 ### Greeting
