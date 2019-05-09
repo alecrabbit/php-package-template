@@ -187,8 +187,12 @@ _ppt_create_files_from_templates() {
     # Remove old results
     _ppt_remove_dir "${_PPT_RESULTS_DIR}"
     # Prepare dir
-    _ppt_create_dir "${_PPT_RESULTS_DIR}"
-    _ppt_create_dir "${_PPT_RESULTS_DIR}/${_SRC_DIR}/${_ppt_package_namespace}"
+#    _ppt_create_dir "${_PPT_RESULTS_DIR}"
+
+    __DIR_NAME="$(echo "${_SRC_DIR}" |sed "s/PACKAGE_NSPACE/${_ppt_package_namespace}/g;")"
+    _ppt_create_dir "${_PPT_RESULTS_DIR}/${__DIR_NAME}"
+    unset __DIR_NAME
+
     _ppt_create_dir "${_PPT_RESULTS_DIR}/${_TESTS_DIR}"
     _ppt_create_dir "${_PPT_GITHUB_DIR}"
     _ppt_debug "Writing files"
