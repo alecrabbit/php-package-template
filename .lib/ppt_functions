@@ -64,7 +64,9 @@ _ppt_has_docker ()
 
 _ppt_has_docker_compose ()
 {
-    return $(_ppt_check_command "docker-compose")
+    _ppt_check_command "docker-compose"
+    _ppt_debug "docker-compose: [$?]"
+    return $?
 }
 
 _ppt_show_accepted_value () {
