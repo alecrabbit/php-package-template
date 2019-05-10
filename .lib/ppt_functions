@@ -337,7 +337,7 @@ $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_pack
 $(cat "${PPT_GITATTRIBUTES_FILE}")"
     _ppt_comment "Saved '${PPT_GITATTRIBUTES_FILE}'"
 
-    # Saving .gitignor
+    # Saving .gitignore
     cp "${PPT_GITIGNORE_TEMPLATE}" "${PPT_GITIGNORE_FILE}"
     _ppt_debug "Contents of '${PPT_GITIGNORE_FILE}':
 $(cat "${PPT_GITIGNORE_FILE}")"

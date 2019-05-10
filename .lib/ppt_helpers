@@ -14,7 +14,7 @@ _TESTS_DIR="tests/Unit"
 
 _SETTINGS_FILE="settings.env"
 _ENV_FILE=".env"
-_GITIGNORE_FILE=".ignore"
+_GITIGNORE_FILE=".gitignore"
 _GITATTRIBUTES_FILE=".gitattributes"
 _COMPOSER_JSON="composer.json"
 _CHANGELOG_MD="CHANGELOG.md"
