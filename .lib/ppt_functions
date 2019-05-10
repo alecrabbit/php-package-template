@@ -374,11 +374,7 @@ _ppt_make_cleanup () {
     _ppt_debug "Removing '${_PPT_TEMPLATES_DIR}'\n$(rm -rv ${_PPT_TEMPLATES_DIR}/ 2>&1)"
     _ppt_debug "Removing '${LIB_SOURCE}'\n$(rm -rv ${LIB_SOURCE}/ 2>&1)"
 
-#    _ppt_debug "\n$(rm -v example.* 2>&1)"
-#    _ppt_debug "\n$(rm -v template.* 2>&1)"
     _ppt_debug "Removing 'composer.lock'\n$(rm -v composer.lock 2>&1)"
-#    _ppt_debug "\n$(rm -v .defaults.dist 2>&1)"
-#    _ppt_debug "\n$(rm -v .env.dist 2>&1)"
     _ppt_debug "Removing '${BASE_FILENAME}'\n$(rm -v ${BASE_FILENAME} 2>&1)"
 
 }
@@ -392,13 +388,14 @@ _ppt_rename_package_dir () {
     then
         _ppt_error "Dir '${_ppt_package_dir}' is already taken."
         _ppt_comment "You should start over."
-        _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
+#        _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
+        _ppt_fatal "Dir '${_ppt_package_dir}' is already taken."
         return ${PPT_FALSE}
     fi
     mv -i "${_ppt_current_dir}" "${_ppt_package_dir}"
     cd "${_ppt_package_dir}"
     _ppt_current_dir="$(_ppt_get_current_dir)"
-
+    return ${PPT_TRUE}
 }
 
 _ppt_get_current_dir () {
