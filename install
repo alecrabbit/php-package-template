@@ -105,6 +105,8 @@ if _ppt_continue_setup; then
     if _ppt_rename_package_dir
     then
         _ppt_make_cleanup
+        _ppt_info "Successfully installed new package in '$(_ppt_get_realpath "${_ppt_package_dir}")'"
+        _ppt_info ""
     else
         _ppt_warn "Answering 'y' will completely delete installation dir ('${_ppt_current_dir}')!"
         if __ppt_ask_question "Clean up?"
@@ -112,7 +114,7 @@ if _ppt_continue_setup; then
             _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
             _ppt_comment "Cleaned up"
         fi
-        _ppt_fatal "Failed to rename package directory"
+        _ppt_fatal "Failed to rename package directory\n"
     fi
 fi
 
