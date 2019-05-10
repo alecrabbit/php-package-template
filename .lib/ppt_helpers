@@ -188,16 +188,16 @@ _ppt_echo_variables () {
 _ppt_show_messages () {
     if _ppt_has_docker
     then
-        _ppt_info "🐳 has docker"
+        _ppt_info "🐳 docker installed"
     else
-        _ppt_error "NO docker"
+        _ppt_error "docker not installed"
     fi
 
     if _ppt_has_docker_compose
     then
-        _ppt_info "🐳 has docker-compose"
+        _ppt_info "🐳 docker-compose installed"
     else
-        _ppt_error "NO docker-compose"
+        _ppt_error "docker-compose not installed"
     fi
 
 #    _ppt_print "${_ppt_package_owner_name} -> $(_ppt_capitalize_every_word "${_ppt_package_owner_name}")"
