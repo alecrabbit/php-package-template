@@ -63,18 +63,21 @@ __ppt_reset_colors
 
 ### Logging functions.
 _ppt_warn() {
-  echo "⚠️  ${__ppt_ansi_bold_yellow}ppt:WARN${__ppt_ansi_none} $*" >&2
+  _ppt_print "⚠️  ${__ppt_ansi_bold_yellow}ppt:WARN${__ppt_ansi_none} $*"
 }
 _ppt_error() {
-  echo "🛑 ${__ppt_ansi_bold_red}ppt:ERROR${__ppt_ansi_none} $*" >&2
+  _ppt_print "🛑 ${__ppt_ansi_bold_red}ppt:ERROR${__ppt_ansi_none} $*"
 }
 _ppt_fatal() {
-  echo "🔥 ${__ppt_ansi_bold_red}ppt:FATAL${__ppt_ansi_none} $*" >&2
+  _ppt_print "🔥 ${__ppt_ansi_bold_red}ppt:FATAL${__ppt_ansi_none} $*"
   exit ${PPT_ERROR}
 }
 ### Messages functions
 _ppt_print () {
-    echo "${1}" >&2
+    printf "${1}" >&2
+    if [ ${2:-${PPT_TRUE}} = ${PPT_TRUE} ]; then
+        echo >&2
+    fi
 }
 
 _ppt_debug() {
