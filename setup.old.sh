@@ -36,7 +36,7 @@ fi
 
 set_title "🧰 Setup script..."
 
-green "🔧 Package template setup..."
+green "🔧 Package template setup.old.sh..."
 dark "Version $(<bin/VERSION)"
 current_dir="$(basename $(pwd))"
 dark "Current dir: '${current_dir}'"
@@ -156,7 +156,7 @@ else
     package_dir=$(enter_package_dir "${package_dir}" "${current_dir}")
     accepted_value "${package_dir}"
 
-    # Creating setup
+    # Creating setup.old.sh
     yellow "Saving settings"
 
     mkdir ${PKG_SETTINGS_DIR}
@@ -198,7 +198,7 @@ check_if_dir_exists "../${package_dir}"
 if [[ $? == 1 ]]
 then
     error "Target dir '${package_dir}' is already taken."
-    read -p "$(dark "Timeout 10 seconds...") Delete target directory and continue setup? " -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") Delete target directory and continue setup.old.sh? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -220,7 +220,7 @@ then
 fi
 if [[ ${continue_setup} -ne 1 ]]
 then
-    read -p "$(dark "Timeout 10 seconds...") Continue setup? " -n 1 -r -t 10
+    read -p "$(dark "Timeout 10 seconds...") Continue setup.old.sh? " -n 1 -r -t 10
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -229,7 +229,7 @@ then
 fi
 if [[ ${continue_setup} -ne 0 ]]
 then
-    set_title "🔧 Running setup script..."
+    set_title "🔧 Running setup.old.sh script..."
     comment "🚀 Setting up..."
     # Writing terminal title
     title="📦 ${package_name}"
@@ -342,10 +342,10 @@ then
     dark "Deleting old repository"
     rm -rf .git/
 
-    dark "Deleting tmp setup dir ${PKG_SETTINGS_DIR}"
+    dark "Deleting tmp setup.old.sh dir ${PKG_SETTINGS_DIR}"
     rm -r ${PKG_SETTINGS_DIR}
 
-    yellow "Deleting setup script"
+    yellow "Deleting setup.old.sh script"
     rm setup
     rm .defaults.dist
 
@@ -386,9 +386,9 @@ then
     docker-compose down
 else
     echo "Setup skipped..."
-    dark "To continue run setup script again and press 'y'"
+    dark "To continue run setup.old.sh script again and press 'y'"
     echo
-    dark "To run fresh setup delete '${PKG_SETTINGS_DIR}' dir"
+    dark "To run fresh setup.old.sh delete '${PKG_SETTINGS_DIR}' dir"
     dark "Command to use:"
     dark "rm -r ${PKG_SETTINGS_DIR}"
     echo
