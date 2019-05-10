@@ -253,7 +253,7 @@ GROUP_ID=${__ppt_g_id}" > "${PPT_ENV_FILE}"
 
     _ppt_debug "Contents of '${PPT_ENV_FILE}':
 $(cat "${PPT_ENV_FILE}")"
-    _ppt_comment "Saved '${PPT_ENV_FILE}'"
+    _ppt_comment "Saved '${PPT_ENV_FILE}'$(_ppt_debug "This file needed to pass user ids to container")"
 
     unset __ppt_u_id __ppt_g_id __ppt_user
 

@@ -22,7 +22,7 @@ $ cd ..              # 'php-package-template' dir was renamed so don't forget to
  You can pass parameters to setup script
  `./setup package_name package_owner "Your Name"`
  ```bash
- $ ./setup looney bunny "Bugs Bunny"
+ $ ./install -p looney -o bunny -n "Bugs Bunny"
  ``` 
  it'll create `bunny/looney` package in `php-looney` dir
 
@@ -33,21 +33,26 @@ $ cd ..              # 'php-package-template' dir was renamed so don't forget to
  ...
  ```
 #### Using defaults file
-Create a file `.php-package-template.defaults` in your home directory
+Create a file `.ppt_settings.defaults` in your home directory. This file will save you some time if you create a lot of packages.
 ```bash
-$ touch ~/.php-package-template.defaults
+$ touch ~/.ppt_settings.defaults
 ```
 Contents:
 ```
-OWNER_NAME="Leeloo Dallas"          # Your name and lastname
-OWNER=""velement"                   # your nickname on packagist
-PACKAGE_NAME="multi-pass"           # default package name
+PPT_COLOR="auto"                                        # color setting for install script
+PPT_PACKAGE_DIR_PREFIX="php-"                           # package dir name prefix
+PPT_PACKAGE_DIR_SUFFIX=""                               # package dir name suffix
+
+PPT_PACKAGE_OWNER="bugs-bunny"                          # your nickname on packagist
+PPT_PACKAGE_OWNER_NAME="Bugs Bunny"                     # your name and lastname
+PPT_PACKAGE_NAME="looney-package"                       # default package name
+PPT_PACKAGE_DESCRIPTION="Awesome package description"   # decsription
+PPT_PACKAGE_NAMESPACE="LooneyTunes"                     # package namespace
+PPT_PACKAGE_OWNER_NAMESPACE=""                          # package owner namespace
+PPT_PACKAGE_DIR="php-looney-package"                    # default package dir name
 ```
-This file will save you some time if you create a lot of packages :)
 
-### Tested software
-
-**Tested Operating Systems**
+### Tested Operating Systems
 
 OS                                  | 
 ----------------------------------- | 
