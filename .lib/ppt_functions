@@ -340,13 +340,13 @@ _ppt_continue_setup() {
 }
 
 _ppt_make_setup () {
-    _ppt_warn "MAKING SETUP"
+    _ppt_info "Installing"
     _ppt_comment "Copying files..."
     _ppt_debug "$(cp -rv .results/. . 2>&1)"
 }
 
 _ppt_make_cleanup () {
-    _ppt_warn "MAKING CLEANUP"
+    _ppt_info "Cleaning up..."
     _ppt_comment "Removing files..."
     _ppt_debug "$(rm -rvf .git/ 2>&1)"
     _ppt_debug "$(rm -rv ${_PPT_SETTINGS_DIR}/ 2>&1)"
