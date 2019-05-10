@@ -154,11 +154,13 @@ _ppt_check_if_dir_exists  () {
     then
         if [ -d "${__DIRECTORY}" ]; then
             if [ ! -L "${__DIRECTORY}" ]; then
+                _ppt_debug "Directory exists '${__DIRECTORY}'"
                 unset __DIRECTORY
                 return ${PPT_TRUE}
             fi
         fi
     fi
+    _ppt_debug "Directory NOT exists '${__DIRECTORY}'"
     unset __DIRECTORY
     return ${PPT_FALSE}
 }
