@@ -15,7 +15,7 @@ _ppt_help_message () {
     exit 0
 }
 
-_ppt_realpath ()
+_ppt_get_realpath ()
 {
     if _ppt_check_command "realpath"
     then
@@ -135,7 +135,7 @@ _ppt_prepare_package_namespace () {
 
 _ppt_save_values () {
     _ppt_debug "Saving settings"
-    _ppt_debug "Full path '$(_ppt_realpath ${_PPT_SETTINGS_DIR})'"
+    _ppt_debug "Full path '$(_ppt_get_realpath ${_PPT_SETTINGS_DIR})'"
     __dir="${_PPT_SETTINGS_DIR}"
     if [ -d "${__dir}" ]
     then
@@ -156,7 +156,7 @@ PPT_PACKAGE_DIR=\"${_ppt_package_dir}\"" > "${PPT_SETTINGS_STORAGE}"
 }
 
 _ppt_load_values() {
-    __dir="$(_ppt_realpath ${_PPT_SETTINGS_DIR})"
+    __dir="$(_ppt_get_realpath ${_PPT_SETTINGS_DIR})"
     _ppt_dark "Found saved settings: '${PPT_SETTINGS_STORAGE}'"
     . "${PPT_SETTINGS_STORAGE}"
     _ppt_package_owner=${PPT_PACKAGE_OWNER}

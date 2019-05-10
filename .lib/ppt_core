@@ -149,7 +149,7 @@ _ppt_set_terminal_title () {
 
 
 _ppt_check_if_dir_exists  () {
-    __DIRECTORY=$(_ppt_realpath "${1}")
+    __DIRECTORY=$(_ppt_get_realpath "${1}")
     if [ $? -eq ${PPT_TRUE} ]
     then
         if [ -d "${__DIRECTORY}" ]; then
