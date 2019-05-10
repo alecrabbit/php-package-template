@@ -388,7 +388,7 @@ _ppt_rename_package_dir () {
         _ppt_error "Dir '${_ppt_package_dir}' is already taken."
         _ppt_comment "You should start over."
         _ppt_dark "Cleaning up..."
-        rm -rf "${_ppt_package_dir}"
+        rm -rfv "${_ppt_current_dir}"
         exit 1
     fi
     mv -i "${_ppt_current_dir}" "${_ppt_package_dir}"
