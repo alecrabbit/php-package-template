@@ -366,14 +366,14 @@ _ppt_make_cleanup () {
     _ppt_debug "$(rm -rv ${_PPT_SETTINGS_DIR}/ 2>&1)"
     _ppt_debug "$(rm -rv ${_PPT_RESULTS_DIR}/ 2>&1)"
     _ppt_debug "$(rm -rv ${_PPT_TEMPLATES_DIR}/ 2>&1)"
-    _ppt_debug "$(rm -rv ${LIB_SOURCE}/ 2>&1)"
+    _ppt_debug "\n$(rm -rv ${LIB_SOURCE}/ 2>&1)"
 
     _ppt_debug "$(rm -v example.* 2>&1)"
     _ppt_debug "$(rm -v template.* 2>&1)"
     _ppt_debug "$(rm -v composer.lock 2>&1)"
     _ppt_debug "$(rm -v .defaults.dist 2>&1)"
     _ppt_debug "$(rm -v .env.dist 2>&1)"
-    _ppt_debug "$(rm -v ${BASE_FILENAME} 2>&1)"
+    _ppt_debug "\n$(rm -v ${BASE_FILENAME} 2>&1)"
 
 }
 
