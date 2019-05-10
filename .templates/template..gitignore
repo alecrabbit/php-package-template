@@ -2,3 +2,6 @@
 /tests/tmp/
 /tests/report.html
 /.phpunit.result.cache
+
+/.idea/
+/.eval/
