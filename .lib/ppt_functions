@@ -57,9 +57,12 @@ _ppt_check_command () {
 
 _ppt_has_docker ()
 {
-    _ppt_check_command "docker"
-    _ppt_debug "Docker: [$?]"
-    return $?
+    if _ppt_check_command "docker"
+    then
+        _ppt_debug "Has 'docker' command 🐳"
+        return ${PPT_TRUE}
+    fi
+    return ${PPT_FALSE}
 }
 
 _ppt_has_docker_compose ()
