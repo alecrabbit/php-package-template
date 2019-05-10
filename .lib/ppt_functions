@@ -23,6 +23,7 @@ _ppt_realpath ()
         if [ $? -ne ${PPT_TRUE} ]
         then
             echo "$(_ppt_backup_realpath "${1}")"
+            return ${PPT_TRUE}
         fi
         echo "${ppt_new_}"
     else
