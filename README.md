@@ -4,25 +4,19 @@ A template to write a php package, consist mostly of boilerplate code
 
 Includes bash scripts to automate testing
 
-### Requirements
- - bash 4
- - docker
- - docker-compose
-
-> Note: developed and tested on Ubuntu 18.04(although should work on 16.04)
+> Note: developed and tested on Ubuntu 18.04
 
 ### Usage
-> Note: removing file `.defaults.dist` is optional
 ```bash
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
-$ rm .defaults.dist  # Optional
-$ ./setup
+$ ./install
 ...
 $ cd ..              # 'php-package-template' dir was renamed so don't forget to cd 
 ...
 ```
+
 ### Settings
 #### Using script arguments
  You can pass parameters to setup script
@@ -50,6 +44,14 @@ OWNER=""velement"                   # your nickname on packagist
 PACKAGE_NAME="multi-pass"           # default package name
 ```
 This file will save you some time if you create a lot of packages :)
+
+### Tested software
+
+**Tested Operating Systems**
+
+OS                                  | 
+----------------------------------- | 
+Ubuntu Linux (18.04 LTS)            | 
 
 #### Setup script example output
 ```
