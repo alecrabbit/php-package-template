@@ -106,7 +106,7 @@ if _ppt_continue_setup; then
     then
         _ppt_make_cleanup
     else
-        _ppt_warn "Answering 'y' will delete installation dir completely!"
+        _ppt_warn "Answering 'y' will completely delete installation dir ('${_ppt_current_dir}')!"
         if __ppt_ask_question "Clean up?"
         then
             _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
