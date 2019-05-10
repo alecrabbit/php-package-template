@@ -386,8 +386,10 @@ _ppt_rename_package_dir () {
     _ppt_debug "Renaming '${_ppt_current_dir}' -> '${_ppt_package_dir}'"
     if _ppt_check_if_dir_exists "${_ppt_package_dir}"
     then
-        _ppt_error "Dir '${_ppt_package_dir}' is already taken."
-        _ppt_comment "You should start over."
+#        _ppt_error "Dir '${_ppt_package_dir}' is already taken."
+#        _ppt_comment "You should start over."
+        _ppt_comment "Change value of 'PPT_PACKAGE_DIR' var in '$(_ppt_get_realpath "${_PPT_SETTINGS_DIR}/${_SETTINGS_FILE}")' file and start install again."
+        _ppt_commnet ""
 #        _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
         _ppt_fatal "Dir '${_ppt_package_dir}' is already taken."
         return ${PPT_FALSE}
