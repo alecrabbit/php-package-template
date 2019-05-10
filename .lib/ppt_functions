@@ -341,23 +341,24 @@ _ppt_continue_setup() {
 
 _ppt_make_setup () {
     _ppt_warn "MAKING SETUP"
-    cp -rv .results/. . 2>&1
+    _ppt_comment "Copying files..."
+    _ppt_debug "$(cp -rv .results/. . 2>&1)"
 }
 
 _ppt_make_cleanup () {
     _ppt_warn "MAKING CLEANUP"
+    _ppt_comment "Removing files..."
+    _ppt_debug "$(rm -rvf .git/ 2>&1)"
+    _ppt_debug "$(rm -rv ${_PPT_SETTINGS_DIR}/ 2>&1)"
+    _ppt_debug "$(rm -rv ${_PPT_RESULTS_DIR}/ 2>&1)"
+    _ppt_debug "$(rm -rv ${_PPT_TEMPLATES_DIR}/ 2>&1)"
+    _ppt_debug "$(rm -rv ${LIB_SOURCE}/ 2>&1)"
 
-    rm -rvf .git/ 2>&1
-    rm -rv ${_PPT_SETTINGS_DIR}/ 2>&1
-    rm -rv ${_PPT_RESULTS_DIR}/ 2>&1
-    rm -rv ${_PPT_TEMPLATES_DIR}/ 2>&1
-    rm -rv ${LIB_SOURCE}/ 2>&1
-
-    rm -v example.* 2>&1
-    rm -v template.* 2>&1
-    rm -v composer.lock 2>&1
-    rm -v .defaults.dist 2>&1
-    rm -v .env.dist 2>&1
-    rm -v ${BASE_FILENAME} 2>&1
+    _ppt_debug "$(rm -v example.* 2>&1)"
+    _ppt_debug "$(rm -v template.* 2>&1)"
+    _ppt_debug "$(rm -v composer.lock 2>&1)"
+    _ppt_debug "$(rm -v .defaults.dist 2>&1)"
+    _ppt_debug "$(rm -v .env.dist 2>&1)"
+    _ppt_debug "$(rm -v ${BASE_FILENAME} 2>&1)"
 
 }
