@@ -105,8 +105,6 @@ if _ppt_continue_setup; then
     if _ppt_rename_package_dir
     then
         _ppt_make_cleanup
-        _ppt_info "Successfully installed new package in '$(_ppt_get_realpath "${_ppt_package_dir}")'"
-        _ppt_info ""
     else
         _ppt_warn "Answering 'y' will completely delete installation dir ('${_ppt_current_dir}')!"
         if __ppt_ask_question "Clean up?"
@@ -120,6 +118,9 @@ fi
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
+
+_ppt_info "Successfully installed new package in '$(_ppt_get_realpath "${_ppt_package_dir}")'"
+_ppt_info ""
 
 
 
