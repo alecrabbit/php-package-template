@@ -112,7 +112,7 @@ if _ppt_continue_setup; then
             _ppt_dark "Cleaning up... \n$(rm -rfv "${_ppt_current_dir}" 2>&1)"
             _ppt_comment "Cleaned up"
         fi
-        _ppt_fatal "Dir '${_ppt_package_dir}' is already taken."
+        _ppt_fatal "Failed to rename package directory"
     fi
 fi
 

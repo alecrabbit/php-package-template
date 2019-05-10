@@ -386,7 +386,7 @@ _ppt_rename_package_dir () {
     _ppt_debug "Renaming '${_ppt_current_dir}' -> '${_ppt_package_dir}'"
     if _ppt_check_if_dir_exists "${_ppt_package_dir}"
     then
-#        _ppt_error "Dir '${_ppt_package_dir}' is already taken."
+        _ppt_error "Dir '${_ppt_package_dir}' is already taken."
 #        _ppt_comment "You should start over."
         _ppt_info "In file '$(_ppt_get_realpath "${_PPT_SETTINGS_DIR}/${_SETTINGS_FILE}")'"
         _ppt_info "change variable value"
