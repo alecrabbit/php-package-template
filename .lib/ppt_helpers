@@ -189,7 +189,12 @@ _ppt_show_messages () {
     _ppt_has_docker
     value=$?
     _ppt_debug "----- ${value}"
-    $? && _ppt_info "🐳 has docker" || _ppt_error "NO docker"
+    if [ $? -eq 0 ]
+    then
+        _ppt_info "🐳 has docker"
+    else
+        _ppt_error "NO docker"
+    fi
 
     if _ppt_has_docker_compose
     then
