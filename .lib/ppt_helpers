@@ -199,7 +199,7 @@ _ppt_show_messages () {
         _ppt_error "NO docker-compose"
     fi
 
-    _ppt_print "${_ppt_package_owner_name} -> $(_ppt_capitalize_every_word "${_ppt_package_owner_name}")"
+#    _ppt_print "${_ppt_package_owner_name} -> $(_ppt_capitalize_every_word "${_ppt_package_owner_name}")"
 
 #    _ppt_show_values
 
