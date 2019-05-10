@@ -356,7 +356,7 @@ _ppt_continue_setup() {
 _ppt_make_setup () {
     _ppt_info "Installing"
     _ppt_comment "Copying files..."
-    _ppt_debug "$(cp -rv .results/. . 2>&1)"
+    _ppt_debug "Copying \n$(cp -rv .results/. . 2>&1)"
 }
 
 _ppt_make_cleanup () {
