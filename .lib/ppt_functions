@@ -22,6 +22,7 @@ _ppt_realpath ()
         ppt_new_="$(realpath ${1} 2>&1)"
         if [ $? -ne ${PPT_TRUE} ]
         then
+            _ppt_debug "${ppt_new_}"
             echo "$(_ppt_backup_realpath "${1}")"
             return ${PPT_TRUE}
         fi
