@@ -200,6 +200,12 @@ _ppt_remove_suffix () {
 }
 
 _ppt_check_git_user () {
+    if _ppt_check_command "git"
+    then
+        :
+    else
+        return ${PPT_FALSE}
+    fi
     if [ -z "$(git config user.email)" ]
     then
         return ${PPT_FALSE}

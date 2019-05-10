@@ -49,8 +49,7 @@ _ppt_realpath ()
 }
 
 _ppt_check_command () {
-    if [ -x "$(command -v ${1})" ]
-    then
+    if [ -x "$(command -v ${1})" ]; then
         return ${PPT_TRUE}
     fi
     return ${PPT_FALSE}
