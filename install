@@ -87,7 +87,6 @@ _ppt_info "Files prepared"
 ### Make setup here
 if _ppt_continue_setup; then
     _ppt_make_setup
-    _ppt_make_cleanup
 fi
 
 ### Git
@@ -103,7 +102,11 @@ then
     _ppt_info "Stopping container..."
     docker-compose down
 fi
-_ppt_rename_package_dir
+
+if _ppt_rename_package_dir
+then
+    _ppt_make_cleanup
+fi
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
