@@ -1,8 +1,9 @@
-/.idea/
 /vendor/
-/.eval/
 /tests/tmp/
 /tests/report.html
 /.phpunit.result.cache
+
+/.idea/
+/.eval/
 /.settings/
 /.results/
