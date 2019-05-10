@@ -99,12 +99,11 @@ fi
 ### Docker
 if _ppt_has_docker_compose
 then
-    _ppt_info "🐳 docker-compose found"
+    _ppt_info "🐳 docker-compose installed"
     _ppt_info "Stopping container..."
     docker-compose down
-else
-    _ppt_error "NO docker-compose"
 fi
+_ppt_rename_package_dir
 
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
