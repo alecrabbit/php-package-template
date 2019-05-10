@@ -186,7 +186,10 @@ _ppt_echo_variables () {
 }
 
 _ppt_show_messages () {
-    _ppt_has_docker && _ppt_info "🐳 has docker" || _ppt_error "NO docker"
+    _ppt_has_docker
+    value=$?
+    _ppt_debug "----- ${value}"
+    $? && _ppt_info "🐳 has docker" || _ppt_error "NO docker"
 
     if _ppt_has_docker_compose
     then
