@@ -111,7 +111,7 @@ _ppt_set_terminal_title "$(basename $(pwd))"
 
 
 ### Debug code
-_ppt_show_messages
+#_ppt_show_messages
 #_ppt_echo_variables
 #echo ${__ppt_ansi_dark}
 #cat LICENSE
