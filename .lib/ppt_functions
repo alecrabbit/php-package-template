@@ -246,9 +246,8 @@ _ppt_create_files_from_templates() {
     _ppt_debug "Preparing and writing results"
     # Remove old results
     _ppt_remove_dir "${_PPT_RESULTS_DIR}"
-    # Prepare dir
-#    _ppt_create_dir "${_PPT_RESULTS_DIR}"
 
+    # Prepare dir
     __DIR_NAME="$(echo "${_SRC_DIR}" |sed "s/PACKAGE_NSPACE/${_ppt_package_namespace}/g;")"
     _ppt_create_dir "${_PPT_RESULTS_DIR}/${__DIR_NAME}"
     unset __DIR_NAME
@@ -256,6 +255,7 @@ _ppt_create_files_from_templates() {
     _ppt_create_dir "${_PPT_RESULTS_DIR}/${_TESTS_DIR}"
     _ppt_create_dir "${_PPT_GITHUB_DIR}"
     _ppt_debug "Writing files"
+
     # Saving .env
     __ppt_user="$(whoami)"
 
@@ -336,6 +336,12 @@ $(sed "s/PACKAGE_NSPACE/${_ppt_package_owner_namespace}${__separator}${_ppt_pack
     _ppt_debug "Contents of '${PPT_GITATTRIBUTES_FILE}':
 $(cat "${PPT_GITATTRIBUTES_FILE}")"
     _ppt_comment "Saved '${PPT_GITATTRIBUTES_FILE}'"
+
+    # Saving .gitignor
+    cp "${PPT_GITIGNORE_TEMPLATE}" "${PPT_GITIGNORE_FILE}"
+    _ppt_debug "Contents of '${PPT_GITIGNORE_FILE}':
+$(cat "${PPT_GITIGNORE_FILE}")"
+    _ppt_comment "Saved '${PPT_GITIGNORE_FILE}'"
 
     unset __separator
 }
