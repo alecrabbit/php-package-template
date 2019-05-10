@@ -87,25 +87,25 @@ _ppt_info "Files prepared"
 ### Make setup here
 if _ppt_continue_setup; then
     _ppt_make_setup
-fi
 
-### Git
-if _ppt_check_git_user
-then
-    _ppt_debug "Git user configured"
-fi
+    ### Git
+    if _ppt_check_git_user
+    then
+        _ppt_debug "Git user configured"
+    fi
 
-### Docker
-if _ppt_has_docker_compose
-then
-    _ppt_info "🐳 docker-compose installed"
-    _ppt_info "Stopping container..."
-    docker-compose down
-fi
+    ### Docker
+    if _ppt_has_docker_compose
+    then
+        _ppt_info "🐳 docker-compose installed"
+        _ppt_info "Stopping container..."
+        docker-compose down
+    fi
 
-if _ppt_rename_package_dir
-then
-    _ppt_make_cleanup
+    if _ppt_rename_package_dir
+    then
+        _ppt_make_cleanup
+    fi
 fi
 
 ### Set terminal title - to dir name
