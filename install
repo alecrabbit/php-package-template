@@ -86,9 +86,8 @@ _ppt_info "Files prepared"
 
 ### Make setup here
 if _ppt_continue_setup; then
-#    _ppt_make_setup
-#    _ppt_make_cleanup
-    :
+    _ppt_make_setup
+    _ppt_make_cleanup
 fi
 
 ### Git
