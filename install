@@ -119,7 +119,7 @@ fi
 ### Set terminal title - to dir name
 _ppt_set_terminal_title "$(basename $(pwd))"
 
-_ppt_info "Successfully installed new package in '$(_ppt_get_realpath "${_ppt_package_dir}")'"
+_ppt_info "Successfully installed new package in '$(_ppt_get_realpath "$(pwd)")'"
 _ppt_info ""
 
 
