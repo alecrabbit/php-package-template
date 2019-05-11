@@ -176,7 +176,7 @@ __ppt_ask_question () {
 
     if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
     then
-        __ppt_print "y"
+        _ppt_print "y"
         __ppt_answer="y"
     else
         # __ppt_answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )  # only yn accepted
