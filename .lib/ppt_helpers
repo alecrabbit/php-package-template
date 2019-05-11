@@ -78,7 +78,7 @@ _ppt_declare_variables_defaults() {
     _ppt_package_dir="php-new-package"
 
     # Values
-    current_dir="$(basename $(pwd))"
+    _ppt_current_dir="$(basename $(pwd))"
 
     _ppt_load_defaults
 

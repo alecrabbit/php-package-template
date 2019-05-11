@@ -93,7 +93,7 @@ then
     if _ppt_has_docker_compose
     then
         _ppt_info "🐳 docker-compose installed"
-        if docker ps | grep -q '${_ppt_package_dir}'
+        if docker ps | grep -q "${_ppt_current_dir}"
         then
             _ppt_warn "Container is running"
             _ppt_comment "Stopping container..."
