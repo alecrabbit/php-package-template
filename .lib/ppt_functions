@@ -416,11 +416,12 @@ _ppt_add_remote () {
     then
         _ppt_info "📝 git user credentials configured"
         remote="https://github.com/${1}/${2}.git"
-        _ppt_info "Adding remote '${remote}'"
+        _ppt_debug "Adding remote ${remote}"
         if __ppt_ask_question "Add remote on '${remote}'?"
         then
             _ppt_debug "Adding remote\n $(git remote add origin "${remote}")"
-            _ppt_debug "Added remote ${remote}"
+            _ppt_info "Added remote '${remote}'"
+
         fi
     else
         _ppt_debug "🛑 git user credentials not configured"
