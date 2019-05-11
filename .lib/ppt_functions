@@ -173,8 +173,15 @@ __ppt_ask_question () {
     printf "${1} [y/n] "
     __ppt_old_stty_cfg=$(stty -g)
     stty raw -echo
-#    __ppt_answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )  # only yn accepted
-    __ppt_answer=$(head -c 1)  # anything accepted
+    __ppt_answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )  # only yn accepted
+
+    if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
+    then
+        __ppt_answer="y"
+    else
+        __ppt_answer=$(head -c 1)  # anything accepted
+    fi
+
     stty ${__ppt_old_stty_cfg}
     unset __ppt_old_stty_cfg
     echo
@@ -347,15 +354,15 @@ $(cat "${PPT_GITIGNORE_FILE}")"
 }
 
 _ppt_continue_setup() {
-    if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
-    then
-        return ${PPT_TRUE}
-    else
+#    if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
+#    then
+#        return ${PPT_TRUE}
+#    else
         if __ppt_ask_question "Continue setup?"
         then
             return ${PPT_TRUE}
         fi
-    fi
+#    fi
     return ${PPT_FALSE}
 }
 
