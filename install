@@ -111,7 +111,7 @@ if _ppt_continue_setup; then
             _ppt_info "Adding files"
             _ppt_debug "$(git add --all --verbose)"
 
-            _ppt_add_origin "${_ppt_package_owner}" "${_ppt_package_name}"
+            _ppt_add_remote "${_ppt_package_owner}" "${_ppt_package_name}"
         else
             _ppt_debug "git is not installed"
         fi

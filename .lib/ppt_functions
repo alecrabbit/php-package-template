@@ -415,7 +415,7 @@ _ppt_get_current_dir () {
     echo "${_ppt_current_dir}"
 }
 
-_ppt_add_origin () {
+_ppt_add_remote () {
     if _ppt_check_git_user
     then
         _ppt_info "📝 git user credentials configured"
@@ -423,7 +423,7 @@ _ppt_add_origin () {
         _ppt_info "Adding remote '${remote}'"
         if __ppt_ask_question "Add remote on '${remote}'?"
         then
-            _ppt_debug "$(git remote add origin "${remote}")"
+            _ppt_debug "Adding remote\n $(git remote add origin "${remote}")"
             _ppt_debug "Added remote ${remote}"
         fi
     else
