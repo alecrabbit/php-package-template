@@ -421,7 +421,7 @@ _ppt_add_remote () {
         if __ppt_ask_question "Add remote on '${remote}'?"
         then
             _ppt_debug "Adding remote\n $(git remote add origin "${remote}")"
-            _ppt_info "Added remote '${remote}'"
+            _ppt_comment "Added remote '${remote}'"
 
         fi
     else

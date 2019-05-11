@@ -112,12 +112,17 @@ then
         ### Git
         if _ppt_check_command "git"
         then
-            _ppt_info "Initializing new git repository"
+            _ppt_info "Repository"
+            _ppt_comment "Initializing new git repository"
             _ppt_debug "$(git init)"
-            _ppt_info "Adding files"
+            _ppt_comment "Adding files"
             _ppt_debug "$(git add --all --verbose)"
 
             _ppt_add_remote "${_ppt_package_owner}" "${_ppt_package_name}"
+
+            _ppt_comment "Committing files"
+            _ppt_debug "$(git commit -m 'init')"
+            _ppt_debug "Git log:\n $(git log --graph --oneline)"
         else
             _ppt_debug "git is not installed"
         fi
