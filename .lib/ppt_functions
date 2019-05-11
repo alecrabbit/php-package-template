@@ -406,3 +406,20 @@ _ppt_get_current_dir () {
     _ppt_debug "Current dir '${_ppt_current_dir}'"
     echo "${_ppt_current_dir}"
 }
+
+_ppt_add_origin () {
+    if _ppt_check_git_user
+    then
+        _ppt_info "📝 git user credentials configured"
+        remote="https://github.com/${1}/${2}.git"
+        _ppt_info "Adding remote '${remote}'"
+        if __ppt_ask_question "Add remote on '${remote}'?"
+        then
+            _ppt_debug "$(git remote add origin "${remote}")"
+            _ppt_debug "Added remote ${remote}"
+        fi
+    else
+        _ppt_debug "🛑 git user credentials not configured"
+    fi
+}
+

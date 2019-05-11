@@ -88,19 +88,6 @@ _ppt_info "Files prepared"
 if _ppt_continue_setup; then
     _ppt_make_setup
 
-    ### Git
-    if _ppt_check_command "git"
-    then
-        if _ppt_check_git_user
-        then
-            _ppt_info "📝 git user credentials configured"
-        else
-            _ppt_debug "git user credentials NOT configured"
-        fi
-    else
-        _ppt_debug "git is not installed"
-    fi
-
     ### Docker
     if _ppt_has_docker_compose
     then
@@ -115,6 +102,20 @@ if _ppt_continue_setup; then
     if _ppt_rename_package_dir
     then
         _ppt_make_cleanup
+
+        ### Git
+        if _ppt_check_command "git"
+        then
+            _ppt_info "Initializing new git repository"
+            _ppt_debug "$(git init)"
+            _ppt_info "Adding files"
+            _ppt_debug "$(git add --all --verbose)"
+
+            _ppt_add_origin "${_ppt_package_owner}" "${_ppt_package_name}"
+        else
+            _ppt_debug "git is not installed"
+        fi
+
     else
         _ppt_warn "Answering 'y' will completely delete installation dir ('${_ppt_current_dir}')!"
         if __ppt_ask_question "Clean up?"
