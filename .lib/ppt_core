@@ -62,14 +62,14 @@ __ppt_set_colors () {
 __ppt_reset_colors
 
 ### Logging functions.
-_ppt_warn() {
-  _ppt_print "⚠️  ${__ppt_ansi_bold_yellow}ppt:WARN${__ppt_ansi_none} $*"
+_ppt_warn () {
+  _ppt_print "\n⚠️  ${__ppt_ansi_bold_yellow}ppt:WARN${__ppt_ansi_none} $*\n"
 }
-_ppt_error() {
-  _ppt_print "🛑 ${__ppt_ansi_bold_red}ppt:ERROR${__ppt_ansi_none} $*"
+_ppt_error () {
+  _ppt_print "\n🛑 ${__ppt_ansi_bold_red}ppt:ERROR${__ppt_ansi_none} $*\n"
 }
-_ppt_fatal() {
-  _ppt_print "🔥 ${__ppt_ansi_bold_red}ppt:FATAL${__ppt_ansi_none} $*"
+_ppt_fatal () {
+  _ppt_print "\n🔥 ${__ppt_ansi_bold_red}ppt:FATAL${__ppt_ansi_none} $*\n"
   exit ${PPT_ERROR}
 }
 ### Messages functions

@@ -128,7 +128,7 @@ then
             _ppt_comment "Cleaned up"
         fi
         _ppt_set_terminal_title "$(basename $(pwd))"
-        _ppt_fatal "Failed to rename package directory\n"
+        _ppt_fatal "Failed to rename package directory"
     fi
 fi
 
