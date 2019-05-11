@@ -118,11 +118,18 @@ then
             _ppt_comment "Adding files"
             _ppt_debug "\n$(git add --all --verbose)"
 
-            _ppt_add_remote "${_ppt_package_owner}" "${_ppt_package_name}"
 
-            _ppt_comment "Committing files"
-            _ppt_debug "\n$(git commit -m 'init')"
-            _ppt_debug "Git log:\n $(git log --graph --oneline)"
+            if _ppt_check_git_user
+            then
+                _ppt_info "📝 git user credentials configured"
+                _ppt_add_remote "${_ppt_package_owner}" "${_ppt_package_name}"
+                _ppt_comment "Committing files"
+                _ppt_debug "\n$(git commit -m 'init')"
+                _ppt_debug "Git log:\n $(git log --graph --oneline)"
+            else
+                _ppt_debug "🛑 git user credentials not configured"
+            fi
+
         else
             _ppt_debug "git is not installed"
         fi
