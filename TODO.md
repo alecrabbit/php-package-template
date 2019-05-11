@@ -1,23 +1,6 @@
+- [ ] propose to save `.defaults` during 'ask' install
 - [ ] move `bin` to `scripts`
-- [ ] consistent message coloring
-- [ ] add configurable package name prefix to `.defaults`
-- [ ] add configurable package name suffix to `.defaults`
-- [ ] add configurable dir prefix to `.defaults`
-- [ ] add configurable dir suffix to `.defaults`
-- [ ] add configurable `use owner namespace` option to `.defaults`
+- [ ] ? add configurable package name prefix to `.defaults`
+- [ ] ? add configurable package name suffix to `.defaults`
+- [ ] delete `docker-compose*.yml` files and `bin`(tests scripts) dir if `docker-compose` is not installed
 ---
-- [x] store settings in `.settings/settings.env` file (0.3.0)
-- [x] store settings in `.settings` dir
-- [x] add "global" `defauls` file , e.g. `~/.php-package-template.defaults`
-- [x] move `Parameters ignored!` message closer to `Continue? y`
-- [x] get rid of `--propagate`  
-- [x] add owner namespace selection
-    - `1` - no owner namespace
-    - `2` - proposed owner namespace
-    - `3` - enter owner namespace
-- [x] create `accepted_value` function
-- [x] add package namespace conversion `looney-tunes` `LooneyTunes`
-- [x] add instructions to add git credentials
-- [x] make auto setup
-- [x] create `get_realpath` function
-- [x] add TODO.md file

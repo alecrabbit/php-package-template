@@ -100,6 +100,9 @@ if _ppt_continue_setup; then
         _ppt_info "🐳 docker-compose installed"
         _ppt_info "Stopping container..."
         docker-compose down
+    else
+        _ppt_comment "🛑 docker-compose is not installed"
+        rm docker-compose*.yml
     fi
 
     if _ppt_rename_package_dir
