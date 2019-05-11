@@ -89,9 +89,16 @@ if _ppt_continue_setup; then
     _ppt_make_setup
 
     ### Git
-    if _ppt_check_git_user
+    if _ppt_check_command "git"
     then
-        _ppt_debug "Git user configured"
+        if _ppt_check_git_user
+        then
+            _ppt_info "📝 git user credentials configured"
+        else
+            _ppt_debug "git user credentials NOT configured"
+        fi
+    else
+        _ppt_debug "git is not installed"
     fi
 
     ### Docker
@@ -102,7 +109,7 @@ if _ppt_continue_setup; then
         docker-compose down
     else
         _ppt_comment "🛑 docker-compose is not installed"
-        _ppt_debug "Cleaning up:\n$(rm -v docker-compose*.yml)"
+        _ppt_debug "Cleaning up... \n$(rm -v docker-compose*.yml)"
     fi
 
     if _ppt_rename_package_dir
