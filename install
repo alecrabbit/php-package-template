@@ -102,7 +102,7 @@ if _ppt_continue_setup; then
         docker-compose down
     else
         _ppt_comment "🛑 docker-compose is not installed"
-        rm docker-compose*.yml
+        _ppt_debug "Cleaning up:\n$(rm -v docker-compose*.yml)"
     fi
 
     if _ppt_rename_package_dir
