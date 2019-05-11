@@ -116,12 +116,12 @@ then
             _ppt_comment "Initializing new git repository"
             _ppt_debug "$(git init)"
             _ppt_comment "Adding files"
-            _ppt_debug "$(git add --all --verbose)"
+            _ppt_debug "\n$(git add --all --verbose)"
 
             _ppt_add_remote "${_ppt_package_owner}" "${_ppt_package_name}"
 
             _ppt_comment "Committing files"
-            _ppt_debug "$(git commit -m 'init')"
+            _ppt_debug "\n$(git commit -m 'init')"
             _ppt_debug "Git log:\n $(git log --graph --oneline)"
         else
             _ppt_debug "git is not installed"
