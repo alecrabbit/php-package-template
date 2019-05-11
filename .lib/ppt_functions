@@ -176,7 +176,6 @@ __ppt_ask_question () {
 
     if [ ${_ppt_silent_setup:-${PPT_FALSE}} -eq ${PPT_TRUE} ]
     then
-        _ppt_print "y"
         __ppt_answer="y"
     else
         # __ppt_answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )  # only yn accepted
@@ -185,11 +184,13 @@ __ppt_ask_question () {
 
     stty ${__ppt_old_stty_cfg}
     unset __ppt_old_stty_cfg
-    echo
     if echo "$__ppt_answer" | grep -iq "^y" ;then
+        echo "y"
+        _ppt_debug "Confirmed"
         unset __ppt_answer
         return ${PPT_TRUE}
     fi
+    echo
     unset __ppt_answer
     return ${PPT_FALSE}
 }
@@ -354,18 +355,13 @@ $(cat "${PPT_GITIGNORE_FILE}")"
     unset __separator
 }
 
-_ppt_continue_setup() {
-#    if [ ${_ppt_silent_setup} -eq ${PPT_TRUE} ]
+#_ppt_continue_setup() {
+#    if __ppt_ask_question "Continue setup?"
 #    then
 #        return ${PPT_TRUE}
-#    else
-        if __ppt_ask_question "Continue setup?"
-        then
-            return ${PPT_TRUE}
-        fi
 #    fi
-    return ${PPT_FALSE}
-}
+#    return ${PPT_FALSE}
+#}
 
 _ppt_make_setup () {
     _ppt_info "Installing"

@@ -85,7 +85,8 @@ _ppt_create_files_from_templates
 _ppt_info "Files prepared"
 
 ### Make setup here
-if _ppt_continue_setup; then
+if __ppt_ask_question "Continue setup?"
+then
     _ppt_make_setup
 
     ### Docker
