@@ -385,7 +385,7 @@ _ppt_make_cleanup () {
 
 _ppt_rename_package_dir () {
     _ppt_info "Renaming package dir"
-    _ppt_current_dir="$(_ppt_get_current_dir)"
+#    _ppt_current_dir="$(_ppt_get_current_dir)"
     cd ..
     _ppt_debug "Renaming '${_ppt_current_dir}' -> '${_ppt_package_dir}'"
     if _ppt_check_if_dir_exists "${_ppt_package_dir}"
@@ -406,9 +406,10 @@ _ppt_rename_package_dir () {
 }
 
 _ppt_get_current_dir () {
-    _ppt_current_dir="$(basename $(pwd))"
-    _ppt_debug "Current dir '${_ppt_current_dir}'"
-    echo "${_ppt_current_dir}"
+    __dir="$(basename $(pwd))"
+    _ppt_debug "Current dir '${__dir}'"
+    echo "${__dir}"
+    unset __dir
 }
 
 _ppt_add_remote () {
