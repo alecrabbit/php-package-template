@@ -127,7 +127,7 @@ then
                 _ppt_debug "\n$(git commit -m 'init')"
                 _ppt_debug "Git log:\n $(git log --graph --oneline)"
             else
-                _ppt_debug "🛑 git user credentials not configured"
+                _ppt_error "Can't commit: git user credentials not configured"
             fi
 
         else
