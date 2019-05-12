@@ -146,18 +146,17 @@ Files prepared
 Continue setup? [y/n] y
 Installing
 Copying files...
-🐳 docker-compose installed
+🛑 docker-compose is not installed
 Renaming package dir
 Cleaning up...
 Removing files...
 Repository
 Initializing new git repository
 Adding files
-📝 git user credentials configured
-Add remote on 'https://github.com/bugs-bunny/looney-package.git'? [y/n] y
-Added remote 'https://github.com/bugs-bunny/looney-package.git'
-Committing files
-Successfully installed new package in '/home/alec/tmp/php-looney-package'
+
+🛑 ppt:ERROR Can't commit: git user credentials not configured
+
+Successfully installed new package in '/tmp/php-looney-package'
 ```
 
 #### Running tests script
