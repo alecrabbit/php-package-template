@@ -82,86 +82,82 @@ OS                                  |
 Ubuntu Linux (18.04 LTS)            | 
 
 #### Setup script example output
+```bash
+$ ./install
 ```
-Package template setup...
-Version 0.2.12
-
-Global settings found: /home/username/.php-package-template.defaults
-Enter package owner name:
-(Used in LICENSE file)
-[Mike Wazowski] Bugs Bunny
-Accepted value: 'Bugs Bunny'
-
-Enter package owner:
-(Used in composer.json line: "name": "owner/name"))
-[mike-wazowski] Bugs-Bunny
-Accepted value: 'bugs-bunny'
-
+```
+🔧 Package template setup...
+Version 0.3.0
 It should be unique among your packages!
-Enter package name:
-[monsters-inc] Looney -Tunes
-Accepted value: 'looney-tunes'
+ Enter package name:
+ [looney-package] 
+ Accepted value: 'looney-package'
 
-Enter package description:
-(Used in composer.json line: "description": "Your awesome description")
-[Awesome library] 
-Accepted value: 'Awesome library'
+ Enter package owner:
+ (Used in composer.json line: "name": "owner/name"))
+ [bugs-bunny] 
+ Accepted value: 'bugs-bunny'
 
-Enter package namespace:
-[LooneyTunes] 
-Accepted value: 'LooneyTunes'
+ Enter package owner name:
+ (Used in LICENSE file)
+ [Bugs Bunny] 
+ Accepted value: 'Bugs Bunny'
 
-Type 'y' to choose owner namespace otherwise no namespace will be used
-Select namespace? y
-1) No namespace
-2) 'BugsBunny'
-3) Enter your variant
-Please enter your choice of owner namespace: 2
-Accepted value: 'BugsBunny'
+ Enter package description:
+ (Used in composer.json line: "description": "Your awesome description")
+ [Awesome package description] 
+ Accepted value: 'Awesome package description'
+
+ Enter package namespace:
+ [LooneyPackage] 
+ Accepted value: 'LooneyPackage'
+
+ Enter package owner namespace:
+ [] 
+ Accepted value: ''
 
 It should be new non-existent yet dir name!
-Enter package directory:
-('php-package-template' -> 'php-looney-tunes' ?)
-[php-looney-tunes] 
-Accepted value: 'php-looney-tunes'
+ Enter package dir:
+ [php-looney-package] 
+ Accepted value: 'php-looney-package'
 
-Saving settings
-Creating composer.json.result
-{
-  "name": "bugs-bunny/looney-tunes",
-  "description": "Awesome library",
-  "type": "library",
-  "require": {
-    "php": ">=7.2"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^8.0",
-    "nunomaduro/collision": "^3.0",
-    "symfony/var-dumper": "^4.2"
-  },
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "BugsBunny\\LooneyTunes\\": "src\\LooneyTunes"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "BugsBunny\\Tests\\LooneyTunes\\": "tests"
-    }
-  },
-  "minimum-stability": "beta",
-  "prefer-stable": true
-}
-Settings:
+Creating directory '.settings'
+Preparing setup
+Using values:
 Name: Bugs Bunny
-Package: bugs-bunny/looney-tunes
-Description: Awesome library
-Namespace: BugsBunny\LooneyTunes
-Directory: php-looney-tunes
+Package: bugs-bunny/looney-package
+Description: Awesome package description
+Namespace: LooneyPackage
+Directory: php-looney-package
 
-Timeout 10 seconds... Continue setup? y
-...
+Saved '.results/.env'
+Saved '.results/composer.json'
+Saved '.results/CHANGELOG.md'
+Saved '.results/README.md'
+Saved '.results/.github/ISSUE_TEMPLATE.md'
+Saved '.results/LICENSE'
+Saved '.results/TERMINAL_TITLE'
+Saved '.results/TODO.md'
+Saved '.results/src/LooneyPackage/BasicClass.php'
+Saved '.results/tests/Unit/BasicTest.php'
+Saved '.results/.gitattributes'
+Saved '.results/.gitignore'
+Files prepared
+Continue setup? [y/n] y
+Installing
+Copying files...
+🐳 docker-compose installed
+Renaming package dir
+Cleaning up...
+Removing files...
+Repository
+Initializing new git repository
+Adding files
+📝 git user credentials configured
+Add remote on 'https://github.com/bugs-bunny/looney-package.git'? [y/n] y
+Added remote 'https://github.com/bugs-bunny/looney-package.git'
+Committing files
+Successfully installed new package in '/home/alec/tmp/php-looney-package'
 ```
 
 #### Running tests script
