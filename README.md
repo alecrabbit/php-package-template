@@ -7,15 +7,40 @@ Includes bash scripts to automate testing
 > Note: developed and tested on Ubuntu 18.04
 
 ### Usage
+ Get you copy
 ```bash
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
-$ ./install
-...
-$ cd ..              # 'php-package-template' dir was renamed so don't forget to cd 
+```
+or 
+```bash
+$ ppt_version="0.3.0" 
+$ wget -qO- "https://github.com/alecrabbit/php-package-template/archive/${ppt_version}.tar.gz" \
+| tar -xzv && cd php-package-template-${ppt_version}
 ...
 ```
+Run setup script and follow the instructions
+```
+$ ./install
+...                  # follow the instructions
+$ cd ..              # 'php-package-template(-<version>)' dir was renamed so don't forget to cd 
+...
+```
+Now you can make `composer install` and run your first `phpunit` tests
+
+##### Bundled docker-compose
+You can use bundled `docker-compose*.yml` files
+```bash
+$ docker-compose up -d
+$ docker-compose exec app composer install
+$ docker-compose exec app phpunit
+``` 
+and 
+```bash
+$ ./bin/tests --all
+```
+> Note: if `docker-compose` is not installed `docker-compose*.yml` files and `bin` dir will be deleted during install
 
 ### Settings
 #### Using script arguments
