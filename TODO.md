@@ -2,5 +2,6 @@
 - [ ] move `bin` to `scripts`
 - [ ] ? add configurable package name prefix to `.defaults`
 - [ ] ? add configurable package name suffix to `.defaults`
-- [ ] delete `docker-compose*.yml` files and `bin`(tests scripts) dir if `docker-compose` is not installed
+- [ ] delete `bin` if `docker-compose` is not installed
 ---
+- [x] delete `docker-compose*.yml` files if `docker-compose` is not installed
