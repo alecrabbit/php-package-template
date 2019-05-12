@@ -93,15 +93,15 @@ _ppt_load_defaults_files () {
 
 _ppt_load_defaults_file () {
     _ppt_debug "Searching settings: '${1}'"
-    if [ -e ${1} ]
+    if [ -e "${1}" ]
     then
-        . ${1}
+        . "${1}"
         _ppt_debug "Using settings file '${1}'"
-        return ${PPT_TRUE}
+        return "${PPT_TRUE}"
     fi
     _ppt_debug "Settings not found: '${1}'"
 
-    return ${PPT_FALSE}
+    return "${PPT_FALSE}"
 }
 
 _ppt_load_defaults () {
@@ -164,9 +164,9 @@ _ppt_color_bold_cyan () {
 }
 _ppt_show_values () {
     __separator=""
-    if [ ! ${_ppt_package_owner_namespace} = "" ]
+    if [ ! "${_ppt_package_owner_namespace}" = "" ]
     then
-        __separator='\\'
+        __separator="\\"
     fi
     _ppt_print "Name: $(_ppt_color_bold_cyan "${_ppt_package_owner_name}")"
     _ppt_print "Package: $(_ppt_color_bold_cyan "${_ppt_package_owner}/${_ppt_package_name}")"
@@ -185,7 +185,7 @@ _ppt_echo_variables () {
     echo "display_attention_message: '${display_attention_message}'"
     echo "_ppt_do_add_origin: '${_ppt_do_add_origin}'"
     echo "_ppt_vcs_service: '${_ppt_vcs_service}'"
-    echo "current_dir: '${current_dir}'"
+    echo "current_dir: '${_ppt_current_dir}'"
 }
 
 _ppt_show_messages () {
@@ -225,7 +225,6 @@ _ppt_read_options () {
     __ppt_param3=""
     __ppt_param4=""
     __ppt_param5=${PPT_FALSE}
-#    _ppt_silent_setup=${PPT_FALSE}
     ### Read options
     while getopts "yp:o:n:s:xh" OPTION; do
             case ${OPTION} in
@@ -251,7 +250,7 @@ _ppt_read_options () {
                         ;;
                     x)
                         __ppt_param5=${PPT_TRUE}
-                        _ppt_debug "Option '-x': do not use package owner namespace"
+                        _ppt_debug "Option '-x': do not use package owner namespace [${__ppt_param5}]"
                         ;;
                     h)
                         _ppt_debug "Option '-h': show help message"
