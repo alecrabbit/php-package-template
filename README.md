@@ -4,8 +4,6 @@ A template to write a php package, consist mostly of boilerplate code
 
 Includes bash scripts to automate testing
 
-> Note: developed and tested on Ubuntu 18.04
-
 ### Usage
  Get you copy
 ```bash
@@ -27,20 +25,20 @@ $ ./install
 $ cd ..              # 'php-package-template(-<version>)' dir was renamed so don't forget to cd 
 ...
 ```
-Now you can make `composer install` and run your first `phpunit` tests
-
-##### Bundled docker-compose
-You can use bundled `docker-compose*.yml` files
+##### Bundled `docker-compose*.yml` files
 ```bash
 $ docker-compose up -d
 $ docker-compose exec app composer install
-$ docker-compose exec app phpunit
 ``` 
-and 
+and now you can run your tests
+```bash
+$ docker-compose exec app ./vendor/bin/phpunit
+```
+or
 ```bash
 $ ./bin/tests --all
 ```
-> Note: if `docker-compose` is not installed `docker-compose*.yml` files and `bin` dir will be deleted during install
+> Note: if `docker-compose` is not installed on your system `docker-compose*.yml` files and `bin` dir will be deleted during install
 
 ### Settings
 #### Using script arguments
