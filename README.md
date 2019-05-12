@@ -5,25 +5,25 @@ A template to write a php package, consist mostly of boilerplate code
 Includes bash scripts to automate testing
 
 ### Usage
- Get you copy
+ Get you copy of specific version
+ ```bash
+ $ ppt_version="0.3.0" 
+ $ wget -qO- "https://github.com/alecrabbit/php-package-template/archive/${ppt_version}.tar.gz" \
+ | tar -xzv && cd php-package-template-${ppt_version}
+ ...
+ ```
+or latest commit from master branch
 ```bash
 $ git clone https://github.com/alecrabbit/php-package-template.git
 ...
 $ cd php-package-template
-```
-or 
-```bash
-$ ppt_version="0.3.0" 
-$ wget -qO- "https://github.com/alecrabbit/php-package-template/archive/${ppt_version}.tar.gz" \
-| tar -xzv && cd php-package-template-${ppt_version}
-...
 ```
 Run setup script and follow the instructions
 ```
 $ ./install
 ...                  # follow the instructions
 $ cd ..              # 'php-package-template(-<version>)' dir was renamed so don't forget to cd 
-...
+$ cd <your-new-package-dir>              
 ```
 ##### Bundled `docker-compose*.yml` files
 ```bash
@@ -43,17 +43,27 @@ $ ./bin/tests --all
 ### Settings
 #### Using script arguments
  You can pass parameters to setup script
- `./setup package_name package_owner "Your Name"`
+ ```
+$ ./install -h
+Usage:
+./install [options]
+
+Options:
+    -h                 - show this help message and exit
+    -y                 - do not ask questions
+    -p name            - package name
+    -o owner           - package owner
+    -n name            - package owner name
+    -s namespace       - package owner namespace
+    -x                 - do not use package owner namespace, overrides '-s' option
+```
+For example
  ```bash
  $ ./install -p looney -o bunny -n "Bugs Bunny"
  ``` 
- it'll create `bunny/looney` package in `php-looney` dir
-
- `LICENSE` file:
+will create `bunny/looney` package in `php-looney` dir and  `LICENSE` file will contain:
  ```
- ...
- Copyright (c) 2019 Bugs Bunny
- ...
+  Copyright (c) 2019 Bugs Bunny
  ```
 #### Using defaults file
 Create a file `.ppt_settings.defaults` in your home directory. This file will save you some time if you create a lot of packages.
