@@ -61,9 +61,25 @@ For example
  ```bash
  $ ./install -p looney -o bunny -n "Bugs Bunny"
  ``` 
-will create `bunny/looney` package in `php-looney` dir and  `LICENSE` file will contain:
+will create `bunny/looney` package in `php-looney` dir
+
+`LICENSE` file:
  ```
   Copyright (c) 2019 Bugs Bunny
+ ```
+ `src\BasicClass.php` file:
+ ```php
+<?php declare(strict_types=1);
+ 
+ namespace BugsBunny\Looney;
+ 
+ class BasicClass
+ {
+     public static function get(): bool
+     {
+         return true;
+     }
+ }
  ```
 #### Using defaults file
 Create a file `.ppt_settings.defaults` in your home directory. This file will save you some time if you create a lot of packages.
