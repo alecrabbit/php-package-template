@@ -81,6 +81,42 @@ will create `bunny/looney` package in `php-looney` dir
      }
  }
  ```
+ File structure:
+ ```
+ ├── bin
+ │   └── ...
+ ├── CHANGELOG.md
+ ├── composer.json
+ ├── docker-compose-debug.yml
+ ├── docker-compose.yml
+ ├── .dockerignore
+ ├── .env
+ ├── .git
+ │   └── ...
+ ├── .gitattributes
+ ├── .github
+ │   └── ISSUE_TEMPLATE.md
+ ├── .gitignore
+ ├── LICENSE
+ ├── phpcs.xml
+ ├── phpunit.xml
+ ├── psalm.xml
+ ├── README.md
+ ├── .scrutinizer.yml
+ ├── src
+ │   └── Looney
+ │       └── BasicClass.php
+ ├── TERMINAL_TITLE
+ ├── tests
+ │   ├── bootstrap.php
+ │   ├── debug.php
+ │   └── Unit
+ │       └── BasicTest.php
+ ├── TODO.md
+ ├── .travis
+ │   └── travis-init.sh
+ └── .travis.yml
+ ```
 #### Using defaults file
 Create a file `.ppt_settings.defaults` in your home directory. This file will save you some time if you create a lot of packages.
 ```bash
