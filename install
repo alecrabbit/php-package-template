@@ -101,7 +101,7 @@ then
         fi
     else
         _ppt_comment "🛑 docker-compose is not installed"
-        _ppt_debug "Cleaning up... \n$(rm -v docker-compose*.yml)"
+        _ppt_debug "Cleaning up... \n$(rm -v docker-compose*.yml)\n$(rm -rv bin)"
     fi
 
     ### Rename package dir

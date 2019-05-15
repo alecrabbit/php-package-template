@@ -83,10 +83,10 @@ set -- "${params[@]}"  # overwrites the original positional params
 
 SOURCE_DIR="src"
 
-PHPSTAN_LEVEL=7
 PSALM_CONFIG="./../psalm.xml"
-PHPSTAN_CONFIG="./../phpstan.neon"
 PSALM_LEVEL=3
+PHPSTAN_LEVEL=7
+PHPSTAN_CONFIG="./../phpstan.neon"
 TESTS_DIR="tests"
 TMP_DIR_PARTIAL="tmp"
 TMP_DIR="${TESTS_DIR}/${TMP_DIR_PARTIAL}"
