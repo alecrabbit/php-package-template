@@ -400,7 +400,7 @@ _ppt_make_setup () {
     _ppt_info "Installing"
     _ppt_comment "Copying files..."
     _ppt_debug "Copying \n$(cp -rv .results/. . 2>&1)"
-    if [ "${_ppt_install_helper_script}" -eq "${PPT_FALSE}" ];
+    if [ "${_ppt_install_helper_script}" -eq "${PPT_TRUE}" ];
     then
         _ppt_comment "Installing tests helper"
 
