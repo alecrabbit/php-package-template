@@ -375,7 +375,7 @@ __updater_install () {
     _ppt_debug "Removing '${__dir}'\n$(rm -rfv "${__dir}" 2>&1)"
     _ppt_debug "Recreating '${__dir}'\n$(mkdir "${__dir}" 2>&1)"
     _ppt_debug "Recreating '${__dir}'\n$(mkdir .bin 2>&1)"
-    _ppt_debug "Recreating '$(_ppt_get_realpath "${__dir}")"
+    _ppt_debug "Realtpath: '${__dir}' -> '$(_ppt_get_realpath "${__dir}")"
     _ppt_debug "Downloading to '${__dir}/${_PACKAGE}-${1}'"
     _ppt_debug "$(cd "${__dir}" && wget -qO- "https://github.com/${_REPOSITORY}/archive/${1}.tar.gz" | tar -xzv 2>&1)"
     # shellcheck disable=SC2181
@@ -393,7 +393,7 @@ __updater_install () {
     else
         _ppt_fatal "Error occurred during download"
     fi
-    unset __dir
+    unset __dir VERSION_FILE _PACKAGE _REPOSITORY _OWNER 
 }
 
 _ppt_make_setup () {
