@@ -384,7 +384,7 @@ __updater_install () {
     then
         _ppt_debug "Package downloaded"
         _ppt_debug "Copying new files to '${BASE_DIR}'\n$(cp -rv "${__dir}/${_PACKAGE}-${1}"/. "${BASE_DIR}"/.bin/. 2>&1)"
-        _ppt_debug "Renaming\n$(mv "${BASE_DIR}/.bin/php-tests-dev" "${BASE_DIR}/.bin/php-tests" 2>&1)"
+        _ppt_debug "Renaming\n$(mv -v "${BASE_DIR}/.bin/php-tests-dev" "${BASE_DIR}/.bin/php-tests" 2>&1)"
 
         _ppt_debug "Writing new version ${1} > ${VERSION_FILE}"
         # shellcheck disable=SC2116
