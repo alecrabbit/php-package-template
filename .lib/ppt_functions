@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
+_OWNER="alecrabbit"
+_PACKAGE="sh-php-dev-helper"
+_REPOSITORY="${_OWNER}/${_PACKAGE}"
+_LATEST_VERSION="0.0.32"
+__TMP_DIR=".tmp"
 
 _ppt_help_message () {
     echo "Usage:"
@@ -363,15 +368,37 @@ $(cat "${PPT_GITIGNORE_FILE}")"
 #    return ${PPT_FALSE}
 #}
 
+__updater_install () {
+    VERSION_FILE="${BASE_DIR}/.bin/VERSION"
+
+    __dir="./${__TMP_DIR}"
+    _ppt_debug "Removing '${__dir}'\n$(rm -rfv "${__dir}" 2>&1)"
+    _ppt_debug "Recreating '${__dir}'\n$(mkdir "${__dir}" 2>&1)"
+    _ppt_debug "Downloading to '${__dir}/${_PACKAGE}-${1}'"
+    _ppt_debug "$(cd "${__dir}" && wget -qO- "https://github.com/${_REPOSITORY}/archive/${1}.tar.gz" | tar -xzv 2>&1)"
+    # shellcheck disable=SC2181
+     if [ $? -eq 0 ]
+    then
+        _ppt_debug "Package downloaded"
+        _ppt_debug "Copying new files to '${BASE_DIR}'\n$(cp -rv "${__dir}/${_PACKAGE}-${1}"/. "${BASE_DIR}"/.bin/. 2>&1)"
+        _ppt_debug "Renaming\n$(mv "${BASE_DIR}/php-tests-dev" "${BASE_DIR}/php-tests" 2>&1)"
+
+        _ppt_debug "Writing new version ${1} > ${VERSION_FILE}"
+        # shellcheck disable=SC2116
+        _ppt_debug "Writing new version\n$(echo "${1}" > "${VERSION_FILE}" 2>&1)"
+        _ppt_debug "Cleanup '${__dir}'\n$(rm -rfv "${__dir}" 2>&1)"
+        _ppt_info "Install complete: version ${1}"
+    else
+        _ppt_fatal "Error occurred during download"
+    fi
+    unset __dir
+}
+
 _ppt_make_setup () {
     _ppt_info "Installing"
     _ppt_comment "Copying files..."
     _ppt_debug "Copying \n$(cp -rv .results/. . 2>&1)"
     _ppt_comment "Installing tests helper"
-    _OWNER="alecrabbit"
-    _PACKAGE="sh-php-dev-helper"
-    _REPOSITORY="${_OWNER}/${_PACKAGE}"
-    _LATEST_VERSION="0.0.32"
 
     __version="$(github_get_latest_version "${_REPOSITORY}" 2>&1)"
     if [ $? -eq "${PPT_FALSE}" ];
