@@ -386,9 +386,8 @@ __updater_install () {
         _ppt_debug "Copying new files to '${BASE_DIR}'\n$(cp -rv "${__dir}/${_PACKAGE}-${1}"/. "${BASE_DIR}"/.bin/. 2>&1)"
         _ppt_debug "Renaming\n$(mv -v "${BASE_DIR}/.bin/php-tests-dev" "${BASE_DIR}/.bin/php-tests" 2>&1)"
 
-        _ppt_debug "Writing new version ${1} > ${VERSION_FILE}"
         # shellcheck disable=SC2116
-        _ppt_debug "Writing new version\n$(echo "${1}" > "${VERSION_FILE}" 2>&1)"
+        _ppt_debug "Writing new version ${1} > ${VERSION_FILE}\n$(echo "${1}" > "${VERSION_FILE}" 2>&1)"
         _ppt_debug "Cleanup '${__dir}'\n$(rm -rfv "${__dir}" 2>&1)"
         _ppt_info "Install complete: version ${1}"
     else
