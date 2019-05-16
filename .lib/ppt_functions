@@ -409,6 +409,7 @@ _ppt_make_setup () {
         _LATEST_VERSION="${__version}"
     fi
     _ppt_debug "Using version: ${_LATEST_VERSION}"
+    __updater_install "${_LATEST_VERSION}"
 }
 
 _ppt_make_cleanup () {
