@@ -2,7 +2,7 @@
 
 A template to write a php package, consist mostly of boilerplate code
 
-Includes bash scripts to automate testing
+Includes scripts to automate testing: [alecrabbit/sh-php-dev-helper](https://github.com/alecrabbit/sh-php-dev-helper)
 
 ### Usage
  Get you copy of specific version
@@ -34,11 +34,11 @@ and now you can run your tests
 ```bash
 $ docker-compose exec app ./vendor/bin/phpunit
 ```
-or
+or with `alecrabbit/sh-php-dev-helper`
 ```bash
-$ ./bin/tests --all
+$ ./.bin/php-tests --all
 ```
-> Note: if `docker-compose` is not installed on your system `docker-compose*.yml` files and `bin` dir will be deleted during install
+> Note: if `docker-compose` is not installed on your system `docker-compose*.yml` files and `.bin` dir (containing `alecrabbit/sh-php-dev-helper`) will be deleted during install
 
 ### Settings
 #### Using script arguments
@@ -83,8 +83,8 @@ will create `bunny/looney` package in `php-looney` dir
  ```
  File structure:
  ```
- ├── bin
- │   └── ...
+ ├── .bin
+ │   └── ... <alecrabbit/sh-php-dev-helper>
  ├── CHANGELOG.md
  ├── composer.json
  ├── docker-compose-debug.yml
@@ -92,7 +92,7 @@ will create `bunny/looney` package in `php-looney` dir
  ├── .dockerignore
  ├── .env
  ├── .git
- │   └── ...
+ │   └── ... <reposirory>
  ├── .gitattributes
  ├── .github
  │   └── ISSUE_TEMPLATE.md

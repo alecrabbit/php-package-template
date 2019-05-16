@@ -393,7 +393,7 @@ __updater_install () {
     else
         _ppt_fatal "Error occurred during download"
     fi
-    unset __dir VERSION_FILE _PACKAGE _REPOSITORY _OWNER 
+    unset __dir VERSION_FILE _PACKAGE _REPOSITORY _OWNER
 }
 
 _ppt_make_setup () {
