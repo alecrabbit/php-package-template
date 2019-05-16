@@ -369,7 +369,7 @@ $(cat "${PPT_GITIGNORE_FILE}")"
 #}
 
 __updater_install () {
-    VERSION_FILE="${BASE_DIR}/.bin/VERSION"
+    VERSION_FILE="${BASE_DIR}/.bin/php-dev-helper-lib/VERSION"
 
     __dir="./${__TMP_DIR}"
     _ppt_debug "Removing '${__dir}'\n$(rm -rfv "${__dir}" 2>&1)"
@@ -383,7 +383,7 @@ __updater_install () {
     then
         _ppt_debug "Package downloaded"
         _ppt_debug "Copying new files to '${BASE_DIR}'\n$(cp -rv "${__dir}/${_PACKAGE}-${1}"/. "${BASE_DIR}"/.bin/. 2>&1)"
-        _ppt_debug "Renaming\n$(mv "${BASE_DIR}/php-tests-dev" "${BASE_DIR}/php-tests" 2>&1)"
+        _ppt_debug "Renaming\n$(mv "${BASE_DIR}/.bin/php-tests-dev" "${BASE_DIR}/.bin/php-tests" 2>&1)"
 
         _ppt_debug "Writing new version ${1} > ${VERSION_FILE}"
         # shellcheck disable=SC2116
