@@ -17,6 +17,7 @@ LIB_DIR="${BASE_DIR}/${LIB_SOURCE}"
 . "${LIB_DIR}/ppt_core" || die "Unable to load 'ppt_core' library."
 . "${LIB_DIR}/ppt_functions" || die "Unable to load 'ppt_functions' library."
 . "${LIB_DIR}/ppt_helpers" || die "Unable to load 'ppt_helpers' library."
+. "${LIB_DIR}/github.sh" || die "Unable to load 'github.sh' library."
 
 ### Set Version
 PPT_VERSION=$(cat "${LIB_DIR}/VERSION")
