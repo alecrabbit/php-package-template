@@ -60,7 +60,7 @@ _ppt_declare_variables_defaults() {
     # Variables defaults
     _ppt_continue_setup=${PPT_FALSE}
     _ppt_silent_setup=${_ppt_silent_setup:=${PPT_FALSE}}
-    display_attention_message=${PPT_FALSE}
+    _ppt_install_helper_script=${_ppt_install_helper_script:=${PPT_FALSE}}
     _ppt_do_add_origin=${PPT_FALSE}
     _ppt_vcs_service="github"
     # Arguments defaults
@@ -182,7 +182,7 @@ _ppt_echo_variables () {
     echo "param_owner_name: '${_ppt_param_owner_name}'"
     echo "_ppt_continue_setup: '${_ppt_continue_setup}'"
     echo "_ppt_silent_setup: '${_ppt_silent_setup}'"
-    echo "display_attention_message: '${display_attention_message}'"
+    echo "_ppt_install_helper_script: '${_ppt_install_helper_script}'"
     echo "_ppt_do_add_origin: '${_ppt_do_add_origin}'"
     echo "_ppt_vcs_service: '${_ppt_vcs_service}'"
     echo "current_dir: '${_ppt_current_dir}'"
@@ -226,11 +226,15 @@ _ppt_read_options () {
     __ppt_param4=""
     __ppt_param5=${PPT_FALSE}
     ### Read options
-    while getopts "yp:o:n:s:xh" OPTION; do
+    while getopts "yp:o:n:s:xhb" OPTION; do
             case ${OPTION} in
                     y)
                         _ppt_silent_setup=${PPT_TRUE}
-                        _ppt_debug "Option '-y': no confirmation needed [${PPT_TRUE}]"
+                        _ppt_debug "Option '-y': no confirmation needed"
+                        ;;
+                    b)
+                        _ppt_install_helper_script=${PPT_TRUE}
+                        _ppt_debug "Option '-b': install 'alecrabbit/sh-php-dev-helper'"
                         ;;
                     p)
                         __ppt_param1="${OPTARG:-}"

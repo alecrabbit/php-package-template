@@ -400,18 +400,21 @@ _ppt_make_setup () {
     _ppt_info "Installing"
     _ppt_comment "Copying files..."
     _ppt_debug "Copying \n$(cp -rv .results/. . 2>&1)"
-    _ppt_comment "Installing tests helper"
-
-    __version="$(github_get_latest_version "${_REPOSITORY}" 2>&1)"
-    if [ $? -eq "${PPT_FALSE}" ];
+    if [ "${_ppt_install_helper_script}" -eq "${PPT_FALSE}" ];
     then
-        _ppt_error "${__version}"
-        return "${PPT_FALSE}"
-    else
-        _LATEST_VERSION="${__version}"
+        _ppt_comment "Installing tests helper"
+
+        __version="$(github_get_latest_version "${_REPOSITORY}" 2>&1)"
+        if [ $? -eq "${PPT_FALSE}" ];
+        then
+            _ppt_error "${__version}"
+            return "${PPT_FALSE}"
+        else
+            _LATEST_VERSION="${__version}"
+        fi
+        _ppt_debug "Using version: ${_LATEST_VERSION}"
+        __updater_install "${_LATEST_VERSION}"
     fi
-    _ppt_debug "Using version: ${_LATEST_VERSION}"
-    __updater_install "${_LATEST_VERSION}"
 }
 
 _ppt_make_cleanup () {
