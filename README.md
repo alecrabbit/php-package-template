@@ -26,17 +26,20 @@ $ cd ..              # 'php-package-template(-<version>)' dir was renamed so don
 $ cd <your-new-package-dir>              
 ```
 ##### Bundled `docker-compose*.yml` files
+
+If you have `docker-compose` installed on your system 
+
 ```bash
-$ docker-compose up -d
-$ docker-compose exec app composer install
+$ docker-compose up -d                              # run container
+$ docker-compose exec app composer install          # install dependencies    
 ``` 
-and now you can run your tests
+and now you can run your tests with `phpunit`
 ```bash
 $ docker-compose exec app ./vendor/bin/phpunit
 ```
 or with `alecrabbit/sh-php-dev-helper`
 ```bash
-$ ./.bin/php-tests --all
+$ ./.bin/php-tests --all                            # run tests
 ```
 > Note: if `docker-compose` is not installed on your system `docker-compose*.yml` files and `.bin` dir (containing `alecrabbit/sh-php-dev-helper`) will be deleted during install
 
