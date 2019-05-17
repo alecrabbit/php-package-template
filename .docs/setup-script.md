@@ -6,7 +6,7 @@ $ ./install
 Example output
 ```
 🔧 Package template setup...
-Version 0.4.0
+Version 0.4.1
 It should be unique among your packages!
  Enter package name:
  [looney-package] 

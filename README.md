@@ -7,7 +7,7 @@ Includes scripts to automate testing: [alecrabbit/sh-php-dev-helper](https://git
 ### Usage
  Get you copy of specific version
  ```bash
- $ ppt_version="0.4.0" 
+ $ ppt_version="0.4.1" 
  $ wget -qO- "https://github.com/alecrabbit/php-package-template/archive/${ppt_version}.tar.gz" \
  | tar -xzv && cd php-package-template-${ppt_version}
  ...
