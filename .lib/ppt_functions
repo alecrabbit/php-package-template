@@ -2,7 +2,7 @@
 _OWNER="alecrabbit"
 _PACKAGE="sh-php-dev-helper"
 _REPOSITORY="${_OWNER}/${_PACKAGE}"
-_LATEST_VERSION="0.0.32"
+_LATEST_VERSION="0.0.53"
 __TMP_DIR=".tmp"
 
 _ppt_help_message () {
