@@ -427,6 +427,7 @@ _ppt_make_cleanup () {
     _ppt_debug "Removing '${LIB_SOURCE}'\n$(rm -rv ${LIB_SOURCE}/ 2>&1)"
 
     _ppt_debug "Removing 'composer.lock'\n$(rm -v composer.lock 2>&1)"
+    _ppt_debug "Removing '.docs'\n$(rm -rv .docs 2>&1)"
     _ppt_debug "Removing '${BASE_FILENAME}'\n$(rm -v ${BASE_FILENAME} 2>&1)"
 
 }
