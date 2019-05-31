@@ -1,6 +1,6 @@
 {
-  "name": "PACKAGE_OWNER/PACKAGE_NAME",
-  "description": "PACKAGE_DESCRIPTION",
+  "name": "<PACKAGE_OWNER>/<PACKAGE_NAME>",
+  "description": "<PACKAGE_DESCRIPTION>",
   "type": "library",
   "require": {
     "php": ">=7.2"
@@ -13,12 +13,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "PACKAGE_OWNR_NSPACEPACKAGE_NSPACE\\": "src\\PACKAGE_NSPACE"
+      "PACKAGE_OWNR_NSPACE<PACKAGE_NSPACE>\\": "src\\<PACKAGE_NSPACE>"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PACKAGE_OWNR_NSPACETests\\PACKAGE_NSPACE\\": "tests"
+      "PACKAGE_OWNR_NSPACETests\\<PACKAGE_NSPACE>\\": "tests"
     }
   },
   "minimum-stability": "beta",
