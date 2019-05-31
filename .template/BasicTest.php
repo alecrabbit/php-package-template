@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\<PACKAGE_NSPACE>;
+namespace <PACKAGE_OWNR_NSPACE>Tests\<PACKAGE_NSPACE>;
 
 use <PACKAGE_NSPACE>\BasicClass;
 use PHPUnit\Framework\TestCase;
