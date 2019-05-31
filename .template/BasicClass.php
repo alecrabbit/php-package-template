@@ -4,8 +4,11 @@ namespace <PACKAGE_OWNR_NSPACE><PACKAGE_NSPACE>;
 
 class BasicClass
 {
-    public static function get(): bool
+    public static function get(int $var = 10): bool
     {
-        return true;
+        if ($var === 10) {
+            return true;
+        }
+        return false;
     }
 }

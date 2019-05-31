@@ -11,5 +11,6 @@ class BasicTest extends TestCase
     public function dummy():void
     {
         $this->assertTrue(BasicClass::get());
+        $this->assertFalse(BasicClass::get(5));
     }
 }
