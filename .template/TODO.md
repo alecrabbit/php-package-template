@@ -1,5 +1,7 @@
-### <PACKAGE_OWNER>/<PACKAGE_NAME> 
+# <PACKAGE_OWNER>/<PACKAGE_NAME>
 
-- [ ] <add new item>
---- 
+- [ ] create an awesome package
+
+---
+
 - [x] add TODO.md file
