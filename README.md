@@ -1,3 +1,3 @@
 # 🐇 PHP Package template
 
-A template to create a php package, consist mostly of boilerplate code
+It's a template for `moomba` - php package creator script from [alecrabbit/sh-php-dev-helper](https://github.com/alecrabbit/sh-php-dev-helper)
