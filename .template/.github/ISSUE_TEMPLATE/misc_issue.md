@@ -1,4 +1,11 @@
-Hello,
+---
+name: Misc issue
+about: Regular issue
+title: ''
+labels: ''
+assignees: ''
+
+---
 
 I encountered an issue with the following code:
 ```php
