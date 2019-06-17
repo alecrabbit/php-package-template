@@ -19,6 +19,9 @@ addons:
 cache:
   bundler: true
 
+notifications:
+  email: false
+
 install:
   - travis_retry ./.travis/travis-init.sh
   - travis_retry composer install --no-interaction --prefer-source
