@@ -13,3 +13,9 @@
 [![Latest Unstable Version](https://poser.pugx.org/<PACKAGE_OWNER>/<PACKAGE_NAME>/v/unstable)](https://packagist.org/packages/<PACKAGE_OWNER>/<PACKAGE_NAME>)
 
 [![License](https://poser.pugx.org/<PACKAGE_OWNER>/<PACKAGE_NAME>/license)](https://packagist.org/packages/<PACKAGE_OWNER>/<PACKAGE_NAME>)
+
+### Installation
+
+```bash
+$ composer require <PACKAGE_OWNER>/<PACKAGE_NAME>
+```
