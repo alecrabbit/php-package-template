@@ -6,7 +6,7 @@
 
 ## Pull Requests
 
-* Fork the `alecrabbit/php-package-template` repository
+* Fork the `<PACKAGE_OWNER>/<PACKAGE_NAME>` repository
 * Create a new branch for each feature or improvement
 * Send a pull request from each feature branch to the **master** branch
 
