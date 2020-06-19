@@ -11,10 +11,10 @@ matrix:
 #    - php: 7.4snapshot
     - php: nightly
 
-addons:
-  apt:
-    packages:
-    - libevent-dev
+#addons:
+#  apt:
+#    packages:
+#    - libevent-dev
 
 cache:
   bundler: true
