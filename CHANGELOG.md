@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- makefile changelog recipe
 - terminal title
 - makefile
 - github actions
