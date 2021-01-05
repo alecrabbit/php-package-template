@@ -3,8 +3,7 @@
 ## <PACKAGE_DESCRIPTION>
 
 [![PHP Version](https://img.shields.io/packagist/php-v/<PACKAGE_OWNER>/<PACKAGE_NAME>.svg)](https://php.net)
-[![Build Status](https://travis-ci.com/<PACKAGE_OWNER>/<PACKAGE_NAME>.svg?branch=master)](https://travis-ci.com/<PACKAGE_OWNER>/<PACKAGE_NAME>)
-[![Appveyor Status](https://img.shields.io/appveyor/ci/<PACKAGE_OWNER>/<PACKAGE_NAME>.svg?label=appveyor)](https://ci.appveyor.com/project/<PACKAGE_OWNER>/<PACKAGE_NAME>/branch/master)
+[![Build Status](https://github.com/<PACKAGE_OWNER>/<PACKAGE_NAME>/workflows/build/badge.svg)](https://github.com/<PACKAGE_OWNER>/<PACKAGE_NAME>/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/<PACKAGE_OWNER>/<PACKAGE_NAME>/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/<PACKAGE_OWNER>/<PACKAGE_NAME>/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/<PACKAGE_OWNER>/<PACKAGE_NAME>/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/<PACKAGE_OWNER>/<PACKAGE_NAME>/?branch=master)
 [![Total Downloads](https://poser.pugx.org/<PACKAGE_OWNER>/<PACKAGE_NAME>/downloads)](https://packagist.org/packages/<PACKAGE_OWNER>/<PACKAGE_NAME>)
