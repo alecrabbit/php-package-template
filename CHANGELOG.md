@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="0.11.0"></a>
+## [0.11.0] - 2021-01-05
 ### Added
 - makefile changelog recipe
 - terminal title
@@ -284,7 +287,8 @@ All notable changes to this project will be documented in this file.
 <a name="0.0.34"></a>
 ## 0.0.34 - 2019-02-07
 
-[Unreleased]: https://github.com/alecrabbit/php-package-template/compare/0.10.2...HEAD
+[Unreleased]: https://github.com/alecrabbit/php-package-template/compare/0.11.0...HEAD
+[0.11.0]: https://github.com/alecrabbit/php-package-template/compare/0.10.2...0.11.0
 [0.10.2]: https://github.com/alecrabbit/php-package-template/compare/0.10.1...0.10.2
 [0.10.1]: https://github.com/alecrabbit/php-package-template/compare/0.10.0...0.10.1
 [0.10.0]: https://github.com/alecrabbit/php-package-template/compare/0.9.0...0.10.0
