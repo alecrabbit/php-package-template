@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - package php version
 
 ### Removed
+- executable flag for .chglog files
 - travis app
 - appveyor app
 
